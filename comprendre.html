@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprendre · L'ado-XPR · CEREMAIA Lyon</title>
+    <link rel="stylesheet" href="styles.css?v=4">
+    <style>
+        .fiche-pills { display: flex; flex-wrap: wrap; gap: var(--s2); }
+        .fiche-pills a {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--white);
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: var(--r-pill);
+            padding: 7px 14px;
+        }
+        .fiche-pills a:hover { border-color: var(--turquoise); color: var(--turquoise); text-decoration: none; }
+        .fiable-list { list-style: none; padding: 0; counter-reset: fiable; }
+        .fiable-list li {
+            counter-increment: fiable;
+            display: flex;
+            gap: var(--s4);
+            align-items: baseline;
+            background: var(--surface-2);
+            border: 1px solid var(--border-soft);
+            border-radius: var(--r-media);
+            padding: var(--s3) var(--s4);
+            margin-bottom: var(--s3);
+        }
+        .fiable-list li::before {
+            content: counter(fiable);
+            flex: none;
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 18px;
+            color: #0A0922;
+            background: var(--grad-indigo-violet);
+            width: 32px; height: 32px;
+            display: grid; place-items: center;
+            border-radius: var(--r-pill);
+        }
+        .ia-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--s4); }
+        .ia-card { border-radius: var(--r-media); padding: var(--s4) var(--s5); border: 1px solid; }
+        .ia-card.ok { background: rgba(88,225,166,.07); border-color: rgba(88,225,166,.30); }
+        .ia-card.ko { background: rgba(255,157,176,.06); border-color: rgba(255,157,176,.30); }
+        .ia-card h3 { margin-top: 0; }
+        .ia-card.ok h3 { color: var(--success); }
+        .ia-card.ko h3 { color: var(--error); }
+        .copy-row { display: flex; flex-wrap: wrap; gap: var(--s3); align-items: center; margin-top: var(--s3); }
+    </style>
+</head>
+<body class="page-v2">
+    <header>
+        <div class="logo-container">
+            <img src="images/banniere.png" alt="CEREMAIA Lyon" class="logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="about.html">À propos</a></li>
+                <li><a href="maladies.html">Les maladies</a></li>
+                <li><a href="recherche.html">La Recherche</a></li>
+                <li><a href="actualites.html">Actualités et événements</a></li>
+                <li><a href="ado-xpr.html" class="active">L'ado-XPR (Espace jeunes)</a></li>
+                <li><a href="contacts.html">Contacts et Consultations</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="xpr-nav" role="navigation" aria-label="Menu L'ado-XPR">
+            <a href="ado-xpr.html"><span class="xpr-brand" style="padding:0;">L'ado-XPR</span></a>
+            <a href="parole-ados.html">Récits</a>
+            <a href="repondre.html">Répondre</a>
+            <a href="comprendre.html" class="active">Comprendre</a>
+            <a href="soutien-psy.html">Besoin d'aide</a>
+        </div>
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-inner">
+                <span class="eyebrow">Socle validé &amp; IA fiable</span>
+                <h1>Comprendre</h1>
+                <p>Ta maladie expliquée par l'équipe qui te soigne, des sources officielles triées, et un mode d'emploi pour poser tes questions à une IA sans te faire balader.</p>
+                <div class="hero-cta">
+                    <a href="#fiches" class="btn btn-primary">Les fiches vérifiées</a>
+                    <a href="#ia" class="btn btn-secondary">L'IA sans te faire avoir</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FICHES -->
+        <section id="fiches">
+            <span class="eyebrow">Le socle</span>
+            <h2>Les fiches relues par l'équipe</h2>
+            <p>Chaque fiche est rédigée et relue par les médecins du CEREMAIA Lyon : c'est ta base la plus sûre pour comprendre ta maladie.</p>
+            <div class="fiche-pills">
+                <a href="fmf.html">FMF</a>
+                <a href="caps.html">CAPS</a>
+                <a href="traps.html">TRAPS</a>
+                <a href="still.html">Maladie de Still</a>
+                <a href="schnitzler.html">Schnitzler</a>
+                <a href="behcet.html">Behçet</a>
+                <a href="blau.html">Blau</a>
+                <a href="papa.html">PAPA</a>
+                <a href="mkd.html">MKD</a>
+                <a href="dira.html">DIRA</a>
+                <a href="pericardites.html">Péricardites</a>
+                <a href="autres.html">Autres maladies</a>
+            </div>
+            <p style="margin: var(--s5) 0 0;">Pour aller plus loin, maladie par maladie (PNDS, associations, podcasts)&nbsp;: <a href="ressources.html"><strong>Ressources par maladie →</strong></a></p>
+        </section>
+
+        <!-- INFO FIABLE -->
+        <section>
+            <span class="eyebrow">Le réflexe</span>
+            <h2>Reconnaître une info fiable</h2>
+            <p>Quand tu lis quelque chose sur ta maladie, regarde d'abord qui parle. Dans l'ordre de confiance&nbsp;:</p>
+            <ul class="fiable-list">
+                <li><span><strong>Le PNDS</strong> : le Protocole National de Diagnostic et de Soins, écrit par les experts et publié par la Haute Autorité de Santé. C'est LA référence.</span></li>
+                <li><span><strong>Les centres de référence et la filière FAI2R</strong>, comme le CEREMAIA&nbsp;: nos fiches et les sites de la filière.</span></li>
+                <li><span><strong>Orphanet</strong> : l'encyclopédie officielle des maladies rares.</span></li>
+                <li><span><strong>Les associations de patients</strong>, précieuses pour le vécu et l'entraide.</span></li>
+            </ul>
+            <p><strong>Et les forums, TikTok, les groupes… ?</strong> Des vécus qui peuvent faire du bien, mais ce ne sont pas des vérités médicales. Ce qui s'applique à quelqu'un d'autre ne s'applique pas forcément à toi.</p>
+        </section>
+
+        <!-- IA -->
+        <section id="ia">
+            <span class="eyebrow">Mode d'emploi</span>
+            <h2>Utiliser l'IA sans te faire avoir</h2>
+            <p>ChatGPT, Claude et les autres peuvent t'aider, à condition de savoir ce qu'ils savent faire… et ce qu'il ne faut jamais leur confier.</p>
+            <div class="ia-cols">
+                <div class="ia-card ok">
+                    <h3>L'IA fait bien ça</h3>
+                    <ul>
+                        <li>Expliquer un mot compliqué de ton compte-rendu</li>
+                        <li>T'aider à préparer tes questions avant une consultation</li>
+                        <li>Reformuler un document médical en langage simple</li>
+                        <li>T'aider à écrire (un mail au prof, ta fiche en une page…)</li>
+                    </ul>
+                </div>
+                <div class="ia-card ko">
+                    <h3>Ne lui demande jamais ça</h3>
+                    <ul>
+                        <li>Un diagnostic («&nbsp;qu'est-ce que j'ai&nbsp;?&nbsp;»)</li>
+                        <li>De changer ou d'arrêter un traitement, ou d'ajuster une dose</li>
+                        <li>De remplacer ton médecin ou une urgence (en crise&nbsp;: le 15)</li>
+                    </ul>
+                </div>
+            </div>
+            <h4>Les 4 réflexes</h4>
+            <ol>
+                <li><strong>Demande les sources</strong>, et méfie-toi si elle n'en cite pas.</li>
+                <li><strong>Croise</strong> avec le PNDS, nos fiches ou Orphanet avant de croire.</li>
+                <li><strong>Vérifie la date</strong> : les traitements évoluent vite dans nos maladies.</li>
+                <li><strong>Protège tes infos</strong> : jamais ton nom complet, ton numéro de sécu ou tes résultats dans une IA grand public.</li>
+            </ol>
+            <h4>Un prompt qui marche, à copier-coller</h4>
+            <div class="prompt-box" id="prompt-ia">Explique-moi simplement, comme à un lycéen, ce qu'est [ma maladie / ce terme]. Appuie-toi sur des sources officielles françaises (HAS, Orphanet, FAI2R) et cite-les. Ne me donne aucun conseil de traitement : pour ça, je vois mon médecin.</div>
+            <div class="copy-row">
+                <button type="button" class="btn btn-secondary" id="copy-btn">Copier le prompt</button>
+                <span class="small" id="copy-ok" hidden>Copié ✓</span>
+            </div>
+            <p style="margin-top: var(--s4);"><strong>La règle d'or&nbsp;:</strong> ce que dit une IA se vérifie toujours avec ton médecin. Toujours.</p>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-band">
+            <div>
+                <h2>Un doute sur une info&nbsp;?</h2>
+                <p>Tu as lu quelque chose qui t'inquiète ou qui te semble bizarre&nbsp;? Pose la question à l'équipe, on démêle ensemble.</p>
+            </div>
+            <a href="contacts.html" class="btn btn-primary">Poser ma question</a>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h4>CEREMAIA Lyon</h4>
+                <p>Centre de Référence des Maladies Auto-Inflammatoires et de l'Amylose inflammatoire. Filière FAI2R · Réseau ERN RITA.</p>
+            </div>
+            <div>
+                <h4>Naviguer</h4>
+                <ul>
+                    <li><a href="about.html">À propos</a></li>
+                    <li><a href="maladies.html">Les maladies</a></li>
+                    <li><a href="recherche.html">La Recherche</a></li>
+                    <li><a href="actualites.html">Actualités</a></li>
+                    <li><a href="ado-xpr.html">L'ado-XPR (Espace jeunes)</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul>
+                    <li>Hôpital de la Croix-Rousse, Lyon</li>
+                    <li>04 26 73 26 36</li>
+                    <li><a href="mailto:ceremaia.lyon@chu-lyon.fr">ceremaia.lyon@chu-lyon.fr</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="footer-urgence"><strong>En cas d'urgence, appelez le 15 (Samu) ou le 112.</strong> &nbsp;·&nbsp; © 2024 CEREMAIA. Tous droits réservés.</p>
+    </footer>
+
+    <script src="menu.js?v=2" defer></script>
+    <script>
+    (function () {
+        var btn = document.getElementById('copy-btn');
+        var ok = document.getElementById('copy-ok');
+        if (!btn) return;
+        btn.addEventListener('click', function () {
+            var text = document.getElementById('prompt-ia').textContent;
+            function done() { ok.hidden = false; setTimeout(function () { ok.hidden = true; }, 2500); }
+            function fallback() {
+                var r = document.createRange();
+                r.selectNodeContents(document.getElementById('prompt-ia'));
+                var sel = window.getSelection();
+                sel.removeAllRanges(); sel.addRange(r);
+                document.execCommand('copy'); sel.removeAllRanges();
+                done();
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(done).catch(fallback);
+            } else {
+                fallback();
+            }
+        });
+    })();
+    </script>
+</body>
+</html>

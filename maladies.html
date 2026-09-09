@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Maladies - CEREMAIA</title>
+    <link rel="stylesheet" href="styles.css?v=4">
+    <style>
+        .section-with-image {
+            display: flex;
+            align-items: center;
+        }
+        .section-content {
+            flex: 1;
+            margin-right: 5%;
+            text-align: justify;
+        }
+        .section-image {
+            flex: 0 0 20%;
+            text-align: right;
+        }
+        .section-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .logo-container {
+            text-align: center;
+            margin: 0px 0;
+        }
+        .logo-container img {
+            width: 100%;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 16px;
+        }
+        .grid-item {
+            position: relative;
+            text-align: center;
+        }
+        .grid-item a {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .grid-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        .grid-item:hover img {
+            transform: scale(1.05);
+        }
+        .grid-item:hover span {
+            font-weight: bold;
+            font-size: 1.5em;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/banniere.png" alt="CEREMAIA Lyon" class="logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="about.html">À propos</a></li>
+                <li><a href="maladies.html" class="active">Les maladies</a></li>
+                <li><a href="recherche.html">La Recherche</a></li>
+                <li><a href="actualites.html">Actualités et événements</a></li>
+                <li><a href="ado-xpr.html">L'ado-XPR (Espace jeunes)</a></li>
+                <li><a href="contacts.html">Contacts et Consultations</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Les maladies auto-inflammatoires</h2>
+            <p><strong>Cliquez sur les images pour en apprendre plus</strong></p>
+            <div class="grid-container">
+                <a href="fmf.html" class="grid-item">
+                    <img src="images/fmf.jpg" alt="FMF">
+                    <span>FMF</span>
+                </a>
+                <a href="caps.html" class="grid-item">
+                    <img src="images/caps.jpg" alt="CAPS">
+                    <span>CAPS</span>
+                </a>
+                <a href="traps.html" class="grid-item">
+                    <img src="images/traps.jpg" alt="TRAPS">
+                    <span>TRAPS</span>
+                </a>
+                <a href="still.html" class="grid-item">
+                    <img src="images/still.jpg" alt="Maladie de Still">
+                    <span>Maladie de Still</span>
+                </a>
+                <a href="schnitzler.html" class="grid-item">
+                    <img src="images/schnitzler.jpg" alt="Syndrome de Schnitzler">
+                    <span>Syndrome de Schnitzler</span>
+                </a>
+                <a href="behcet.html" class="grid-item">
+                    <img src="images/behcet.jpg" alt="Maladie de Behçet">
+                    <span>Maladie de Behçet</span>
+                </a>
+                <a href="blau.html" class="grid-item">
+                    <img src="images/blau.jpg" alt="Syndrome de Blau">
+                    <span>Syndrome de Blau</span>
+                </a>
+                <a href="papa.html" class="grid-item">
+                    <img src="images/papa.jpg" alt="PAPA">
+                    <span>PAPA</span>
+                </a>
+                <a href="mkd.html" class="grid-item">
+                    <img src="images/mkd.jpg" alt="MKD">
+                    <span>MKD</span>
+                </a>
+                <a href="dira.html" class="grid-item">
+                    <img src="images/dira.jpg" alt="DIRA">
+                    <span>DIRA</span>
+                </a>
+                <a href="pericardites.html" class="grid-item">
+                    <img src="images/pericardites.jpg" alt="Péricardites Récidivantes">
+                    <span>Péricardites Récidivantes</span>
+                </a>
+                <a href="autres.html" class="grid-item">
+                    <img src="images/autres.jpg" alt="AUTRES">
+                    <span>AUTRES</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="cta-band">
+            <div>
+                <h2>Ressources par maladie</h2>
+                <p>PNDS, fiches officielles, associations de patients et podcasts : tous les liens fiables, maladie par maladie.</p>
+            </div>
+            <a href="ressources.html" class="btn btn-primary">Voir les ressources</a>
+        </section>
+
+        <section>
+            <h2>C'est quoi une maladie auto-inflammatoire ?</h2>
+            <p>Une maladie auto-inflammatoire fait partie d'un groupe hétérogène de maladies qui se manifeste par une réaction inflammatoire dans sa phase initiale (immunité innée) qui est activée de façon inadéquate : soit parce que la réaction est trop forte, soit parce qu’elle n’est pas justifiée (ex : en l’absence d’infection). Le concept d’auto-inflammation est apparu il y a une vingtaine d’années, en opposition aux maladies auto-immunes (comme le lupus, la polyarthrite rhumatoïde, le diabète de type 1 etc.) car, à l’inverse de ces dernières, on ne retrouve pas chez les malades d’anticorps dirigés contre les constituants du soi. Bien souvent, et dans leur description initiale, les maladies auto-inflammatoires ont une origine génétique (et sont donc héréditaires ou familiales) et touchent préférentiellement les enfants ou les jeunes adultes.</p>
+        </section>
+
+        <section>
+            <h2>Symptômes fréquents</h2>
+            <p>D’une manière générale, les maladies auto-inflammatoires se manifestent par des <strong>crises récurrentes</strong> associant de la fièvre, des éruptions cutanées, des douleurs articulaires. Certains signes sont plus spécifiques de certaines maladies comme l’urticaire (déclenché par le froid), les crise de douleurs abdominales, les aphtes (buccaux et génitaux) ou encore des ganglions cervicaux.</p> 
+		<p> Ces crises sont systématiquement associées à l’augmentation des marqueurs de l’inflammation dans le sang.</p>
+        </section>
+
+        <section>
+            <h2>Diagnostic</h2>
+            <p>À l’heure actuelle, le diagnostic de la plupart des maladies auto-inflammatoires est établi sur la conjonction d’arguments cliniques et biologiques, à la suite d’une enquête approfondie menée par les médecins spécialistes de ces maladies. L’existence de marqueurs biologiques permettant de confirmer la maladie est exceptionnelle.</p>
+		<p>Toutefois, pour certaines d’entre elles, une confirmation peut être obtenue par <strong>analyse génétique</strong>. Dans certains cas, une analyse génétique extensive peut être proposée.</p>
+        </section>
+    
+    <section>
+            <h2>Quelles différences avec les maladies auto-immunes ?</h2>
+            <p> Les maladies <strong>auto-inflammatoires</strong> impliquent une activation inappropriée du système immunitaire inné (la réaction inflammatoire : rougeur, chaleur, douleur, gonflement et fièvre), sans production d'anticorps dirigés contre les constituants du soi (les auto-anticorps). Les maladies <strong>auto-immunes</strong> impliquent, quant à elles, une réaction du système immunitaire adaptatif (notre mémoire immunitaire, utilisée pour la vaccination) dont la principale caractéristique est l'existence d'auto-anticorps.</p>
+		<p> Cette classification est toutefois très artificielle et permet surtout aux médecins et aux chercheurs de savoir (entre eux) de quoi ils parlent ou d'utiliser des modèles simplifiés dans leurs expériences. En effet, la plupart de ces maladies ont une activation simultanée (ou séquentielle) des deux types d'immunité ; en miroir, beaucoup de maladies auto-immunes comportent, à un moment ou un autre, des signes évocateurs d'auto-inflammation.</p> 
+        </section>
+
+        <section>
+            <h2>Traitements</h2>
+            <p>Les maladies auto-inflammatoires sont prises en charge par des spécialistes (internistes, rhumatologues…) en collaboration étroite avec les médecins traitants et les autres acteurs du système de santé (infirmiers, kinésithérapeutes, travailleurs sociaux…). Le traitement repose parfois sur des médicaments d’exception qui ne peuvent être prescrits et délivrés qu’à l’hôpital. Un suivi spécialisé est de toutes façons largement souhaitable, afin de juger de l’efficacité et de la tolérance des médicaments et de programmer/réaliser les bilans réguliers nécessaires au suivi.</p>
+
+            <h3>Options de traitement :</h3>
+            <ul>
+                <li><strong>Colchicine :</strong> Utilisée principalement pour la Fièvre Méditerranéenne Familiale (FMF), elle aide à prévenir les crises inflammatoires.</li>
+                <li><strong>Inhibiteurs de l'IL-1 :</strong> Des médicaments comme l'anakinra et le canakinumab sont utilisés pour traiter plusieurs maladies auto-inflammatoires en bloquant l'action de l'interleukine-1, une cytokine pro-inflammatoire.</li>
+		    <li><strong>Corticostéroïdes :</strong> Utilisés pour réduire l'inflammation et contrôler les symptômes pendant les crises aiguës.</li>               
+ 	    	    <li><strong>Inhibiteurs de l'IL-6 :</strong> Des médicaments comme le tocilizumab, le sarilumab ou le siltuximab sont utilisés pour bloquer l'IL-6 ou ses récepteurs.</li>
+                <li><strong>Inhibiteurs du TNF :</strong> Des médicaments comme l'infliximab, l'adalimumab, le golimumab ou le certolizumab sont utilisés pour bloquer le TNF (alpha).</li>
+	          <li><strong>Inhibiteurs des interferons:</strong> Des inhibiteurs de l'interferon gamma (emapalumab) ou interferon de type 1 (anifrolumab) sont également utilisés dans certaines MAI</li>
+		    <li><strong>Inhibiteurs de JAK :</strong> Les inhibiteurs de JAK, comme le ruxolitinib, le tofacitinib, le baricitinib ou l'upadacitinib sont utilisés pour bloquer le signal en aval des récpeteurs de certaines cytokines (comme l'IL6 ou les interferons)</li>	          
+                <li><strong>Immunosuppresseurs :</strong> Des médicaments comme le méthotrexate, l'azathioprine, le mycophénolate mofetil, la ciclosporine, l'etoposide ou plus rarement le cyclophosphamide peuvent être utilisés pour contrôler l'inflammation dans certains cas.</li>
+            </ul>
+        </section>
+		<section>
+<h2> Analyses génétiques</h2>
+<h3> Annuaire des laboratoires de génétique des MAI, liste actualisée des gènes testés, et Plan France Médecine Génomique</h3>
+<p>Toutes les infos sont disponibles sur le site de la FAI2R : <a href="https://www.fai2r.org/annuaire-analyses-genetiques/">Cliquez ici !</a></li>
+<li><strong>Accés direct</strong> à l'annuaire des laboratoires de génétique FAI2R <a href="https://www.fai2r.org/annuaire-analyses-genetiques/annuaire-des-laboratoires/">en cliquant là.</a></li>
+<li><strong>Accés direct</strong> à la liste des gènes via le site FAI2R <a href="https://www.fai2r.org/annuaire-analyses-genetiques/liste-des-genes/">en cliquant là.</a></li>
+<li><strong>Accès à la listes de gènes et des variants</strong> en cause dans les MAI, sur le site de l'UMAI de Montpellier : <a href="https://infevers.umai-montpellier.fr/web/">Infevers</a> (Merci à Guilaine Boursier) </li>
+
+</section>   
+ </main>
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h4>CEREMAIA Lyon</h4>
+                <p>Centre de Référence des Maladies Auto-Inflammatoires et de l'Amylose inflammatoire. Filière FAI2R · Réseau ERN RITA.</p>
+            </div>
+            <div>
+                <h4>Naviguer</h4>
+                <ul>
+                    <li><a href="about.html">À propos</a></li>
+                    <li><a href="maladies.html">Les maladies</a></li>
+                    <li><a href="recherche.html">La Recherche</a></li>
+                    <li><a href="actualites.html">Actualités</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul>
+                    <li>Hôpital de la Croix-Rousse, Lyon</li>
+                    <li>04 26 73 26 36</li>
+                    <li><a href="mailto:ceremaia.lyon@chu-lyon.fr">ceremaia.lyon@chu-lyon.fr</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="footer-urgence"><strong>En cas d'urgence, appelez le 15 (Samu) ou le 112.</strong> &nbsp;·&nbsp; © 2024 CEREMAIA. Tous droits réservés.</p>
+    </footer>
+    <script src="menu.js?v=2" defer></script>
+</body>
+</html>

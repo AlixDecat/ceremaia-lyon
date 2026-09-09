@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil · CEREMAIA Lyon</title>
+    <link rel="stylesheet" href="styles.css?v=4">
+    <style>
+        /* Grille des fiches maladies : cartes homogènes */
+        .disease-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: var(--s4);
+        }
+        .disease-grid a {
+            display: block;
+            background: var(--surface-2);
+            border: 1px solid rgba(180,156,255,.28);
+            border-radius: var(--r-media);
+            padding: var(--s3);
+            text-align: center;
+            color: var(--white);
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+        .disease-grid a:hover { transform: translateY(-6px); box-shadow: var(--glow); text-decoration: none; }
+        .disease-grid img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: var(--r-chip); margin-bottom: var(--s2); }
+        .disease-grid span { font-family: var(--font-head); font-weight: 600; font-size: 15px; }
+    </style>
+</head>
+<body class="page-v2">
+    <header>
+        <div class="logo-container">
+            <img src="images/banniere.png" alt="CEREMAIA Lyon" class="logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Accueil</a></li>
+                <li><a href="about.html">À propos</a></li>
+                <li><a href="maladies.html">Les maladies</a></li>
+                <li><a href="recherche.html">La Recherche</a></li>
+                <li><a href="actualites.html">Actualités et événements</a></li>
+                <li><a href="ado-xpr.html">L'ado-XPR (Espace jeunes)</a></li>
+                <li><a href="contacts.html">Contacts et Consultations</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-inner">
+                <span class="eyebrow">Centre de Référence · Maladies Auto-Inflammatoires</span>
+                <h1>Comprendre et soigner les maladies auto-inflammatoires</h1>
+                <p>Le CEREMAIA Lyon réunit médecine interne, rhumatologie pédiatrique et recherche fondamentale pour offrir aux patients un diagnostic précis, des traitements personnalisés et un accompagnement à chaque étape de leur parcours.</p>
+                <div class="hero-cta">
+                    <a href="contacts.html" class="btn btn-primary">Prendre rendez-vous</a>
+                    <a href="maladies.html" class="btn btn-secondary">Découvrir les maladies</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- BADGES CONFIANCE -->
+        <div class="trust-row">
+            <span class="badge">Labellisé 2023</span>
+            <span class="badge">Filière FAI2R</span>
+            <span class="badge">Réseau ERN RITA</span>
+            <span class="badge">Hospices Civils de Lyon</span>
+            <span class="badge">Laboratoire Inserm/CNRS I2BA</span>
+        </div>
+
+        <!-- MISSIONS -->
+        <section>
+            <span class="eyebrow">Notre approche</span>
+            <h2>Un centre, une prise en charge complète</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="ic" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 3 5 6.5 5 9 5 12 8 12 8s3-3 5.5-3C21 5 23.5 8.5 21.5 12.5 19 16.65 12 21 12 21z"/></svg>
+                    </div>
+                    <h3>Soins spécialisés</h3>
+                    <p>Consultations adulte (Hôpital de la Croix-Rousse) et pédiatrique (HFME, Bron), hôpital de jour et hospitalisation.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="ic" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6.5L5.5 18a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 9.5V3"/></svg>
+                    </div>
+                    <h3>Recherche de pointe</h3>
+                    <p>Laboratoire Inserm/CNRS I2BA au CIRI : tests fonctionnels, inflammasomes et médicaments <i>first in class</i>.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="ic" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+                    </div>
+                    <h3>Diagnostic précis</h3>
+                    <p>Analyses génétiques et tests fonctionnels innovants pour identifier et caractériser les maladies rares.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="ic" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3>Accompagnement</h3>
+                    <p>Éducation thérapeutique, soutien social et suivi personnalisé du patient et de ses proches.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ÉQUIPE -->
+        <section>
+            <span class="eyebrow">Nos experts</span>
+            <h2>L'équipe du CEREMAIA Lyon</h2>
+            <div class="team-grid-v2">
+                <div class="tm-card"><img src="images/nora.jpg" alt="Nora Martel"><span class="tm-name">Nora Martel</span><span class="tm-role">Cheffe de projet & coordination</span></div>
+                <div class="tm-card"><img src="images/yvan.jpg" alt="Dr Yvan Jamilloux"><span class="tm-name">Dr Yvan Jamilloux</span><span class="tm-role">Coordonnateur · médecine interne</span></div>
+                <div class="tm-card"><img src="images/pascal.jpg" alt="Pr Pascal Sève"><span class="tm-name">Pr Pascal Sève</span><span class="tm-role">Chef de service · médecine interne</span></div>
+                <div class="tm-card"><img src="images/alexandre.jpg" alt="Pr Alexandre Belot"><span class="tm-name">Pr Alexandre Belot</span><span class="tm-role">Chef de service · rhumato pédiatrique</span></div>
+                <div class="tm-card"><img src="images/audrey.jpg" alt="Dr Audrey Laurent"><span class="tm-name">Dr Audrey Laurent</span><span class="tm-role">Rhumatologie pédiatrique</span></div>
+                <div class="tm-card"><img src="images/nicolas.jpg" alt="Dr Nicolas Fournier"><span class="tm-name">Dr Nicolas Fournier</span><span class="tm-role">Médecine interne</span></div>
+                <div class="tm-card"><img src="images/maxime.jpg" alt="Dr Maxime Fauter"><span class="tm-name">Dr Maxime Fauter</span><span class="tm-role">Médecine interne</span></div>
+                <div class="tm-card"><img src="images/gaelle.jpg" alt="Dr Gaëlle Richard-Colmant"><span class="tm-name">Dr Gaëlle Richard-Colmant</span><span class="tm-role">Médecine interne · ETP</span></div>
+                <div class="tm-card"><img src="images/thomas.jpg" alt="Dr Thomas Henry"><span class="tm-name">Dr Thomas Henry</span><span class="tm-role">Directeur de recherche · I2BA</span></div>
+                <div class="tm-card"><img src="images/flora.jpg" alt="Dr Flora Magnotti"><span class="tm-name">Dr Flora Magnotti</span><span class="tm-role">Chercheuse · I2BA</span></div>
+            </div>
+        </section>
+
+        <!-- FICHES MALADIES -->
+        <section>
+            <span class="eyebrow">En savoir plus</span>
+            <h2>Les fiches maladies</h2>
+            <p>Cliquez sur une maladie pour accéder à sa fiche détaillée.</p>
+            <div class="disease-grid">
+                <a href="fmf.html"><img src="images/fmf.jpg" alt="FMF"><span>FMF</span></a>
+                <a href="caps.html"><img src="images/caps.jpg" alt="CAPS"><span>CAPS</span></a>
+                <a href="traps.html"><img src="images/traps.jpg" alt="TRAPS"><span>TRAPS</span></a>
+                <a href="still.html"><img src="images/still.jpg" alt="Maladie de Still"><span>Maladie de Still</span></a>
+                <a href="schnitzler.html"><img src="images/schnitzler.jpg" alt="Syndrome de Schnitzler"><span>Schnitzler</span></a>
+                <a href="behcet.html"><img src="images/behcet.jpg" alt="Maladie de Behçet"><span>Behçet</span></a>
+                <a href="blau.html"><img src="images/blau.jpg" alt="Syndrome de Blau"><span>Blau</span></a>
+                <a href="papa.html"><img src="images/papa.jpg" alt="PAPA"><span>PAPA</span></a>
+                <a href="mkd.html"><img src="images/mkd.jpg" alt="MKD"><span>MKD</span></a>
+                <a href="dira.html"><img src="images/dira.jpg" alt="DIRA"><span>DIRA</span></a>
+                <a href="pericardites.html"><img src="images/pericardites.jpg" alt="Péricardites Récidivantes"><span>Péricardites</span></a>
+                <a href="autres.html"><img src="images/autres.jpg" alt="Autres maladies"><span>Autres</span></a>
+            </div>
+        </section>
+
+        <!-- BANDEAU CTA -->
+        <section class="cta-band">
+            <div>
+                <h2>Besoin d'une consultation ?</h2>
+                <p>Adultes, adolescents et enfants : prise de rendez-vous en ligne ou par téléphone.</p>
+            </div>
+            <a href="contacts.html" class="btn btn-primary">Nous contacter</a>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h4>CEREMAIA Lyon</h4>
+                <p>Centre de Référence des Maladies Auto-Inflammatoires et de l'Amylose inflammatoire. Filière FAI2R · Réseau ERN RITA.</p>
+            </div>
+            <div>
+                <h4>Naviguer</h4>
+                <ul>
+                    <li><a href="about.html">À propos</a></li>
+                    <li><a href="maladies.html">Les maladies</a></li>
+                    <li><a href="recherche.html">La Recherche</a></li>
+                    <li><a href="actualites.html">Actualités</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul>
+                    <li>Hôpital de la Croix-Rousse, Lyon</li>
+                    <li>04 26 73 26 36</li>
+                    <li><a href="mailto:ceremaia.lyon@chu-lyon.fr">ceremaia.lyon@chu-lyon.fr</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="footer-urgence"><strong>En cas d'urgence, appelez le 15 (Samu) ou le 112.</strong> &nbsp;·&nbsp; © 2024 CEREMAIA. Tous droits réservés.</p>
+    </footer>
+
+    <script src="menu.js?v=2" defer></script>
+</body>
+</html>

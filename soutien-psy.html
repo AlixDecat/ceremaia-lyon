@@ -1,0 +1,3321 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soutien psychologique · CEREMAIA Lyon</title>
+    <link rel="stylesheet" href="styles.css?v=4">
+    <style>
+        /* ---------- Page Soutien psy ---------- */
+
+        /* Carte 3114 mise en avant */
+        .urgence-num {
+            display: inline-block;
+            font-family: var(--font-head);
+            font-size: clamp(34px, 6vw, 44px);
+            font-weight: 700;
+            line-height: 1;
+            color: var(--turquoise);
+            margin-bottom: var(--s2);
+        }
+        .urgence-num:hover { color: var(--turquoise); text-decoration: none; opacity: .85; }
+        .feature-card.is-urgence { border-color: rgba(69,227,198,.45); }
+
+        /* Barre d'outils de l'annuaire */
+        .psy-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: var(--s3);
+            margin-bottom: var(--s3);
+        }
+        .psy-toolbar .searchbar { flex: 1 1 240px; }
+        .chips-filter { display: flex; flex-wrap: wrap; gap: var(--s2); }
+        button.chip {
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: background .2s ease, color .2s ease;
+        }
+        button.chip:hover { color: var(--white); border-color: var(--indigo); }
+        button.chip[aria-pressed="true"] {
+            color: #0A0922;
+            background: var(--turquoise);
+            border-color: transparent;
+        }
+        .count-line { margin: 0 0 var(--s4); }
+
+        /* Liste des professionnels */
+        .psy-group h3 { margin: var(--s5) 0 var(--s3); }
+        .psy-group h3 .small { font-weight: 500; }
+        .psy-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--s3);
+        }
+        .psy-item {
+            background: var(--surface-2);
+            border: 1px solid var(--border-soft);
+            border-radius: var(--r-media);
+            padding: var(--s3) var(--s4);
+        }
+        .psy-head {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: var(--s1) var(--s3);
+        }
+        .psy-name {
+            font-family: var(--font-head);
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--white);
+        }
+        .psy-name span { font-weight: 500; }
+        .psy-tel { white-space: nowrap; font-weight: 600; font-size: 14px; }
+        .psy-addr { margin: 2px 0 0; font-size: 14px; }
+        .psy-tags { margin: 6px 0 0; font-size: 13px; color: var(--grey-text); }
+        .chip-secteur { font-size: 11px; padding: 3px 10px; color: var(--violet); }
+        [hidden] { display: none !important; }
+
+        #psy-empty {
+            background: var(--surface-2);
+            border: 1px dashed var(--border);
+            border-radius: var(--r-media);
+            padding: var(--s5);
+            text-align: center;
+            color: var(--grey-light);
+            margin-top: var(--s4);
+        }
+
+        @media (max-width: 768px) {
+            .psy-list { grid-template-columns: 1fr; }
+        }
+
+        /* Impression : annuaire lisible sur papier */
+        @media print {
+            body { background: #fff; color: #000; }
+            header, .hero, footer, .psy-toolbar, .hero-cta { display: none !important; }
+            section { background: #fff; border: none; box-shadow: none; padding: 0; }
+            .psy-item { border: 1px solid #bbb; break-inside: avoid; }
+            .psy-name, .psy-addr, .psy-tags, p, h2, h3 { color: #000 !important; }
+            a { color: #000; }
+        }
+    </style>
+</head>
+<body class="page-v2">
+    <header>
+        <div class="logo-container">
+            <img src="images/banniere.png" alt="CEREMAIA Lyon" class="logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="about.html">À propos</a></li>
+                <li><a href="maladies.html">Les maladies</a></li>
+                <li><a href="recherche.html">La Recherche</a></li>
+                <li><a href="actualites.html">Actualités et événements</a></li>
+                <li><a href="ado-xpr.html" class="active">L'ado-XPR (Espace jeunes)</a></li>
+                <li><a href="contacts.html">Contacts et Consultations</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="xpr-nav" role="navigation" aria-label="Menu L'ado-XPR">
+            <a href="ado-xpr.html"><span class="xpr-brand" style="padding:0;">L'ado-XPR</span></a>
+            <a href="parole-ados.html">Récits</a>
+            <a href="repondre.html">Répondre</a>
+            <a href="comprendre.html">Comprendre</a>
+            <a href="soutien-psy.html" class="active">Besoin d'aide</a>
+        </div>
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-inner">
+                <span class="eyebrow">Santé mentale · Ados, adultes &amp; proches</span>
+                <h1>Un soutien psychologique, quand vous en avez besoin</h1>
+                <p>Vivre avec une maladie chronique peut être une source d'anxiété, pour le patient comme pour ses proches. Consulter un psychologue n'est pas réservé aux moments de crise : c'est un soutien possible à chaque étape du parcours. Cette page rassemble les numéros essentiels, le dispositif de séances remboursées « Mon soutien psy » et un annuaire de psychologues à Lyon. <strong>Ici, pas de consultation ni de prise en charge en ligne</strong>&nbsp;: des ressources fiables et des contacts pour trouver le bon soutien, près de chez vous.</p>
+                <div class="hero-cta">
+                    <a href="#annuaire" class="btn btn-primary">Trouver un psychologue à Lyon</a>
+                    <a href="#mon-soutien-psy" class="btn btn-secondary">Séances remboursées</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- AIDE IMMÉDIATE -->
+        <section id="aide-immediate">
+            <span class="eyebrow">Besoin de parler maintenant ?</span>
+            <h2>Une aide immédiate, gratuite et confidentielle</h2>
+            <div class="feature-grid">
+                <div class="feature-card is-urgence">
+                    <a class="urgence-num" href="tel:3114">3114</a>
+                    <h3>Numéro national de prévention du suicide</h3>
+                    <p>Gratuit, 24h/24 et 7j/7 partout en France : un professionnel de la santé mentale vous écoute, notamment en cas d'idées suicidaires. Plus d'infos sur <a href="https://3114.fr/" target="_blank" rel="noopener">3114.fr</a>.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Le CMP de votre secteur</h3>
+                    <p>Les Centres Médico-Psychologiques proposent des consultations publiques, prises en charge, selon votre lieu de résidence. Votre médecin traitant ou l'équipe du CEREMAIA peut vous indiquer le CMP dont vous dépendez.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>En cas de danger immédiat</h3>
+                    <p>Appelez le <strong>15</strong> (Samu) ou le <strong>112</strong>. Par SMS pour les personnes sourdes ou malentendantes : <strong>114</strong>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- MON SOUTIEN PSY -->
+        <section id="mon-soutien-psy">
+            <span class="eyebrow">Séances remboursées</span>
+            <h2>« Mon soutien psy » : 12 séances prises en charge par an</h2>
+            <p>Avec ce dispositif de l'Assurance Maladie, vous pouvez bénéficier chaque année du remboursement de <strong>12 séances d'accompagnement psychologique</strong> : une séance d'évaluation en présentiel, puis jusqu'à 11 séances de suivi. Depuis son lancement en 2022, près de 587 000 patients y ont eu accès, auprès d'environ 5 500 psychologues partenaires.</p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Sans prescription</h3>
+                    <p>Il n'est plus indispensable d'avoir une ordonnance. Un professionnel de santé (médecin traitant, sage-femme…) peut aussi vous orienter si votre état le nécessite.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Dès 3 ans</h3>
+                    <p>Pour toute personne d'au moins 3 ans présentant des troubles légers à modérés : anxiété, déprime, angoisse, difficultés avec le tabac, l'alcool ou le cannabis, troubles du comportement alimentaire.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>50 € la séance, sans dépassement</h3>
+                    <p>Prise en charge à 60&nbsp;% par l'Assurance Maladie et 40&nbsp;% par votre complémentaire santé, et à 100&nbsp;% dans certains cas (C2S, affection de longue durée, maternité à partir du 6ᵉ mois, accident du travail ou maladie professionnelle).</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Étudiants</h3>
+                    <p>« Mon soutien psy » est cumulable avec le dispositif <strong>Santé Psy Étudiant</strong>.</p>
+                </div>
+            </div>
+            <p style="margin-top: var(--s5);">
+                <a href="https://monsoutienpsy.ameli.fr/recherche-psychologue" target="_blank" rel="noopener" class="btn btn-primary">Trouver un psychologue partenaire</a>
+                &nbsp;
+                <a href="https://monsoutienpsy.ameli.fr/" target="_blank" rel="noopener" class="btn btn-ghost">En savoir plus sur le dispositif</a>
+            </p>
+        </section>
+
+        <!-- ANNUAIRE PSYCHOLOGUES -->
+        <section id="annuaire">
+            <span class="eyebrow">Annuaire</span>
+            <h2>Psychologues en libéral à Lyon</h2>
+            <p>Un annuaire de <strong>403 psychologues</strong> exerçant en cabinet dans les 1ᵉʳ à 6ᵉ arrondissements de Lyon, recensés par notre équipe. Consulter en libéral, c'est aussi la garantie d'un espace à soi&nbsp;: le psychologue de ville est indépendant de l'équipe hospitalière et tenu à la confidentialité.</p>
+            <p class="small">Recensement réalisé en janvier 2024 : les informations (adresses, téléphones, tarifs) peuvent évoluer&nbsp;: pensez à les vérifier lors de la prise de rendez-vous. Les séances chez un psychologue ne sont pas remboursées, sauf s'il est partenaire «&nbsp;Mon soutien psy&nbsp;» ou via certaines mutuelles&nbsp;: n'hésitez pas à poser la question.</p>
+
+            <div class="psy-toolbar">
+                <div class="searchbar">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--grey-text); flex: none;"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+                    <input type="search" id="psy-search" placeholder="Rechercher un nom, une rue, une spécialité…" aria-label="Rechercher dans l'annuaire des psychologues">
+                </div>
+                <div class="chips-filter" role="group" aria-label="Filtrer par arrondissement">
+                    <button type="button" class="chip" data-arr="all" aria-pressed="true">Tous</button>
+                    <button type="button" class="chip" data-arr="1" aria-pressed="false">1ᵉʳ</button>
+                    <button type="button" class="chip" data-arr="2" aria-pressed="false">2ᵉ</button>
+                    <button type="button" class="chip" data-arr="3" aria-pressed="false">3ᵉ</button>
+                    <button type="button" class="chip" data-arr="4" aria-pressed="false">4ᵉ</button>
+                    <button type="button" class="chip" data-arr="5" aria-pressed="false">5ᵉ</button>
+                    <button type="button" class="chip" data-arr="6" aria-pressed="false">6ᵉ</button>
+                </div>
+            </div>
+            <p class="small count-line" id="psy-count" aria-live="polite"></p>
+
+    <div class="psy-group">
+      <h3>Lyon 1er <span class="small">· <span class="group-count">48</span> psychologues</span></h3>
+      <div class="psy-list">
+      <article class="psy-item" data-arr="1" data-search="ariza galindo hannya 1 rue platre  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">ARIZA GALINDO <span>Hannya</span></span>
+          <a class="psy-tel" href="tel:+33766548898">07 66 54 88 98</a>
+        </div>
+        <p class="psy-addr">1 rue Plâtre · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="artaux cyrielle 13 rue alsace lorraine  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">ARTAUX <span>Cyrielle</span></span>
+          <a class="psy-tel" href="tel:+33695964008">06 95 96 40 08</a>
+        </div>
+        <p class="psy-addr">13 rue Alsace Lorraine · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="baraton celine 7 place terreaux  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">BARATON <span>Céline</span></span>
+          <a class="psy-tel" href="tel:+33778691871">07 78 69 18 71</a>
+        </div>
+        <p class="psy-addr">7 place Terreaux · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="bert fabienne 1 place tobie robatel  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">BERT <span>Fabienne</span></span>
+          <a class="psy-tel" href="tel:+33623605296">06 23 60 52 96</a>
+        </div>
+        <p class="psy-addr">1 place Tobie Robatel · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="bertignac valentine 2 place terreaux  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">BERTIGNAC <span>Valentine</span></span>
+          <a class="psy-tel" href="tel:+33749892886">07 49 89 28 86</a>
+        </div>
+        <p class="psy-addr">2 place Terreaux · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="bodin agnes 18 rue paul chenavard  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">BODIN <span>Agnes</span></span>
+          <a class="psy-tel" href="tel:+33659097213">06 59 09 72 13</a>
+        </div>
+        <p class="psy-addr">18 rue Paul Chenavard · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="bolletot corinne 104 boulevard croix rousse therapies pour enfants, therapie familiale, gestion des emotion, guidance parentale lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">BOLLETOT <span>Corinne</span></span>
+          <a class="psy-tel" href="tel:+33952909615">09 52 90 96 15</a>
+        </div>
+        <p class="psy-addr">104 boulevard Croix Rousse · Lyon 1er</p>
+        <p class="psy-tags">Thérapies pour enfants, thérapie familiale, gestion des émotion, guidance parentale</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="bouard amelie cabinet medical de l&#x27;opera 7 rue griffon  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">BOUARD <span>Amelie</span></span>
+          <a class="psy-tel" href="tel:+33781026974">07 81 02 69 74</a>
+        </div>
+        <p class="psy-addr">Cabinet Médical De L&#x27;opéra 7 rue Griffon · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="bouchetal sandrine 1 rue garet  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">BOUCHETAL <span>Sandrine</span></span>
+          <a class="psy-tel" href="tel:+33686909805">06 86 90 98 05</a>
+        </div>
+        <p class="psy-addr">1 rue Garet · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="breton emmanuelle 1 rue garet therapie indi, couple, familiale, soutien a la parentalite lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">BRETON <span>Emmanuelle</span></span>
+          <a class="psy-tel" href="tel:+33624322699">06 24 32 26 99</a>
+        </div>
+        <p class="psy-addr">1 rue Garet · Lyon 1er</p>
+        <p class="psy-tags">Thérapie indi, couple, familiale, soutien à la parentalité</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="buchier laurine 3 rue fernand rey  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">BUCHIER <span>Laurine</span></span>
+          <a class="psy-tel" href="tel:+33650507623">06 50 50 76 23</a>
+        </div>
+        <p class="psy-addr">3 rue Fernand Rey · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="caillat karine 1 rue pierres plantees  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">CAILLAT <span>Karine</span></span>
+          <a class="psy-tel" href="tel:+33676420107">06 76 42 01 07</a>
+        </div>
+        <p class="psy-addr">1 rue Pierres Plantées · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="cartier corentin 4 grande rue feuillants couple, familiale, victimologie lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">CARTIER <span>Corentin</span></span>
+          <a class="psy-tel" href="tel:+33772031634">07 72 03 16 34</a>
+        </div>
+        <p class="psy-addr">4 grande rue Feuillants · Lyon 1er</p>
+        <p class="psy-tags">Couple, familiale, victimologie</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="chaverondier christian 27 rue arbre sec therapies breves, troubles comportementale, addiction lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">CHAVERONDIER <span>Christian</span></span>
+          <a class="psy-tel" href="tel:+33478851261">04 78 85 12 61</a>
+        </div>
+        <p class="psy-addr">27 rue Arbre Sec · Lyon 1er</p>
+        <p class="psy-tags">Thérapies brèves, troubles comportementale, addiction</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="combe sylviane 8 place terreaux  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">COMBE <span>Sylviane</span></span>
+          <a class="psy-tel" href="tel:+33689123782">06 89 12 37 82</a>
+        </div>
+        <p class="psy-addr">8 place Terreaux · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="delanoue lou 1 place terreaux  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">DELANOUE <span>Lou</span></span>
+          <a class="psy-tel" href="tel:+33695384038">06 95 38 40 38</a>
+        </div>
+        <p class="psy-addr">1 place Terreaux · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="delevaux johanne 14 rue duroc  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">DELEVAUX <span>Johanne</span></span>
+          <a class="psy-tel" href="tel:+33770447805">07 70 44 78 05</a>
+        </div>
+        <p class="psy-addr">14 rue Duroc · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="duvilla-meunier blandine 8 rue platiere consultation et psychotherapie individuelle lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">DUVILLA-MEUNIER <span>Blandine</span></span>
+          <a class="psy-tel" href="tel:+33661936002">06 61 93 60 02</a>
+        </div>
+        <p class="psy-addr">8 rue Platière · Lyon 1er</p>
+        <p class="psy-tags">Consultation et psychothérapie individuelle</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="eyraud audrey 13 rue alsace lorraine  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">EYRAUD <span>Audrey</span></span>
+          <a class="psy-tel" href="tel:+33633498467">06 33 49 84 67</a>
+        </div>
+        <p class="psy-addr">13 rue Alsace Lorraine · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="faissolle gwenaelle 9 quai st vincent  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">FAISSOLLE <span>Gwenaelle</span></span>
+          <a class="psy-tel" href="tel:+33618102261">06 18 10 22 61</a>
+        </div>
+        <p class="psy-addr">9 quai St Vincent · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="favier jean robert 1 place tobie robatel  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">FAVIER <span>Jean Robert</span></span>
+          <a class="psy-tel" href="tel:+33626265118">06 26 26 51 18</a>
+        </div>
+        <p class="psy-addr">1 place Tobie Robatel · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="fermet -quinet cathline 11 rue annonciade  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">FERMET -QUINET <span>Cathline</span></span>
+          <a class="psy-tel" href="tel:+33764102730">07 64 10 27 30</a>
+        </div>
+        <p class="psy-addr">11 rue Annonciade · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="gacon clementine 3 place griffon  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">GACON <span>Clementine</span></span>
+          <a class="psy-tel" href="tel:+33637118437">06 37 11 84 37</a>
+        </div>
+        <p class="psy-addr">3 place Griffon · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="gerard soria 9 rue pizay  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">GERARD <span>Soria</span></span>
+          <a class="psy-tel" href="tel:+33478373115">04 78 37 31 15</a>
+        </div>
+        <p class="psy-addr">9 rue Pizay · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="hauet valerie 9 quai st vincent therapie de couple lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">HAUET <span>Valerie</span></span>
+          <a class="psy-tel" href="tel:+33662387376">06 62 38 73 76</a>
+        </div>
+        <p class="psy-addr">9 quai St Vincent · Lyon 1er</p>
+        <p class="psy-tags">Thérapie de couple</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="le lay marie jeanne 13 rue alsace lorraine  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">LE LAY <span>Marie Jeanne</span></span>
+          <a class="psy-tel" href="tel:+33633726700">06 33 72 67 00</a>
+        </div>
+        <p class="psy-addr">13 rue Alsace Lorraine · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="lhopital marc 6 place rouville  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">LHOPITAL <span>Marc</span></span>
+          <a class="psy-tel" href="tel:+33472076930">04 72 07 69 30</a>
+        </div>
+        <p class="psy-addr">6 place Rouville · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="manchon adeline 180 boulevard croix rousse  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">MANCHON <span>Adeline</span></span>
+          <a class="psy-tel" href="tel:+33767381225">07 67 38 12 25</a>
+        </div>
+        <p class="psy-addr">180 boulevard Croix Rousse · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="manzano mylene 16 rue garet  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">MANZANO <span>Mylene</span></span>
+          <a class="psy-tel" href="tel:+33769674004">07 69 67 40 04</a>
+        </div>
+        <p class="psy-addr">16 rue Garet · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="martin thomas 6 place sathonay  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">MARTIN <span>Thomas</span></span>
+          <a class="psy-tel" href="tel:+33962604894">09 62 60 48 94</a>
+        </div>
+        <p class="psy-addr">6 place Sathonay · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="maurin aude 10 rue ozanam  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">MAURIN <span>Aude</span></span>
+          <a class="psy-tel" href="tel:+33667389183">06 67 38 91 83</a>
+        </div>
+        <p class="psy-addr">10 rue Ozanam · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="michelon claire 1 place tobie robatel  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">MICHELON <span>Claire</span></span>
+          <a class="psy-tel" href="tel:+33478390883">04 78 39 08 83</a>
+        </div>
+        <p class="psy-addr">1 place Tobie Robatel · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="mignard corinne 104 boulevard croix rousse  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">MIGNARD <span>Corinne</span></span>
+          <a class="psy-tel" href="tel:+33613649730">06 13 64 97 30</a>
+        </div>
+        <p class="psy-addr">104 boulevard Croix Rousse · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="ohl caroline 16 rue garet  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">OHL <span>Caroline</span></span>
+          <a class="psy-tel" href="tel:+33765298991">07 65 29 89 91</a>
+        </div>
+        <p class="psy-addr">16 rue Garet · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="pacquet carole 12 rue platiere  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">PACQUET <span>Carole</span></span>
+          <a class="psy-tel" href="tel:+33627060589">06 27 06 05 89</a>
+        </div>
+        <p class="psy-addr">12 rue Platière · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="palacios consuelo 7 rue griffon  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">PALACIOS <span>Consuelo</span></span>
+          <a class="psy-tel" href="tel:+33651472856">06 51 47 28 56</a>
+        </div>
+        <p class="psy-addr">7 rue Griffon · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="pillot peronnet isabelle 4 place colbert  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">PILLOT PERONNET <span>Isabelle</span></span>
+          <a class="psy-tel" href="tel:+33610101125">06 10 10 11 25</a>
+        </div>
+        <p class="psy-addr">4 place Colbert · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="piloti valerie 4 quai jean moulin  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">PILOTI <span>Valérie</span></span>
+          <a class="psy-tel" href="tel:+33669055563">06 69 05 55 63</a>
+        </div>
+        <p class="psy-addr">4 quai Jean Moulin · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="planche cecile 5 rue republique therapies familiale, couple, therapies breves lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">PLANCHE <span>Cécile</span></span>
+          <a class="psy-tel" href="tel:+33478274349">04 78 27 43 49</a>
+        </div>
+        <p class="psy-addr">5 rue République · Lyon 1er</p>
+        <p class="psy-tags">Thérapies familiale, couple, thérapies brèves</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="podraza anais 4 grande rue feuillants gestion des emotions, aide addiction lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">PODRAZA <span>Anais</span></span>
+          <a class="psy-tel" href="tel:+33783896515">07 83 89 65 15</a>
+        </div>
+        <p class="psy-addr">4 grande rue Feuillants · Lyon 1er</p>
+        <p class="psy-tags">Gestion des émotions, aide addiction</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="roset daniele 104 boulevard croix rousse gestion du stress, victimologie lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">ROSET <span>Daniele</span></span>
+          <a class="psy-tel" href="tel:+33632637190">06 32 63 71 90</a>
+        </div>
+        <p class="psy-addr">104 boulevard Croix Rousse · Lyon 1er</p>
+        <p class="psy-tags">Gestion du stress, victimologie</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="sigalas marion 2 place terreaux  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">SIGALAS <span>Marion</span></span>
+          <a class="psy-tel" href="tel:+33478430009">04 78 43 00 09</a>
+        </div>
+        <p class="psy-addr">2 place Terreaux · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="tantot geraldine 104 boulevard croix rousse  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">TANTOT <span>Geraldine</span></span>
+          <a class="psy-tel" href="tel:+33636476327">06 36 47 63 27</a>
+        </div>
+        <p class="psy-addr">104 boulevard Croix Rousse · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="tasiaux lauriane 24 quai st vincent  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">TASIAUX <span>Lauriane</span></span>
+          <a class="psy-tel" href="tel:+33765220640">07 65 22 06 40</a>
+        </div>
+        <p class="psy-addr">24 quai St Vincent · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="teplakova tatiana 130 boulevard croix rousse  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">TEPLAKOVA <span>Tatiana</span></span>
+          <a class="psy-tel" href="tel:+33634081076">06 34 08 10 76</a>
+        </div>
+        <p class="psy-addr">130 boulevard Croix Rousse · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="vigroux jany 8 place terreaux  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">VIGROUX <span>Jany</span></span>
+          <a class="psy-tel" href="tel:+33685651566">06 85 65 15 66</a>
+        </div>
+        <p class="psy-addr">8 place Terreaux · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="vilain marie laure 20 rue calliet  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">VILAIN <span>Marie laure</span></span>
+          <a class="psy-tel" href="tel:+33661417875">06 61 41 78 75</a>
+        </div>
+        <p class="psy-addr">20 rue Calliet · Lyon 1er</p>
+      </article>
+      <article class="psy-item" data-arr="1" data-search="watelet marie 8 rue platiere  lyon 1er">
+        <div class="psy-head">
+          <span class="psy-name">WATELET <span>Marie</span></span>
+          <a class="psy-tel" href="tel:+33634382932">06 34 38 29 32</a>
+        </div>
+        <p class="psy-addr">8 rue Platière · Lyon 1er</p>
+      </article>
+      </div>
+    </div>
+    <div class="psy-group">
+      <h3>Lyon 2e <span class="small">· <span class="group-count">87</span> psychologues</span></h3>
+      <div class="psy-list">
+      <article class="psy-item" data-arr="2" data-search="abdoulkafi ali ismael 6 quai mar joffre gestion des angoisses, gestion des bouleversements de la vie, gestion des difficultes de communication lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">ABDOULKAFI <span>Ali Ismael</span></span>
+          <a class="psy-tel" href="tel:+33630085405">06 30 08 54 05</a>
+        </div>
+        <p class="psy-addr">6 quai Mar Joffre · Lyon 2e</p>
+        <p class="psy-tags">Gestion des angoisses, gestion des bouleversements de la vie, gestion des difficultés de communication</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="alloux virginie 21 rue ferrandiere  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">ALLOUX <span>Virginie</span></span>
+          <a class="psy-tel" href="tel:+33614316543">06 14 31 65 43</a>
+        </div>
+        <p class="psy-addr">21 rue Ferrandière · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="aloma dalban christine 47 rue bourse  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">ALOMA DALBAN <span>Christine</span></span>
+          <a class="psy-tel" href="tel:+33612277505">06 12 27 75 05</a>
+        </div>
+        <p class="psy-addr">47 rue Bourse · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="arfeuilliere stephane 42 rue sala  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">ARFEUILLIERE <span>Stephane</span></span>
+          <a class="psy-tel" href="tel:+33663191599">06 63 19 15 99</a>
+        </div>
+        <p class="psy-addr">42 rue Sala · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="bal zelal 8 rue ferrandiere  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">BAL <span>Zelal</span></span>
+          <a class="psy-tel" href="tel:+33649651007">06 49 65 10 07</a>
+        </div>
+        <p class="psy-addr">8 rue Ferrandière · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="barbelet clementine 34 rue grenette  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">BARBELET <span>Clementine</span></span>
+          <a class="psy-tel" href="tel:+33676845104">06 76 84 51 04</a>
+        </div>
+        <p class="psy-addr">34 rue Grenette · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="beraud paul 29 place bellecour  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">BERAUD <span>Paul</span></span>
+          <a class="psy-tel" href="tel:+33608939446">06 08 93 94 46</a>
+        </div>
+        <p class="psy-addr">29 place Bellecour · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="bergerat blandine 28 rue henri germain  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">BERGERAT <span>Blandine</span></span>
+          <a class="psy-tel" href="tel:+33612112282">06 12 11 22 82</a>
+        </div>
+        <p class="psy-addr">28 rue Henri Germain · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="berlioz arthaud veronique 48 rue ferrandiere  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">BERLIOZ ARTHAUD <span>Veronique</span></span>
+          <a class="psy-tel" href="tel:+33685943093">06 85 94 30 93</a>
+        </div>
+        <p class="psy-addr">48 rue Ferrandière · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="bethon nicolas 12 quai st antoine  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">BETHON <span>Nicolas</span></span>
+          <a class="psy-tel" href="tel:+33617452663">06 17 45 26 63</a>
+        </div>
+        <p class="psy-addr">12 quai St Antoine · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="bligny antoine cabinet des cordeliers 47 rue bourse  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">BLIGNY <span>Antoine</span></span>
+          <a class="psy-tel" href="tel:+33633134696">06 33 13 46 96</a>
+        </div>
+        <p class="psy-addr">Cabinet des Cordeliers 47 rue Bourse · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="bobillon paule bat a 22 rue remparts d&#x27;ainay  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">BOBILLON <span>Paule</span></span>
+          <a class="psy-tel" href="tel:+33675075590">06 75 07 55 90</a>
+        </div>
+        <p class="psy-addr">bât A 22 rue Remparts d&#x27;Ainay · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="bouchet laurence 19 rue gilibert  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">BOUCHET <span>Laurence</span></span>
+          <a class="psy-tel" href="tel:+33677471404">06 77 47 14 04</a>
+        </div>
+        <p class="psy-addr">19 rue Gilibert · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="bourrachot camille 18 rue bichat gestion des emotions, gestion des difficultes scolaires lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">BOURRACHOT <span>Camille</span></span>
+          <a class="psy-tel" href="tel:+33784929404">07 84 92 94 04</a>
+        </div>
+        <p class="psy-addr">18 rue Bichat · Lyon 2e</p>
+        <p class="psy-tags">Gestion des émotions, gestion des difficultés scolaires</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="brunaud sylvie 28 rue remparts d&#x27;ainay gestion du stress, gestion des phobies, aide souffrance au travail, therapie pour enfant lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">BRUNAUD <span>Sylvie</span></span>
+          <a class="psy-tel" href="tel:+33627447185">06 27 44 71 85</a>
+        </div>
+        <p class="psy-addr">28 rue Remparts d&#x27;Ainay · Lyon 2e</p>
+        <p class="psy-tags">Gestion du stress, gestion des phobies, aide souffrance au travail, thérapie pour enfant</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="bulliat alvina 34 rue grenette 69002  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">BULLIAT <span>Alvina</span></span>
+          <a class="psy-tel" href="tel:+33644784948">06 44 78 49 48</a>
+        </div>
+        <p class="psy-addr">34 rue Grenette 69002 · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="camelio marie claude 57 rue franklin  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">CAMELIO <span>Marie claude</span></span>
+          <a class="psy-tel" href="tel:+33478376829">04 78 37 68 29</a>
+        </div>
+        <p class="psy-addr">57 rue Franklin · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="canac audrey 15 place bellecour  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">CANAC <span>Audrey</span></span>
+          <a class="psy-tel" href="tel:+33481680852">04 81 68 08 52</a>
+        </div>
+        <p class="psy-addr">15 place Bellecour · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="chapard nicolas 2351 2 rue bichat  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">CHAPARD <span>Nicolas</span></span>
+          <a class="psy-tel" href="tel:+33617916522">06 17 91 65 22</a>
+        </div>
+        <p class="psy-addr">2351 2 rue Bichat · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="chatanay sabrina 23 rue bichat  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">CHATANAY <span>Sabrina</span></span>
+          <a class="psy-tel" href="tel:+33675204318">06 75 20 43 18</a>
+        </div>
+        <p class="psy-addr">23 rue Bichat · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="chesnokova hanna 12 quai st antoine  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">CHESNOKOVA <span>Hanna</span></span>
+          <a class="psy-tel" href="tel:+33766812246">07 66 81 22 46</a>
+        </div>
+        <p class="psy-addr">12 quai St Antoine · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="chobelet sandrine 12 rue barre  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">CHOBELET <span>Sandrine</span></span>
+          <a class="psy-tel" href="tel:+33782975442">07 82 97 54 42</a>
+        </div>
+        <p class="psy-addr">12 rue Barre · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="courtin ludivine 55 rue republique  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">COURTIN <span>Ludivine</span></span>
+          <a class="psy-tel" href="tel:+33767905139">07 67 90 51 39</a>
+        </div>
+        <p class="psy-addr">55 rue République · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="cousinier lazaar souad 15 place bellecour  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">COUSINIER LAZAAR <span>Souad</span></span>
+          <a class="psy-tel" href="tel:+33620311989">06 20 31 19 89</a>
+        </div>
+        <p class="psy-addr">15 place Bellecour · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="couturier laurie 28 rue bichat  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">COUTURIER <span>Laurie</span></span>
+          <a class="psy-tel" href="tel:+33660392894">06 60 39 28 94</a>
+        </div>
+        <p class="psy-addr">28 rue Bichat · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="dancer lucile 57 rue pres edouard herriot  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">DANCER <span>Lucile</span></span>
+          <a class="psy-tel" href="tel:+33769544329">07 69 54 43 29</a>
+        </div>
+        <p class="psy-addr">57 rue Prés Edouard Herriot · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="de courville gwenola 47 rue bourse  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">DE COURVILLE <span>Gwenola</span></span>
+          <a class="psy-tel" href="tel:+33612472220">06 12 47 22 20</a>
+        </div>
+        <p class="psy-addr">47 rue Bourse · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="de mazieres thibaut 4 rue pres carnot  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">DE MAZIERES <span>Thibaut</span></span>
+          <a class="psy-tel" href="tel:+33699979766">06 99 97 97 66</a>
+        </div>
+        <p class="psy-addr">4 rue Prés Carnot · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="de prins fabienne 39 rue charite  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">DE PRINS <span>Fabienne</span></span>
+          <a class="psy-tel" href="tel:+33660445605">06 60 44 56 05</a>
+        </div>
+        <p class="psy-addr">39 rue Charité · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="delval mathieu 33 bis rue republique  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">DELVAL <span>Mathieu</span></span>
+          <a class="psy-tel" href="tel:+33651561727">06 51 56 17 27</a>
+        </div>
+        <p class="psy-addr">33 Bis rue République · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="demarchi anne lyse 8 rue antoine de saint exupery  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">DEMARCHI <span>Anne Lyse</span></span>
+          <a class="psy-tel" href="tel:+33645763927">06 45 76 39 27</a>
+        </div>
+        <p class="psy-addr">8 rue Antoine de Saint Exupéry · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="durastante richard 39 quai doct gailleton  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">DURASTANTE <span>Richard</span></span>
+          <a class="psy-tel" href="tel:+33617683393">06 17 68 33 93</a>
+        </div>
+        <p class="psy-addr">39 quai Doct Gailleton · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="exertier fany 33 place bellecour  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">EXERTIER <span>Fany</span></span>
+          <a class="psy-tel" href="tel:+33770150043">07 70 15 00 43</a>
+        </div>
+        <p class="psy-addr">33 place Bellecour · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="fanget noemie 23 rue thomassin tcc lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">FANGET <span>Noemie</span></span>
+          <a class="psy-tel" href="tel:+33695737234">06 95 73 72 34</a>
+        </div>
+        <p class="psy-addr">23 rue Thomassin · Lyon 2e</p>
+        <p class="psy-tags">TCC</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="fernandez veronique 20 rue delandine  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">FERNANDEZ <span>Veronique</span></span>
+          <a class="psy-tel" href="tel:+33672997475">06 72 99 74 75</a>
+        </div>
+        <p class="psy-addr">20 rue Delandine · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="filipuzzi carole 13 rue gilibert  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">FILIPUZZI <span>Carole</span></span>
+          <a class="psy-tel" href="tel:+33780606221">07 80 60 62 21</a>
+        </div>
+        <p class="psy-addr">13 rue Gilibert · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="gagne laura 23 place bellecour  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">GAGNE <span>Laura</span></span>
+          <a class="psy-tel" href="tel:+33695533179">06 95 53 31 79</a>
+        </div>
+        <p class="psy-addr">23 place Bellecour · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="gaultier stephanie 12 rue barre therapie breve, gestion des emotions, soutien psychologique lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">GAULTIER <span>Stephanie</span></span>
+          <a class="psy-tel" href="tel:+33680928080">06 80 92 80 80</a>
+        </div>
+        <p class="psy-addr">12 rue Barre · Lyon 2e</p>
+        <p class="psy-tags">Thérapie brève, gestion des émotions, soutien psychologique</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="giner anne marie 58 rue republique gestion des angoisses lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">GINER <span>Anne Marie</span></span>
+          <a class="psy-tel" href="tel:+33782416416">07 82 41 64 16</a>
+        </div>
+        <p class="psy-addr">58 rue République · Lyon 2e</p>
+        <p class="psy-tags">Gestion des angoisses</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="godot marion 58 rue republique  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">GODOT <span>Marion</span></span>
+          <a class="psy-tel" href="tel:+33478377605">04 78 37 76 05</a>
+        </div>
+        <p class="psy-addr">58 rue République · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="gonzalez lauriane 23 rue thomassin  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">GONZALEZ <span>Lauriane</span></span>
+          <a class="psy-tel" href="tel:+33667159914">06 67 15 99 14</a>
+        </div>
+        <p class="psy-addr">23 rue Thomassin · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="grondin philippe 12 rue ancienne prefecture  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">GRONDIN <span>Philippe</span></span>
+          <a class="psy-tel" href="tel:+33660940044">06 60 94 00 44</a>
+        </div>
+        <p class="psy-addr">12 rue Ancienne Préfecture · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="herzbrun rebecca 42 rue sala  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">HERZBRUN <span>Rebecca</span></span>
+          <a class="psy-tel" href="tel:+33670179581">06 70 17 95 81</a>
+        </div>
+        <p class="psy-addr">42 rue Sala · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="jaitin rosa 24 rue auguste comte gestion du sommeil, gestion des difficultes de communication, gestion des traumatismes, gestion des angoisses lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">JAITIN <span>Rosa</span></span>
+          <a class="psy-tel" href="tel:+33612325649">06 12 32 56 49</a>
+        </div>
+        <p class="psy-addr">24 rue Auguste Comte · Lyon 2e</p>
+        <p class="psy-tags">Gestion du sommeil, gestion des difficultés de communication, gestion des traumatismes, gestion des angoisses</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="jaques cedric 5 quai celestins tcc lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">JAQUES <span>Cedric</span></span>
+          <a class="psy-tel" href="tel:+33478382833">04 78 38 28 33</a>
+        </div>
+        <p class="psy-addr">5 quai Célestins · Lyon 2e</p>
+        <p class="psy-tags">TCC</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="joly emmanuelle 28 rue ste helene  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">JOLY <span>Emmanuelle</span></span>
+          <a class="psy-tel" href="tel:+33478370863">04 78 37 08 63</a>
+        </div>
+        <p class="psy-addr">28 rue Ste Hélène · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="josse karine marie annie 35 rue vaubecour  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">JOSSE <span>Karine Marie Annie</span></span>
+          <a class="psy-tel" href="tel:+33661800767">06 61 80 07 67</a>
+        </div>
+        <p class="psy-addr">35 rue Vaubecour · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="joubert marion 2 rue sala  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">JOUBERT <span>Marion</span></span>
+          <a class="psy-tel" href="tel:+33782243265">07 82 24 32 65</a>
+        </div>
+        <p class="psy-addr">2 rue Sala · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="joumat francois 57 rue pres edouard herriot  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">JOUMAT <span>Francois</span></span>
+          <a class="psy-tel" href="tel:+33689802075">06 89 80 20 75</a>
+        </div>
+        <p class="psy-addr">57 rue Prés Edouard Herriot · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="karray amira 23 place bellecour  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">KARRAY <span>Amira</span></span>
+          <a class="psy-tel" href="tel:+33769206858">07 69 20 68 58</a>
+        </div>
+        <p class="psy-addr">23 place Bellecour · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="lager jocelyne 63 rue republique  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">LAGER <span>Jocelyne</span></span>
+          <a class="psy-tel" href="tel:+33622941462">06 22 94 14 62</a>
+        </div>
+        <p class="psy-addr">63 rue République · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="lambrinidis eva 45 rue republique  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">LAMBRINIDIS <span>Eva</span></span>
+          <a class="psy-tel" href="tel:+33613353324">06 13 35 33 24</a>
+        </div>
+        <p class="psy-addr">45 rue République · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="le poder anne sophie 18 rue remparts d&#x27;ainay gestion du stress, guidance parentale, therapie pour enfant, therapie de couple, therapie familiale, therapie de groupe lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">LE PODER <span>Anne Sophie</span></span>
+          <a class="psy-tel" href="tel:+33643281819">06 43 28 18 19</a>
+        </div>
+        <p class="psy-addr">18 rue Remparts d&#x27;Ainay · Lyon 2e</p>
+        <p class="psy-tags">Gestion du stress, guidance parentale, thérapie pour enfant, thérapie de couple, thérapie familiale, thérapie de groupe</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="leconte pichon elsa 10 rue barre  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">LECONTE PICHON <span>Elsa</span></span>
+          <a class="psy-tel" href="tel:+33687320336">06 87 32 03 36</a>
+        </div>
+        <p class="psy-addr">10 rue Barre · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="leriche charlotte 29 place bellecour gestion des emotions, aide violence conjugale, soutien psychologique, gestion du sommeil lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">LERICHE <span>Charlotte</span></span>
+          <a class="psy-tel" href="tel:+33628079746">06 28 07 97 46</a>
+        </div>
+        <p class="psy-addr">29 place Bellecour · Lyon 2e</p>
+        <p class="psy-tags">Gestion des émotions, aide violence conjugale, soutien psychologique, gestion du sommeil</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="letorey maria 33 bis rue republique  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">LETOREY <span>Maria</span></span>
+          <a class="psy-tel" href="tel:+33664034930">06 64 03 49 30</a>
+        </div>
+        <p class="psy-addr">33 Bis rue République · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="maria guillaume 7 rue 4 chapeaux  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">MARIA <span>Guillaume</span></span>
+          <a class="psy-tel" href="tel:+33614717805">06 14 71 78 05</a>
+        </div>
+        <p class="psy-addr">7 rue 4 Chapeaux · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="marotta juliette 10 rue plat  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">MAROTTA <span>Juliette</span></span>
+          <a class="psy-tel" href="tel:+33624002741">06 24 00 27 41</a>
+        </div>
+        <p class="psy-addr">10 rue Plat · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="massal david 6 quai jules courmont  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">MASSAL <span>David</span></span>
+          <a class="psy-tel" href="tel:+33661619281">06 61 61 92 81</a>
+        </div>
+        <p class="psy-addr">6 quai Jules Courmont · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="maubant natacha 44 rue ferrandiere  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">MAUBANT <span>Natacha</span></span>
+          <a class="psy-tel" href="tel:+33651159285">06 51 15 92 85</a>
+        </div>
+        <p class="psy-addr">44 rue Ferrandière · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="merle du bourg benedicte 41 rue victor hugo  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">MERLE DU BOURG <span>Benedicte</span></span>
+          <a class="psy-tel" href="tel:+33676451894">06 76 45 18 94</a>
+        </div>
+        <p class="psy-addr">41 rue Victor Hugo · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="monney helene 6 place ampere  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">MONNEY <span>Helene</span></span>
+          <a class="psy-tel" href="tel:+33627995133">06 27 99 51 33</a>
+        </div>
+        <p class="psy-addr">6 place Ampère · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="mussard veronique 14 rue confort  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">MUSSARD <span>Veronique</span></span>
+          <a class="psy-tel" href="tel:+33608019354">06 08 01 93 54</a>
+        </div>
+        <p class="psy-addr">14 rue Confort · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="ortulan jogelina 33 rue republique  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">ORTULAN <span>Jogelina</span></span>
+          <a class="psy-tel" href="tel:+33648648694">06 48 64 86 94</a>
+        </div>
+        <p class="psy-addr">33 rue République · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="papo brigitte 10 rue barre  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">PAPO <span>Brigitte</span></span>
+          <a class="psy-tel" href="tel:+33602533864">06 02 53 38 64</a>
+        </div>
+        <p class="psy-addr">10 rue Barre · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="piet bordier olivier 29 place bellecour gestion du stress, therapie de couple, therapie breve, hypnose lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">PIET BORDIER <span>Olivier</span></span>
+          <a class="psy-tel" href="tel:+33648073400">06 48 07 34 00</a>
+        </div>
+        <p class="psy-addr">29 place Bellecour · Lyon 2e</p>
+        <p class="psy-tags">Gestion du stress, thérapie de couple, thérapie brève, hypnose</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="plamenova panayotova stela 47 rue bourse  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">PLAMENOVA PANAYOTOVA <span>Stela</span></span>
+          <a class="psy-tel" href="tel:+33781597477">07 81 59 74 77</a>
+        </div>
+        <p class="psy-addr">47 rue Bourse · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="planche jaffre stephanie ru 1 100 rue pres edouard herriot  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">PLANCHE JAFFRE <span>Stephanie</span></span>
+          <a class="psy-tel" href="tel:+33637275600">06 37 27 56 00</a>
+        </div>
+        <p class="psy-addr">Ru 1 100 rue Prés Edouard Herriot · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="ponzio romain 57 rue pres edouard herriot  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">PONZIO <span>Romain</span></span>
+          <a class="psy-tel" href="tel:+33782003439">07 82 00 34 39</a>
+        </div>
+        <p class="psy-addr">57 rue Prés Edouard Herriot · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="poudiere pauline 6 quai jules courmont  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">POUDIERE <span>Pauline</span></span>
+          <a class="psy-tel" href="tel:+33669246742">06 69 24 67 42</a>
+        </div>
+        <p class="psy-addr">6 quai Jules Courmont · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="raynaud pauline 57 place republique  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">RAYNAUD <span>Pauline</span></span>
+          <a class="psy-tel" href="tel:+33679175686">06 79 17 56 86</a>
+        </div>
+        <p class="psy-addr">57 place République · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="redier alexia 12 rue barre  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">REDIER <span>Alexia</span></span>
+          <a class="psy-tel" href="tel:+33767337834">07 67 33 78 34</a>
+        </div>
+        <p class="psy-addr">12 rue Barre · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="regembal valerie 5 rue barre  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">REGEMBAL <span>Valerie</span></span>
+          <a class="psy-tel" href="tel:+33606784765">06 06 78 47 65</a>
+        </div>
+        <p class="psy-addr">5 rue Barre · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="renucci anne sophie 23 rue thomassin  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">RENUCCI <span>Anne sophie</span></span>
+          <a class="psy-tel" href="tel:+33624956901">06 24 95 69 01</a>
+        </div>
+        <p class="psy-addr">23 rue Thomassin · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="robert bronner sophie 18 cours suchet  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">ROBERT BRONNER <span>Sophie</span></span>
+          <a class="psy-tel" href="tel:+33652887996">06 52 88 79 96</a>
+        </div>
+        <p class="psy-addr">18 cours Suchet · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="rochet cecile 16 rue laurencin  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">ROCHET <span>Cecile</span></span>
+          <a class="psy-tel" href="tel:+33650645343">06 50 64 53 43</a>
+        </div>
+        <p class="psy-addr">16 rue Laurencin · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="sabatier aude 12 rue barre  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">SABATIER <span>Aude</span></span>
+          <a class="psy-tel" href="tel:+33651872322">06 51 87 23 22</a>
+        </div>
+        <p class="psy-addr">12 rue Barre · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="salgon agathe laure 11 rue smith gestion des emotions, gestion du stress, soutien psychologique lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">SALGON <span>Agathe Laure</span></span>
+          <a class="psy-tel" href="tel:+33633478089">06 33 47 80 89</a>
+        </div>
+        <p class="psy-addr">11 rue Smith · Lyon 2e</p>
+        <p class="psy-tags">Gestion des émotions, gestion du stress, soutien psychologique</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="seute alison 12 rue barre  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">SEUTE <span>Alison</span></span>
+          <a class="psy-tel" href="tel:+33780994812">07 80 99 48 12</a>
+        </div>
+        <p class="psy-addr">12 rue Barre · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="simon marie christine 12 rue neuve  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">SIMON <span>Marie Christine</span></span>
+          <a class="psy-tel" href="tel:+33683227922">06 83 22 79 22</a>
+        </div>
+        <p class="psy-addr">12 rue Neuve · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="steffanelli alice 4 rue pres carnot  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">STEFFANELLI <span>Alice</span></span>
+          <a class="psy-tel" href="tel:+33670906475">06 70 90 64 75</a>
+        </div>
+        <p class="psy-addr">4 rue Prés Carnot · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="stegrova anna 44 rue ferrandiere gestion du stress, guidance parentale, therapie pour enfant, therapie de couple, therapie familiale, therapie de groupe lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">STEGROVA <span>Anna</span></span>
+          <a class="psy-tel" href="tel:+33780957060">07 80 95 70 60</a>
+        </div>
+        <p class="psy-addr">44 rue Ferrandière · Lyon 2e</p>
+        <p class="psy-tags">Gestion du stress, guidance parentale, thérapie pour enfant, thérapie de couple, thérapie familiale, thérapie de groupe</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="tassin maxime 17 rue republique therapie cognitive et comportementale, psychotherapie analytique, gestion des emotions lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">TASSIN <span>Maxime</span></span>
+          <a class="psy-tel" href="tel:+33669732488">06 69 73 24 88</a>
+        </div>
+        <p class="psy-addr">17 rue République · Lyon 2e</p>
+        <p class="psy-tags">Thérapie cognitive et comportementale, psychothérapie analytique, gestion des émotions</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="triquigneaux remi 28 place bellecour  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">TRIQUIGNEAUX <span>Remi</span></span>
+          <a class="psy-tel" href="tel:+33769418774">07 69 41 87 74</a>
+        </div>
+        <p class="psy-addr">28 place Bellecour · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="vion lizzie 8 rue marc antoine petit  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">VION <span>Lizzie</span></span>
+          <a class="psy-tel" href="tel:+33602451658">06 02 45 16 58</a>
+        </div>
+        <p class="psy-addr">8 rue Marc Antoine Petit · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="wendt leo 12 rue ancienne prefecture  lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">WENDT <span>Leo</span></span>
+          <a class="psy-tel" href="tel:+33651515620">06 51 51 56 20</a>
+        </div>
+        <p class="psy-addr">12 rue Ancienne Préfecture · Lyon 2e</p>
+      </article>
+      <article class="psy-item" data-arr="2" data-search="wilisch yamina 6 rue emile zola victimologie, gestion du stress, therapie pour enfant, therapie de couple, therapie de groupe, therapie familiale lyon 2e">
+        <div class="psy-head">
+          <span class="psy-name">WILISCH <span>Yamina</span></span>
+          <a class="psy-tel" href="tel:+33644672274">06 44 67 22 74</a>
+        </div>
+        <p class="psy-addr">6 rue Emile Zola · Lyon 2e</p>
+        <p class="psy-tags">Victimologie, gestion du stress, thérapie pour enfant, thérapie de couple, thérapie de groupe, thérapie familiale</p>
+      </article>
+      </div>
+    </div>
+    <div class="psy-group">
+      <h3>Lyon 3e <span class="small">· <span class="group-count">96</span> psychologues</span></h3>
+      <div class="psy-list">
+      <article class="psy-item" data-arr="3" data-search="adrien chloe 105 cours albert thomas  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">ADRIEN <span>Chloe</span></span>
+          <a class="psy-tel" href="tel:+33658647533">06 58 64 75 33</a>
+        </div>
+        <p class="psy-addr">105 cours Albert Thomas · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="badiou arnaud 11 bis rue doct bonhomme  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">BADIOU <span>Arnaud</span></span>
+          <a class="psy-tel" href="tel:+33769037094">07 69 03 70 94</a>
+        </div>
+        <p class="psy-addr">11 Bis rue Doct Bonhomme · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="baudoux anais 18 cours eugenie  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">BAUDOUX <span>Anais</span></span>
+          <a class="psy-tel" href="tel:+33761671722">07 61 67 17 22</a>
+        </div>
+        <p class="psy-addr">18 cours Eugénie · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="baudry lea 187 rue duguesclin  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">BAUDRY <span>Lea</span></span>
+          <a class="psy-tel" href="tel:+33642992443">06 42 99 24 43</a>
+        </div>
+        <p class="psy-addr">187 rue Duguesclin · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="belahdid manel 9 rue prof florence  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">BELAHDID <span>Manel</span></span>
+          <a class="psy-tel" href="tel:+33608549561">06 08 54 95 61</a>
+        </div>
+        <p class="psy-addr">9 rue Prof Florence · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="bergamelli margaux 21 rue etienne richerand  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">BERGAMELLI <span>Margaux</span></span>
+          <a class="psy-tel" href="tel:+33689263347">06 89 26 33 47</a>
+        </div>
+        <p class="psy-addr">21 rue Etienne Richerand · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="berger eve rue peupliers  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">BERGER <span>Eve</span></span>
+          <a class="psy-tel" href="tel:+33601771526">06 01 77 15 26</a>
+        </div>
+        <p class="psy-addr">rue Peupliers · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="berquand fanny 107 cours albert thomas  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">BERQUAND <span>Fanny</span></span>
+          <a class="psy-tel" href="tel:+33769254075">07 69 25 40 75</a>
+        </div>
+        <p class="psy-addr">107 cours Albert Thomas · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="boissy johanne 155 cours albert thomas  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">BOISSY <span>Johanne</span></span>
+          <a class="psy-tel" href="tel:+33781331580">07 81 33 15 80</a>
+        </div>
+        <p class="psy-addr">155 cours Albert Thomas · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="bonnefoy catherine 142 avenue marechal de saxe  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">BONNEFOY <span>Catherine</span></span>
+          <a class="psy-tel" href="tel:+33661486927">06 61 48 69 27</a>
+        </div>
+        <p class="psy-addr">142 avenue Maréchal de Saxe · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="boulanger garance 187 rue duguesclin  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">BOULANGER <span>Garance</span></span>
+          <a class="psy-tel" href="tel:+33659488479">06 59 48 84 79</a>
+        </div>
+        <p class="psy-addr">187 rue Duguesclin · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="bourgeat caroline 233 rue vendome  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">BOURGEAT <span>Caroline</span></span>
+          <a class="psy-tel" href="tel:+33608287004">06 08 28 70 04</a>
+        </div>
+        <p class="psy-addr">233 rue Vendôme · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="burdeau sandie 37 rue baraban  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">BURDEAU <span>Sandie</span></span>
+          <a class="psy-tel" href="tel:+33768120581">07 68 12 05 81</a>
+        </div>
+        <p class="psy-addr">37 rue Baraban · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="buttin priscillia 161 avenue mar de saxe  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">BUTTIN <span>Priscillia</span></span>
+          <a class="psy-tel" href="tel:+33620696141">06 20 69 61 41</a>
+        </div>
+        <p class="psy-addr">161 avenue Mar de Saxe · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="caillot jean sebastien 4 rue pravaz  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">CAILLOT <span>Jean Sebastien</span></span>
+          <a class="psy-tel" href="tel:+33767020903">07 67 02 09 03</a>
+        </div>
+        <p class="psy-addr">4 rue Pravaz · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="carrot muriel 104 rue mazenod  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">CARROT <span>Muriel</span></span>
+          <a class="psy-tel" href="tel:+33609898559">06 09 89 85 59</a>
+        </div>
+        <p class="psy-addr">104 rue Mazenod · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="cattin alain jean 246 cours lafayette psychotherapie analytique, therapie de couple lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">CATTIN <span>Alain Jean</span></span>
+          <a class="psy-tel" href="tel:+33622128332">06 22 12 83 32</a>
+        </div>
+        <p class="psy-addr">246 cours Lafayette · Lyon 3e</p>
+        <p class="psy-tags">Psychothérapie analytique, thérapie de couple</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="cazals alexandra 86 rue paul bert  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">CAZALS <span>Alexandra</span></span>
+          <a class="psy-tel" href="tel:+33614618610">06 14 61 86 10</a>
+        </div>
+        <p class="psy-addr">86 rue Paul Bert · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="chaloppe anaick 161 avenue mar de saxe  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">CHALOPPE <span>Anaick</span></span>
+          <a class="psy-tel" href="tel:+33684795308">06 84 79 53 08</a>
+        </div>
+        <p class="psy-addr">161 avenue Mar de Saxe · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="chappa marie 11 bis rue doct bonhomme therapie pour enfant, therapie de couple, soutien psychologique lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">CHAPPA <span>Marie</span></span>
+          <a class="psy-tel" href="tel:+33786911285">07 86 91 12 85</a>
+        </div>
+        <p class="psy-addr">11 Bis rue Doct Bonhomme · Lyon 3e</p>
+        <p class="psy-tags">Thérapie pour enfant, thérapie de couple, soutien psychologique</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="chartier juliette 42 cours liberte  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">CHARTIER <span>Juliette</span></span>
+          <a class="psy-tel" href="tel:+33622745033">06 22 74 50 33</a>
+        </div>
+        <p class="psy-addr">42 cours Liberté · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="chessa altieri francesca 139 rue dauphine  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">CHESSA <span>Altieri Francesca</span></span>
+          <a class="psy-tel" href="tel:+33634698418">06 34 69 84 18</a>
+        </div>
+        <p class="psy-addr">139 rue Dauphiné · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="chikli jakubowicz corinne 325 rue andre philip  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">CHIKLI JAKUBOWICZ <span>Corinne</span></span>
+          <a class="psy-tel" href="tel:+33652385207">06 52 38 52 07</a>
+        </div>
+        <p class="psy-addr">325 rue André Philip · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="choimet cecile 62 rue st maximin bilan psychologique, guidance parentale, therapie de couple, therapie familiale lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">CHOIMET <span>Cecile</span></span>
+          <a class="psy-tel" href="tel:+33482982915">04 82 98 29 15</a>
+        </div>
+        <p class="psy-addr">62 rue St Maximin · Lyon 3e</p>
+        <p class="psy-tags">Bilan psychologique, guidance parentale, thérapie de couple, thérapie familiale</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="cochet alain 6 rue part dieu  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">COCHET <span>Alain</span></span>
+          <a class="psy-tel" href="tel:+33967084345">09 67 08 43 45</a>
+        </div>
+        <p class="psy-addr">6 rue Part Dieu · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="crassard chaboub laure 238 rue garibaldi  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">CRASSARD CHABOUB <span>Laure</span></span>
+          <a class="psy-tel" href="tel:+33689437119">06 89 43 71 19</a>
+        </div>
+        <p class="psy-addr">238 rue Garibaldi · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="damien andre 255 rue garibaldi  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">DAMIEN <span>Andre</span></span>
+          <a class="psy-tel" href="tel:+33769013865">07 69 01 38 65</a>
+        </div>
+        <p class="psy-addr">255 rue Garibaldi · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="daulon sandrine 161 avenue mar de saxe  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">DAULON <span>Sandrine</span></span>
+          <a class="psy-tel" href="tel:+33611095578">06 11 09 55 78</a>
+        </div>
+        <p class="psy-addr">161 avenue Mar de Saxe · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="dautreppe florence 238 rue garibaldi  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">DAUTREPPE <span>Florence</span></span>
+          <a class="psy-tel" href="tel:+33764078551">07 64 07 85 51</a>
+        </div>
+        <p class="psy-addr">238 rue Garibaldi · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="de barbanson elisabeth 91 cours gambetta gestion des emotions, guidance parentale, therapie de couple, psychotherapie individuelle, suivi deuil lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">DE BARBANSON <span>Elisabeth</span></span>
+          <a class="psy-tel" href="tel:+33671166747">06 71 16 67 47</a>
+        </div>
+        <p class="psy-addr">91 cours Gambetta · Lyon 3e</p>
+        <p class="psy-tags">Gestion des émotions, guidance parentale, thérapie de couple, psychothérapie individuelle, suivi deuil</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="delannoy annie 61 cours gambetta soutien psychologique, therapie pour enfant, guidance parentale, therapie de couple lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">DELANNOY <span>Annie</span></span>
+          <a class="psy-tel" href="tel:+33478613797">04 78 61 37 97</a>
+        </div>
+        <p class="psy-addr">61 cours Gambetta · Lyon 3e</p>
+        <p class="psy-tags">Soutien psychologique, thérapie pour enfant, guidance parentale, thérapie de couple</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="delanou aline 10 rue frederic mistral bilans psychologiques (wisc-v; wppsi-iv, vineland ii, brief lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">DELANOU <span>Aline</span></span>
+          <a class="psy-tel" href="tel:+33672622718">06 72 62 27 18</a>
+        </div>
+        <p class="psy-addr">10 rue Frédéric Mistral · Lyon 3e</p>
+        <p class="psy-tags">Bilans psychologiques (WISC-V; WPPSI-IV, Vineland II, Brief</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="delorme fanny 55 rue baraban  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">DELORME <span>Fanny</span></span>
+          <a class="psy-tel" href="tel:+33652898215">06 52 89 82 15</a>
+        </div>
+        <p class="psy-addr">55 rue Baraban · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="deville marion 35 avenue rockefeller  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">DEVILLE <span>Marion</span></span>
+          <a class="psy-tel" href="tel:+33637332839">06 37 33 28 39</a>
+        </div>
+        <p class="psy-addr">35 avenue Rockefeller · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="dubois lorraine 35 avenue rockefeller  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">DUBOIS <span>Lorraine</span></span>
+          <a class="psy-tel" href="tel:+33648342626">06 48 34 26 26</a>
+        </div>
+        <p class="psy-addr">35 avenue Rockefeller · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="dufour nina 80 bis rue feuillat  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">DUFOUR <span>Nina</span></span>
+          <a class="psy-tel" href="tel:+33782544948">07 82 54 49 48</a>
+        </div>
+        <p class="psy-addr">80 Bis rue Feuillat · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="dumont francis 242 rue crequi soutien psychologique, psychologue clinicien, psychotherapie analytique, therapie pour enfant lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">DUMONT <span>Francis</span></span>
+          <a class="psy-tel" href="tel:+33688608723">06 88 60 87 23</a>
+        </div>
+        <p class="psy-addr">242 rue Créqui · Lyon 3e</p>
+        <p class="psy-tags">Soutien psychologique, psychologue clinicien, psychothérapie analytique, thérapie pour enfant</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="eclyps  187 rue duguesclin therapie pour enfant, aide addiction, gestion des troubles alimentaires, therapie emdr lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">ECLYPS</span>
+          <a class="psy-tel" href="tel:+33478247305">04 78 24 73 05</a>
+        </div>
+        <p class="psy-addr">187 rue Duguesclin · Lyon 3e</p>
+        <p class="psy-tags">Thérapie pour enfant, aide addiction, gestion des troubles alimentaires, thérapie emdr</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="eldin roland 282 rue vendome  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">ELDIN <span>Roland</span></span>
+          <a class="psy-tel" href="tel:+33478952155">04 78 95 21 55</a>
+        </div>
+        <p class="psy-addr">282 rue Vendôme · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="francols julie 19 rue voltaire  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">FRANCOLS <span>Julie</span></span>
+          <a class="psy-tel" href="tel:+33618872595">06 18 87 25 95</a>
+        </div>
+        <p class="psy-addr">19 rue Voltaire · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="gardien gabriel 255 rue garibaldi  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">GARDIEN <span>Gabriel</span></span>
+          <a class="psy-tel" href="tel:+33767929931">07 67 92 99 31</a>
+        </div>
+        <p class="psy-addr">255 rue Garibaldi · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="garnier lea 63 rue leon jouhaux  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">GARNIER <span>Lea</span></span>
+          <a class="psy-tel" href="tel:+33608631814">06 08 63 18 14</a>
+        </div>
+        <p class="psy-addr">63 rue Léon Jouhaux · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="germain-colin dominique 33 boulevard marius vivier merle gestion du stress, guidance parentale, therapie cognitive et comportementale, therapie pour enfant, therapie de groupe lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">GERMAIN-COLIN <span>Dominique</span></span>
+          <a class="psy-tel" href="tel:+33678209251">06 78 20 92 51</a>
+        </div>
+        <p class="psy-addr">33 boulevard Marius Vivier Merle · Lyon 3e</p>
+        <p class="psy-tags">Gestion du stress, guidance parentale, thérapie cognitive et comportementale, thérapie pour enfant, thérapie de groupe</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="ginier gillet beatrice 151 avenue mar de saxe gestion du stress guidance parentale therapie breve therapie de couple therapie cognitive et comportementale lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">GINIER GILLET <span>Beatrice</span></span>
+          <a class="psy-tel" href="tel:+33624158240">06 24 15 82 40</a>
+        </div>
+        <p class="psy-addr">151 avenue Mar de Saxe · Lyon 3e</p>
+        <p class="psy-tags">Gestion du stress guidance parentale thérapie brève thérapie de couple thérapie cognitive et comportementale</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="giroud laurene 17 rue abondance soutien psychologique, psychologue clinicien, accompagnement aidant, therapie de couple lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">GIROUD <span>Laurene</span></span>
+          <a class="psy-tel" href="tel:+33666091233">06 66 09 12 33</a>
+        </div>
+        <p class="psy-addr">17 rue Abondance · Lyon 3e</p>
+        <p class="psy-tags">Soutien psychologique, psychologue clinicien, accompagnement aidant, thérapie de couple</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="gledel nathan 63 rue feuillat  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">GLEDEL <span>Nathan</span></span>
+          <a class="psy-tel" href="tel:+33767328331">07 67 32 83 31</a>
+        </div>
+        <p class="psy-addr">63 rue Feuillat · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="godard benedicte 7 rue metallurgie  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">GODARD <span>Benedicte</span></span>
+          <a class="psy-tel" href="tel:+33650961443">06 50 96 14 43</a>
+        </div>
+        <p class="psy-addr">7 rue Métallurgie · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="gouttenoire carole 261 rue vendome  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">GOUTTENOIRE <span>Carole</span></span>
+          <a class="psy-tel" href="tel:+33645335075">06 45 33 50 75</a>
+        </div>
+        <p class="psy-addr">261 rue Vendôme · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="grandgonnet martin 9 bis rue trarieux  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">GRANDGONNET <span>Martin</span></span>
+          <a class="psy-tel" href="tel:+33627811092">06 27 81 10 92</a>
+        </div>
+        <p class="psy-addr">9 Bis rue Trarieux · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="guillem cindy 23 25 rue julien  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">GUILLEM <span>Cindy</span></span>
+          <a class="psy-tel" href="tel:+33650030520">06 50 03 05 20</a>
+        </div>
+        <p class="psy-addr">23 25 rue Julien · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="icard rebecca 282 rue vendome  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">ICARD <span>Rebecca</span></span>
+          <a class="psy-tel" href="tel:+33782165396">07 82 16 53 96</a>
+        </div>
+        <p class="psy-addr">282 rue Vendôme · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="jakowleff anne 14 cours doct long  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">JAKOWLEFF <span>Anne</span></span>
+          <a class="psy-tel" href="tel:+33626563611">06 26 56 36 11</a>
+        </div>
+        <p class="psy-addr">14 cours Doct Long · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="janin nadia 5 cours liberte therapie breve, soutien psychologique, aide souffrance au travail lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">JANIN <span>Nadia</span></span>
+          <a class="psy-tel" href="tel:+33671683295">06 71 68 32 95</a>
+        </div>
+        <p class="psy-addr">5 cours Liberté · Lyon 3e</p>
+        <p class="psy-tags">Thérapie brève, soutien psychologique, aide souffrance au travail</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="josserand celine espace pravaz 4 rue pravaz  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">JOSSERAND <span>Celine</span></span>
+          <a class="psy-tel" href="tel:+33783546438">07 83 54 64 38</a>
+        </div>
+        <p class="psy-addr">Espace Pravaz 4 rue Pravaz · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="kaczmarczyk celine 18 rue servient 69003  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">KACZMARCZYK <span>Celine</span></span>
+          <a class="psy-tel" href="tel:+33750314518">07 50 31 45 18</a>
+        </div>
+        <p class="psy-addr">18 rue Servient 69003 · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="lachaize florence 82 boulevard pinel  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">LACHAIZE <span>Florence</span></span>
+          <a class="psy-tel" href="tel:+33478767054">04 78 76 70 54</a>
+        </div>
+        <p class="psy-addr">82 boulevard Pinel · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="lacroix amandine 56 rue servient guidance parentale, therapie pour enfant, therapie de couple, therapie familiale lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">LACROIX <span>Amandine</span></span>
+          <a class="psy-tel" href="tel:+33749055017">07 49 05 50 17</a>
+        </div>
+        <p class="psy-addr">56 rue Servient · Lyon 3e</p>
+        <p class="psy-tags">Guidance parentale, thérapie pour enfant, thérapie de couple, thérapie familiale</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="landowski pierre 17 rue abondance gestion du stress, therapie cognitive et comportementale, gestion des emotions lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">LANDOWSKI <span>Pierre</span></span>
+          <a class="psy-tel" href="tel:+33667232357">06 67 23 23 57</a>
+        </div>
+        <p class="psy-addr">17 rue Abondance · Lyon 3e</p>
+        <p class="psy-tags">Gestion du stress, thérapie cognitive et comportementale, gestion des émotions</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="largeron martine 282 rue vendome  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">LARGERON <span>Martine</span></span>
+          <a class="psy-tel" href="tel:+33662268346">06 62 26 83 46</a>
+        </div>
+        <p class="psy-addr">282 rue Vendôme · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="lassalle stephanie 161 avenue mar de saxe  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">LASSALLE <span>Stephanie</span></span>
+          <a class="psy-tel" href="tel:+33624641464">06 24 64 14 64</a>
+        </div>
+        <p class="psy-addr">161 avenue Mar de Saxe · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="le chevanton tristan 34 rue abondance  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">LE CHEVANTON <span>Tristan</span></span>
+          <a class="psy-tel" href="tel:+33671465508">06 71 46 55 08</a>
+        </div>
+        <p class="psy-addr">34 rue Abondance · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="loriot christine 46 bis boulevard pinel gestion du stress praticienne emdr traitement des traumatismes etats depressifs lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">LORIOT <span>Christine</span></span>
+          <a class="psy-tel" href="tel:+33699213529">06 99 21 35 29</a>
+        </div>
+        <p class="psy-addr">46 Bis boulevard Pinel · Lyon 3e</p>
+        <p class="psy-tags">Gestion du stress praticienne EMDR traitement des traumatismes Etats dépressifs</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="maigne pauline 42 cours liberte gestion du stress lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">MAIGNE <span>Pauline</span></span>
+          <a class="psy-tel" href="tel:+33782232715">07 82 23 27 15</a>
+        </div>
+        <p class="psy-addr">42 cours Liberté · Lyon 3e</p>
+        <p class="psy-tags">Gestion du stress</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="mante emmanuelle 50 cours eugenie  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">MANTE <span>Emmanuelle</span></span>
+          <a class="psy-tel" href="tel:+33699928522">06 99 92 85 22</a>
+        </div>
+        <p class="psy-addr">50 cours Eugénie · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="marcel samuel 34 rue abondance  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">MARCEL <span>Samuel</span></span>
+          <a class="psy-tel" href="tel:+33620904813">06 20 90 48 13</a>
+        </div>
+        <p class="psy-addr">34 rue Abondance · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="marchois philippe 242 rue crequi  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">MARCHOIS <span>Philippe</span></span>
+          <a class="psy-tel" href="tel:+33472741571">04 72 74 15 71</a>
+        </div>
+        <p class="psy-addr">242 rue Créqui · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="martin maxime 43 cours gambetta therapie familiale lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">MARTIN <span>Maxime</span></span>
+          <a class="psy-tel" href="tel:+33695117163">06 95 11 71 63</a>
+        </div>
+        <p class="psy-addr">43 cours Gambetta · Lyon 3e</p>
+        <p class="psy-tags">Thérapie familiale</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="mayaux jeanne helene 6 rue abondance  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">MAYAUX <span>Jeanne Helene</span></span>
+          <a class="psy-tel" href="tel:+33681011322">06 81 01 13 22</a>
+        </div>
+        <p class="psy-addr">6 rue Abondance · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="merle marie 47 cours liberte  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">MERLE <span>Marie</span></span>
+          <a class="psy-tel" href="tel:+33478950919">04 78 95 09 19</a>
+        </div>
+        <p class="psy-addr">47 cours Liberté · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="mestre joelle 30 avenue lacassagne  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">MESTRE <span>Joelle</span></span>
+          <a class="psy-tel" href="tel:+33437569115">04 37 56 91 15</a>
+        </div>
+        <p class="psy-addr">30 avenue Lacassagne · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="milaire vincent 277 rue garibaldi  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">MILAIRE <span>Vincent</span></span>
+          <a class="psy-tel" href="tel:+33768969687">07 68 96 96 87</a>
+        </div>
+        <p class="psy-addr">277 rue Garibaldi · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="moisson clara 62 rue st maximin  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">MOISSON <span>Clara</span></span>
+          <a class="psy-tel" href="tel:+33663812285">06 63 81 22 85</a>
+        </div>
+        <p class="psy-addr">62 rue St Maximin · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="moreno mary 14 cours doct long  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">MORENO <span>Mary</span></span>
+          <a class="psy-tel" href="tel:+33660360778">06 60 36 07 78</a>
+        </div>
+        <p class="psy-addr">14 cours Doct Long · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="mouissat abiba 241 rue duguesclin  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">MOUISSAT <span>Abiba</span></span>
+          <a class="psy-tel" href="tel:+33621759222">06 21 75 92 22</a>
+        </div>
+        <p class="psy-addr">241 rue Duguesclin · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="normand catherine 81 rue pensionnat  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">NORMAND <span>Catherine</span></span>
+          <a class="psy-tel" href="tel:+33769654054">07 69 65 40 54</a>
+        </div>
+        <p class="psy-addr">81 rue Pensionnat · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="odin emmanuel 50 cours eugenie  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">ODIN <span>Emmanuel</span></span>
+          <a class="psy-tel" href="tel:+33769047178">07 69 04 71 78</a>
+        </div>
+        <p class="psy-addr">50 cours Eugénie · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="pelosse bernard 91 cours gambetta  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">PELOSSE <span>Bernard</span></span>
+          <a class="psy-tel" href="tel:+33649216541">06 49 21 65 41</a>
+        </div>
+        <p class="psy-addr">91 cours Gambetta · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="philippe duroux marie francoise 106 avenue mar de saxe  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">PHILIPPE DUROUX <span>Marie Francoise</span></span>
+          <a class="psy-tel" href="tel:+33472618831">04 72 61 88 31</a>
+        </div>
+        <p class="psy-addr">106 avenue Mar de Saxe · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="piccini flore 151 avenue mar de saxe guidance parentale, therapie de couple, therapie pour enfant lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">PICCINI <span>Flore</span></span>
+          <a class="psy-tel" href="tel:+33698284439">06 98 28 44 39</a>
+        </div>
+        <p class="psy-addr">151 avenue Mar de Saxe · Lyon 3e</p>
+        <p class="psy-tags">Guidance parentale, thérapie de couple, thérapie pour enfant</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="pilatte camille 26 cours doct long  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">PILATTE <span>Camille</span></span>
+          <a class="psy-tel" href="tel:+33617489756">06 17 48 97 56</a>
+        </div>
+        <p class="psy-addr">26 cours Doct Long · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="planchet cecile 30 rue abondance  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">PLANCHET <span>Cecile</span></span>
+          <a class="psy-tel" href="tel:+33478828404">04 78 82 84 04</a>
+        </div>
+        <p class="psy-addr">30 rue Abondance · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="pommier leo 43 cours gambetta therapie pour enfant, psychologue clinicien, analyse des reves, clinicien psychotherapie analytique lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">POMMIER <span>Leo</span></span>
+          <a class="psy-tel" href="tel:+33631496680">06 31 49 66 80</a>
+        </div>
+        <p class="psy-addr">43 cours Gambetta · Lyon 3e</p>
+        <p class="psy-tags">Thérapie pour enfant, psychologue clinicien, analyse des rêves, clinicien psychothérapie analytique</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="poncet sophie 30 rue abondance  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">PONCET <span>Sophie</span></span>
+          <a class="psy-tel" href="tel:+33478828404">04 78 82 84 04</a>
+        </div>
+        <p class="psy-addr">30 rue Abondance · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="presas rodriguez jose 238 rue garibaldi psychologue clinicien, psychotherapeute, expert judiciaire. consultation, psychotherapie, bilans lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">PRESAS RODRIGUEZ <span>Jose</span></span>
+          <a class="psy-tel" href="tel:+33650523415">06 50 52 34 15</a>
+        </div>
+        <p class="psy-addr">238 rue Garibaldi · Lyon 3e</p>
+        <p class="psy-tags">Psychologue clinicien, psychothérapeute, expert judiciaire. Consultation, psychothérapie, bilans</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="rabate julia 21 cours gambetta  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">RABATE <span>Julia</span></span>
+          <a class="psy-tel" href="tel:+33679699483">06 79 69 94 83</a>
+        </div>
+        <p class="psy-addr">21 cours Gambetta · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="reynaud pourchaire maud 32 rue armenie  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">REYNAUD POURCHAIRE <span>Maud</span></span>
+          <a class="psy-tel" href="tel:+33676601077">06 76 60 10 77</a>
+        </div>
+        <p class="psy-addr">32 rue Arménie · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="ripamonti sandra 32 rue armenie bilan psychologique gestion du stress gestion des difficultes de communication gestion des difficultes scolaires lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">RIPAMONTI <span>Sandra</span></span>
+          <a class="psy-tel" href="tel:+33478659362">04 78 65 93 62</a>
+        </div>
+        <p class="psy-addr">32 rue Armenie · Lyon 3e</p>
+        <p class="psy-tags">Bilan psychologique gestion du stress gestion des difficultés de communication gestion des difficultés scolaires</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="roos catherine 193 avenue felix faure  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">ROOS <span>Catherine</span></span>
+          <a class="psy-tel" href="tel:+33472336491">04 72 33 64 91</a>
+        </div>
+        <p class="psy-addr">193 avenue Félix Faure · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="simonetti amelie 23 rue doct bonhomme  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">SIMONETTI <span>Amelie</span></span>
+          <a class="psy-tel" href="tel:+33612921279">06 12 92 12 79</a>
+        </div>
+        <p class="psy-addr">23 rue Doct Bonhomme · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="terrien laure 277 rue garibaldi  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">TERRIEN <span>Laure</span></span>
+          <a class="psy-tel" href="tel:+33665272635">06 65 27 26 35</a>
+        </div>
+        <p class="psy-addr">277 rue Garibaldi · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="thollet colette 277 rue garibaldi  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">THOLLET <span>Colette</span></span>
+          <a class="psy-tel" href="tel:+33695336981">06 95 33 69 81</a>
+        </div>
+        <p class="psy-addr">277 rue Garibaldi · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="trompat bonny audrey 62 rue st maximin  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">TROMPAT BONNY <span>Audrey</span></span>
+          <a class="psy-tel" href="tel:+33482982915">04 82 98 29 15</a>
+        </div>
+        <p class="psy-addr">62 rue St Maximin · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="verstraeten astrid 33 rue pierre bonnaud  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">VERSTRAETEN <span>Astrid</span></span>
+          <a class="psy-tel" href="tel:+33635207689">06 35 20 76 89</a>
+        </div>
+        <p class="psy-addr">33 rue Pierre Bonnaud · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="vilain fiona 187 rue duguesclin  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">VILAIN <span>Fiona</span></span>
+          <a class="psy-tel" href="tel:+33630265039">06 30 26 50 39</a>
+        </div>
+        <p class="psy-addr">187 rue Duguesclin · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="vitry isabelle 151 avenue mar de saxe  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">VITRY <span>Isabelle</span></span>
+          <a class="psy-tel" href="tel:+33616136619">06 16 13 66 19</a>
+        </div>
+        <p class="psy-addr">151 avenue Mar de Saxe · Lyon 3e</p>
+      </article>
+      <article class="psy-item" data-arr="3" data-search="wawrzyniak emilie 21 cours gambetta  lyon 3e">
+        <div class="psy-head">
+          <span class="psy-name">WAWRZYNIAK <span>Emilie</span></span>
+          <a class="psy-tel" href="tel:+33762957924">07 62 95 79 24</a>
+        </div>
+        <p class="psy-addr">21 cours Gambetta · Lyon 3e</p>
+      </article>
+      </div>
+    </div>
+    <div class="psy-group">
+      <h3>Lyon 4e <span class="small">· <span class="group-count">38</span> psychologues</span></h3>
+      <div class="psy-list">
+      <article class="psy-item" data-arr="4" data-search="baudrand sandra 11 cours herbouville  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">BAUDRAND <span>Sandra</span></span>
+          <a class="psy-tel" href="tel:+33618977583">06 18 97 75 83</a>
+        </div>
+        <p class="psy-addr">11 cours Herbouville · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="berruyer lamoine benedicte 25 rue roussy analyse des reves, bilan psychologique, gestion des phobies, aide souffrance au travail lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">BERRUYER LAMOINE <span>Benedicte</span></span>
+          <a class="psy-tel" href="tel:+33478286835">04 78 28 68 35</a>
+        </div>
+        <p class="psy-addr">25 rue Roussy · Lyon 4e</p>
+        <p class="psy-tags">Analyse des rêves, bilan psychologique, gestion des phobies, aide souffrance au travail</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="blois melanie 67 rue henri gorjus  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">BLOIS <span>Melanie</span></span>
+          <a class="psy-tel" href="tel:+33652024459">06 52 02 44 59</a>
+        </div>
+        <p class="psy-addr">67 rue Henri Gorjus · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="bouchet amandine cabinet de psychologie croix-rou 9 rue artaud  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">BOUCHET <span>Amandine</span></span>
+          <a class="psy-tel" href="tel:+33630339183">06 30 33 91 83</a>
+        </div>
+        <p class="psy-addr">Cabinet de psychologie Croix-Rou 9 rue Artaud · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="bourgogne christel 17 rue philippe de lassalle  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">BOURGOGNE <span>Christel</span></span>
+          <a class="psy-tel" href="tel:+33478279172">04 78 27 91 72</a>
+        </div>
+        <p class="psy-addr">17 rue Philippe de Lassalle · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="bourret anne francoise 23 rue chariot d&#x27;or  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">BOURRET <span>Anne Francoise</span></span>
+          <a class="psy-tel" href="tel:+33629676334">06 29 67 63 34</a>
+        </div>
+        <p class="psy-addr">23 rue Chariot d&#x27;Or · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="bucheron julie rdc 80 rue philippe de lassalle  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">BUCHERON <span>Julie</span></span>
+          <a class="psy-tel" href="tel:+33768111516">07 68 11 15 16</a>
+        </div>
+        <p class="psy-addr">RDC 80 rue Philippe de Lassalle · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="buhler vincent centre apogee 69 boulevard canuts  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">BUHLER <span>Vincent</span></span>
+          <a class="psy-tel" href="tel:+33665376505">06 65 37 65 05</a>
+        </div>
+        <p class="psy-addr">Centre Apogée 69 boulevard Canuts · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="buy marie frederique 25 rue philippe de lassalle  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">BUY <span>Marie Frederique</span></span>
+          <a class="psy-tel" href="tel:+33420100628">04 20 10 06 28</a>
+        </div>
+        <p class="psy-addr">25 rue Philippe de Lassalle · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="charazac vincent imm le diamant 32 bis rue chaziere  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">CHARAZAC <span>Vincent</span></span>
+          <a class="psy-tel" href="tel:+33682923533">06 82 92 35 33</a>
+        </div>
+        <p class="psy-addr">imm Le Diamant 32 Bis rue Chazière · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="daniele corinne 23 rue valentin couturier  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">DANIELE <span>Corinne</span></span>
+          <a class="psy-tel" href="tel:+33646738846">06 46 73 88 46</a>
+        </div>
+        <p class="psy-addr">23 rue Valentin Couturier · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="doe de maindreville charlotte centre paramedical croix rousse 44 rue henon  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">DOE DE MAINDREVILLE <span>Charlotte</span></span>
+          <a class="psy-tel" href="tel:+33663409886">06 63 40 98 86</a>
+        </div>
+        <p class="psy-addr">Centre Paramédical Croix Rousse 44 rue Hénon · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="frachisse charlotte 7 rue rosset  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">FRACHISSE <span>Charlotte</span></span>
+          <a class="psy-tel" href="tel:+33769618442">07 69 61 84 42</a>
+        </div>
+        <p class="psy-addr">7 rue Rosset · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="furnon dorothee 69 boulevard canuts gestion du stress, confiance en soi, quete de soi, relation de couple, orientation professionnelle lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">FURNON <span>Dorothee</span></span>
+          <a class="psy-tel" href="tel:+33783957952">07 83 95 79 52</a>
+        </div>
+        <p class="psy-addr">69 boulevard Canuts · Lyon 4e</p>
+        <p class="psy-tags">Gestion du stress, confiance en soi, Quête de soi, relation de couple, orientation professionnelle</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="gachet pierre yves 6 rue perrod  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">GACHET <span>Pierre Yves</span></span>
+          <a class="psy-tel" href="tel:+33608772753">06 08 77 27 53</a>
+        </div>
+        <p class="psy-addr">6 rue Perrod · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="gaillard anne 23 rue philippe de lassalle  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">GAILLARD <span>Anne</span></span>
+          <a class="psy-tel" href="tel:+33699184514">06 99 18 45 14</a>
+        </div>
+        <p class="psy-addr">23 rue Philippe de Lassalle · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="guerpillon yoann 17 rue austerlitz  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">GUERPILLON <span>Yoann</span></span>
+          <a class="psy-tel" href="tel:+33622425252">06 22 42 52 52</a>
+        </div>
+        <p class="psy-addr">17 rue Austerlitz · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="hube francoise 6 avenue cabias  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">HUBE <span>Francoise</span></span>
+          <a class="psy-tel" href="tel:+33682857463">06 82 85 74 63</a>
+        </div>
+        <p class="psy-addr">6 avenue Cabias · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="husson julien 4 rue claude joseph bonnet  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">HUSSON <span>Julien</span></span>
+          <a class="psy-tel" href="tel:+33672432860">06 72 43 28 60</a>
+        </div>
+        <p class="psy-addr">4 rue Claude Joseph Bonnet · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="jacob gros maitre celine 10 rue richan  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">JACOB GROS MAITRE <span>Celine</span></span>
+          <a class="psy-tel" href="tel:+33695843803">06 95 84 38 03</a>
+        </div>
+        <p class="psy-addr">10 rue Richan · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="jezegou patricia rez de chaussee 9 rue richan therapie de couple, hypnose, psychologue clinicien, gestion des angoisses, gestion du sommeil lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">JEZEGOU <span>Patricia</span></span>
+          <a class="psy-tel" href="tel:+33670101007">06 70 10 10 07</a>
+        </div>
+        <p class="psy-addr">Rez de chaussee 9 rue Richan · Lyon 4e</p>
+        <p class="psy-tags">Thérapie de couple, hypnose, psychologue clinicien, gestion des angoisses, gestion du sommeil</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="kudaibergenova zeinegul 18 place tabareau  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">KUDAIBERGENOVA <span>Zeinegul</span></span>
+          <a class="psy-tel" href="tel:+33611698774">06 11 69 87 74</a>
+        </div>
+        <p class="psy-addr">18 place Tabareau · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="lekhal karim cabinet des canuts 32 rue valentin couturier  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">LEKHAL <span>Karim</span></span>
+          <a class="psy-tel" href="tel:+33695324116">06 95 32 41 16</a>
+        </div>
+        <p class="psy-addr">Cabinet des Canuts 32 rue Valentin Couturier · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="lloret perenon marie 23 rue valentin couturier gestion des emotions, therapie de couple, therapie familiale, therapie pour enfant, psychologue clinicien lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">LLORET PERENON <span>Marie</span></span>
+          <a class="psy-tel" href="tel:+33668141253">06 68 14 12 53</a>
+        </div>
+        <p class="psy-addr">23 rue Valentin Couturier · Lyon 4e</p>
+        <p class="psy-tags">Gestion des émotions, thérapie de couple, thérapie familiale, thérapie pour enfant, psychologue clinicien</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="longin marie 1 cours herbouville  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">LONGIN <span>Marie</span></span>
+          <a class="psy-tel" href="tel:+33689784263">06 89 78 42 63</a>
+        </div>
+        <p class="psy-addr">1 cours Herbouville · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="maldonado edouard velandia 82 quai joseph gillet  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">MALDONADO EDOUARD <span>Velandia</span></span>
+          <a class="psy-tel" href="tel:+33685134221">06 85 13 42 21</a>
+        </div>
+        <p class="psy-addr">82 quai Joseph Gillet · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="melin mickael 9 rue artaud  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">MELIN <span>Mickael</span></span>
+          <a class="psy-tel" href="tel:+33664321905">06 64 32 19 05</a>
+        </div>
+        <p class="psy-addr">9 rue Artaud · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="merzouk assia 69 boulevard canuts  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">MERZOUK <span>Assia</span></span>
+          <a class="psy-tel" href="tel:+33698683998">06 98 68 39 98</a>
+        </div>
+        <p class="psy-addr">69 boulevard Canuts · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="moulin geraldine 5 passage claude louis perret  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">MOULIN <span>Geraldine</span></span>
+          <a class="psy-tel" href="tel:+33685851871">06 85 85 18 71</a>
+        </div>
+        <p class="psy-addr">5 passage Claude Louis Perret · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="pepin camille 96 rue philippe de lassalle  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">PEPIN <span>Camille</span></span>
+          <a class="psy-tel" href="tel:+33624462581">06 24 46 25 81</a>
+        </div>
+        <p class="psy-addr">96 rue Philippe de Lassalle · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="peyrin francois xavier 1 rue villeneuve  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">PEYRIN <span>Francois Xavier</span></span>
+          <a class="psy-tel" href="tel:+33478295243">04 78 29 52 43</a>
+        </div>
+        <p class="psy-addr">1 rue Villeneuve · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="pirat de mazerny cecile 63 boulevard canuts  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">PIRAT DE MAZERNY <span>Cecile</span></span>
+          <a class="psy-tel" href="tel:+33686766185">06 86 76 61 85</a>
+        </div>
+        <p class="psy-addr">63 boulevard Canuts · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="poncet helene 9 boulevard croix rousse gestion du stress, guidance parentale, therapie de couple, therapie pour enfant, therapie familiale, therapie breve lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">PONCET <span>Helene</span></span>
+          <a class="psy-tel" href="tel:+33685815938">06 85 81 59 38</a>
+        </div>
+        <p class="psy-addr">9 boulevard Croix Rousse · Lyon 4e</p>
+        <p class="psy-tags">Gestion du stress, guidance parentale, thérapie de couple, thérapie pour enfant, thérapie familiale, thérapie brève</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="royol jean pierre 57 bis rue henri gorjus  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">ROYOL <span>Jean Pierre</span></span>
+          <a class="psy-tel" href="tel:+33662115243">06 62 11 52 43</a>
+        </div>
+        <p class="psy-addr">57 Bis rue Henri Gorjus · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="salvetat pauline cabinet paramedical 22 rue belfort gestion du stress, therapie pour enfant, therapie de groupe, psychologue clinicien, analyse des reves lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">SALVETAT <span>Pauline</span></span>
+          <a class="psy-tel" href="tel:+33749828284">07 49 82 82 84</a>
+        </div>
+        <p class="psy-addr">Cabinet Paramédical 22 rue Belfort · Lyon 4e</p>
+        <p class="psy-tags">Gestion du stress, thérapie pour enfant, thérapie de groupe, psychologue clinicien, analyse des rêves</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="tavassoli neguine 10 grande rue croix rousse  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">TAVASSOLI <span>Neguine</span></span>
+          <a class="psy-tel" href="tel:+33621192499">06 21 19 24 99</a>
+        </div>
+        <p class="psy-addr">10 grande rue Croix Rousse · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="tuzy catherine 6 rue bournes  lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">TUZY <span>Catherine</span></span>
+          <a class="psy-tel" href="tel:+33614987335">06 14 98 73 35</a>
+        </div>
+        <p class="psy-addr">6 rue Bournes · Lyon 4e</p>
+      </article>
+      <article class="psy-item" data-arr="4" data-search="vignoles chantal 50 grande rue croix rousse analyse des reves, gestion du sommeil lyon 4e">
+        <div class="psy-head">
+          <span class="psy-name">VIGNOLES <span>Chantal</span></span>
+          <a class="psy-tel" href="tel:+33617440546">06 17 44 05 46</a>
+        </div>
+        <p class="psy-addr">50 grande rue Croix Rousse · Lyon 4e</p>
+        <p class="psy-tags">Analyse des rêves, gestion du sommeil</p>
+      </article>
+      </div>
+    </div>
+    <div class="psy-group">
+      <h3>Lyon 5e <span class="small">· <span class="group-count">52</span> psychologues</span></h3>
+      <div class="psy-list">
+      <article class="psy-item" data-arr="5" data-search="benzemma sonia 11 rue aqueducs  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">BENZEMMA <span>Sonia</span></span>
+          <a class="psy-tel" href="tel:+33622583925">06 22 58 39 25</a>
+        </div>
+        <p class="psy-addr">11 rue Aqueducs · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="boissin jean bernard 67 quai pierre scize  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">BOISSIN <span>Jean Bernard</span></span>
+          <a class="psy-tel" href="tel:+33688581013">06 88 58 10 13</a>
+        </div>
+        <p class="psy-addr">67 quai Pierre Scize · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="bouhier didier 87 rue trion  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">BOUHIER <span>Didier</span></span>
+          <a class="psy-tel" href="tel:+33679591447">06 79 59 14 47</a>
+        </div>
+        <p class="psy-addr">87 rue Trion · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="boutin chatouillot sophie 87 rue trion  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">BOUTIN CHATOUILLOT <span>Sophie</span></span>
+          <a class="psy-tel" href="tel:+33478362310">04 78 36 23 10</a>
+        </div>
+        <p class="psy-addr">87 rue Trion · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="brenier charlotte bat 1 4 rue joliot curie  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">BRENIER <span>Charlotte</span></span>
+          <a class="psy-tel" href="tel:+33478295926">04 78 29 59 26</a>
+        </div>
+        <p class="psy-addr">bât 1 4 rue Joliot Curie · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="bruyere thierry 62 avenue point du jour  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">BRUYERE <span>Thierry</span></span>
+          <a class="psy-tel" href="tel:+33637366085">06 37 36 60 85</a>
+        </div>
+        <p class="psy-addr">62 avenue Point du Jour · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="buisson tatiana 5 avenue barthelemy buyer  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">BUISSON <span>Tatiana</span></span>
+          <a class="psy-tel" href="tel:+33650271859">06 50 27 18 59</a>
+        </div>
+        <p class="psy-addr">5 avenue Barthélémy Buyer · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="castillan gaelle 157 rue joliot curie  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">CASTILLAN <span>Gaelle</span></span>
+          <a class="psy-tel" href="tel:+33624217085">06 24 21 70 85</a>
+        </div>
+        <p class="psy-addr">157 rue Joliot Curie · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="damon sarah 12 rue doyenne  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">DAMON <span>Sarah</span></span>
+          <a class="psy-tel" href="tel:+33750252659">07 50 25 26 59</a>
+        </div>
+        <p class="psy-addr">12 rue Doyenné · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="darne sophie 11 rue trois maries  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">DARNE <span>Sophie</span></span>
+          <a class="psy-tel" href="tel:+33478381174">04 78 38 11 74</a>
+        </div>
+        <p class="psy-addr">11 rue Trois Maries · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="de framond adrien 52 ter avenue point du jour  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">DE FRAMOND <span>Adrien</span></span>
+          <a class="psy-tel" href="tel:+33635228912">06 35 22 89 12</a>
+        </div>
+        <p class="psy-addr">52 Ter avenue Point du Jour · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="delavenne natacha 135 rue joliot curie  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">DELAVENNE <span>Natacha</span></span>
+          <a class="psy-tel" href="tel:+33664749876">06 64 74 98 76</a>
+        </div>
+        <p class="psy-addr">135 rue Joliot Curie · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="dubanchet robert 11 rue bœuf  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">DUBANCHET <span>Robert</span></span>
+          <a class="psy-tel" href="tel:+33472418277">04 72 41 82 77</a>
+        </div>
+        <p class="psy-addr">11 rue Bœuf · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="duboc chloe 2 rue basses vercheres  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">DUBOC <span>Chloe</span></span>
+          <a class="psy-tel" href="tel:+33672784351">06 72 78 43 51</a>
+        </div>
+        <p class="psy-addr">2 rue Basses Verchères · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="dubois jean noel 59 ter allee emmanuel gounot  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">DUBOIS <span>Jean Noel</span></span>
+          <a class="psy-tel" href="tel:+33634606211">06 34 60 62 11</a>
+        </div>
+        <p class="psy-addr">59 Ter allée Emmanuel Gounot · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="dufresne marion 10 rue 4 colonnes  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">DUFRESNE <span>Marion</span></span>
+          <a class="psy-tel" href="tel:+33662038289">06 62 03 82 89</a>
+        </div>
+        <p class="psy-addr">10 rue 4 Colonnes · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="durozard claire 12 rue doyenne  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">DUROZARD <span>Claire</span></span>
+          <a class="psy-tel" href="tel:+33781967279">07 81 96 72 79</a>
+        </div>
+        <p class="psy-addr">12 rue Doyenné · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="emery aurelie 2 rue basses vercheres  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">EMERY <span>Aurelie</span></span>
+          <a class="psy-tel" href="tel:+33767006871">07 67 00 68 71</a>
+        </div>
+        <p class="psy-addr">2 rue Basses Verchères · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="gacon amandine 84 rue doct edmond locard  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">GACON <span>Amandine</span></span>
+          <a class="psy-tel" href="tel:+33682524993">06 82 52 49 93</a>
+        </div>
+        <p class="psy-addr">84 rue Doct Edmond Locard · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="gorlero caroline 9 rue arnoud  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">GORLERO <span>Caroline</span></span>
+          <a class="psy-tel" href="tel:+33610521873">06 10 52 18 73</a>
+        </div>
+        <p class="psy-addr">9 rue Arnoud · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="gougon anne gaelle 12 rue doyenne  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">GOUGON <span>Anne Gaelle</span></span>
+          <a class="psy-tel" href="tel:+33782127379">07 82 12 73 79</a>
+        </div>
+        <p class="psy-addr">12 rue Doyenné · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="hullein genevieve 21 avenue point du jour  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">HULLEIN <span>Genevieve</span></span>
+          <a class="psy-tel" href="tel:+33613427955">06 13 42 79 55</a>
+        </div>
+        <p class="psy-addr">21 avenue Point du Jour · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="izbickil herve 12 rue doyenne  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">IZBICKIL <span>Herve</span></span>
+          <a class="psy-tel" href="tel:+33637400454">06 37 40 04 54</a>
+        </div>
+        <p class="psy-addr">12 rue Doyenné · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="jourdain claude 6 rue 4 colonnes  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">JOURDAIN <span>Claude</span></span>
+          <a class="psy-tel" href="tel:+33621111274">06 21 11 12 74</a>
+        </div>
+        <p class="psy-addr">6 rue 4 Colonnes · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="jung johann 179 montee choulans  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">JUNG <span>Johann</span></span>
+          <a class="psy-tel" href="tel:+33661304395">06 61 30 43 95</a>
+        </div>
+        <p class="psy-addr">179 montée Choulans · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="labonne florence 46 rue commdt charcot  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">LABONNE <span>Florence</span></span>
+          <a class="psy-tel" href="tel:+33652457030">06 52 45 70 30</a>
+        </div>
+        <p class="psy-addr">46 rue Commdt Charcot · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="lakestani helene 20 a rue jeunet  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">LAKESTANI <span>Helene</span></span>
+          <a class="psy-tel" href="tel:+33699622882">06 99 62 28 82</a>
+        </div>
+        <p class="psy-addr">20 A rue Jeunet · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="lathuille florise yvette 98 rue doct edmond locard  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">LATHUILLE FLORISE <span>Yvette</span></span>
+          <a class="psy-tel" href="tel:+33478595206">04 78 59 52 06</a>
+        </div>
+        <p class="psy-addr">98 rue Doct Edmond Locard · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="malhonda pascal 141 rue joliot curie  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">MALHONDA <span>Pascal</span></span>
+          <a class="psy-tel" href="tel:+33660088645">06 60 08 86 45</a>
+        </div>
+        <p class="psy-addr">141 rue Joliot Curie · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="marmagne florence 62 rue saint georges  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">MARMAGNE <span>Florence</span></span>
+          <a class="psy-tel" href="tel:+33688253243">06 88 25 32 43</a>
+        </div>
+        <p class="psy-addr">62 rue Saint Georges · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="meylan francoise 6 place benoit crepu  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">MEYLAN <span>Francoise</span></span>
+          <a class="psy-tel" href="tel:+33631715068">06 31 71 50 68</a>
+        </div>
+        <p class="psy-addr">6 place Benoît Crépu · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="monteiro braz myriam 31 rue doyenne  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">MONTEIRO BRAZ <span>Myriam</span></span>
+          <a class="psy-tel" href="tel:+33651310928">06 51 31 09 28</a>
+        </div>
+        <p class="psy-addr">31 rue Doyenné · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="neyra ofelia 3 place benedict teissier  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">NEYRA <span>Ofelia</span></span>
+          <a class="psy-tel" href="tel:+33687781211">06 87 78 12 11</a>
+        </div>
+        <p class="psy-addr">3 place Bénédict Teissier · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="noel sylviane 50 avenue point du jour  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">NOEL <span>Sylviane</span></span>
+          <a class="psy-tel" href="tel:+33661929586">06 61 92 95 86</a>
+        </div>
+        <p class="psy-addr">50 avenue Point du Jour · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="payet julien 62 avenue point du jour  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">PAYET <span>Julien</span></span>
+          <a class="psy-tel" href="tel:+33673740846">06 73 74 08 46</a>
+        </div>
+        <p class="psy-addr">62 avenue Point du Jour · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="peraldi decitre marie 173 avenue barthelemy buyer  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">PERALDI DECITRE <span>Marie</span></span>
+          <a class="psy-tel" href="tel:+33783083241">07 83 08 32 41</a>
+        </div>
+        <p class="psy-addr">173 avenue Barthélémy Buyer · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="piechnik kevin 85 avenue point du jour  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">PIECHNIK <span>Kevin</span></span>
+          <a class="psy-tel" href="tel:+33764083717">07 64 08 37 17</a>
+        </div>
+        <p class="psy-addr">85 avenue Point du Jour · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="pollet adrien 84 rue doct edmond locard  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">POLLET <span>Adrien</span></span>
+          <a class="psy-tel" href="tel:+33749406495">07 49 40 64 95</a>
+        </div>
+        <p class="psy-addr">84 rue Doct Edmond Locard · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="riamon blandine 11 rue aqueducs  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">RIAMON <span>Blandine</span></span>
+          <a class="psy-tel" href="tel:+33685479104">06 85 47 91 04</a>
+        </div>
+        <p class="psy-addr">11 rue Aqueducs · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="rime elodie 62 rue st georges  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">RIME <span>Elodie</span></span>
+          <a class="psy-tel" href="tel:+33664283914">06 64 28 39 14</a>
+        </div>
+        <p class="psy-addr">62 rue St Georges · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="ritter angelique 86 rue doct edmond locard  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">RITTER <span>Angelique</span></span>
+          <a class="psy-tel" href="tel:+33981027378">09 81 02 73 78</a>
+        </div>
+        <p class="psy-addr">86 rue Doct Edmond Locard · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="rivat maureen 86 rue doct edmond locard  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">RIVAT <span>Maureen</span></span>
+          <a class="psy-tel" href="tel:+33981027378">09 81 02 73 78</a>
+        </div>
+        <p class="psy-addr">86 rue Doct Edmond Locard · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="rizet agathe 179 montee choulans  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">RIZET <span>Agathe</span></span>
+          <a class="psy-tel" href="tel:+33651340526">06 51 34 05 26</a>
+        </div>
+        <p class="psy-addr">179 montée Choulans · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="rouffie helene 6 place benoit crepu  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">ROUFFIE <span>Helene</span></span>
+          <a class="psy-tel" href="tel:+33698455868">06 98 45 58 68</a>
+        </div>
+        <p class="psy-addr">6 place Benoît Crépu · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="saine julie 2 rue basses vercheres  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">SAINE <span>Julie</span></span>
+          <a class="psy-tel" href="tel:+33786775162">07 86 77 51 62</a>
+        </div>
+        <p class="psy-addr">2 rue Basses Verchères · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="saint gal de pons olivier 7 rue tramassac  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">SAINT GAL DE PONS <span>Olivier</span></span>
+          <a class="psy-tel" href="tel:+33612321279">06 12 32 12 79</a>
+        </div>
+        <p class="psy-addr">7 rue Tramassac · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="schneider judith 11 rue trois maries  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">SCHNEIDER <span>Judith</span></span>
+          <a class="psy-tel" href="tel:+33670200002">06 70 20 00 02</a>
+        </div>
+        <p class="psy-addr">11 rue Trois Maries · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="sicard marine 84 rue doct edmond locard  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">SICARD <span>Marine</span></span>
+          <a class="psy-tel" href="tel:+33784567439">07 84 56 74 39</a>
+        </div>
+        <p class="psy-addr">84 rue Doct Edmond Locard · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="vanoli claire 6 rue m-l et anne marie soucelier  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">VANOLI <span>Claire</span></span>
+          <a class="psy-tel" href="tel:+33788673444">07 88 67 34 44</a>
+        </div>
+        <p class="psy-addr">6 rue M-l et Anne Marie Soucelier · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="vignes rachel 14 rue farges  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">VIGNES <span>Rachel</span></span>
+          <a class="psy-tel" href="tel:+33660038626">06 60 03 86 26</a>
+        </div>
+        <p class="psy-addr">14 rue Farges · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="villaret marie pierre 12 rue doyenne  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">VILLARET <span>Marie Pierre</span></span>
+          <a class="psy-tel" href="tel:+33658873275">06 58 87 32 75</a>
+        </div>
+        <p class="psy-addr">12 rue Doyenné · Lyon 5e</p>
+      </article>
+      <article class="psy-item" data-arr="5" data-search="wahrenberger anne sophie 12 rue doyenne  lyon 5e">
+        <div class="psy-head">
+          <span class="psy-name">WAHRENBERGER <span>Anne Sophie</span></span>
+          <a class="psy-tel" href="tel:+33684848266">06 84 84 82 66</a>
+        </div>
+        <p class="psy-addr">12 rue Doyenné · Lyon 5e</p>
+      </article>
+      </div>
+    </div>
+    <div class="psy-group">
+      <h3>Lyon 6e <span class="small">· <span class="group-count">82</span> psychologues</span></h3>
+      <div class="psy-list">
+      <article class="psy-item" data-arr="6" data-search="abi chahine abichaker gisele 195 cours lafayette  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">ABI CHAHINE ABICHAKER <span>Gisele</span></span>
+          <a class="psy-tel" href="tel:+33472835112">04 72 83 51 12</a>
+        </div>
+        <p class="psy-addr">195 cours Lafayette · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="amini farida 48 boulevard belges  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">AMINI <span>Farida</span></span>
+          <a class="psy-tel" href="tel:+33626467936">06 26 46 79 36</a>
+        </div>
+        <p class="psy-addr">48 boulevard Belges · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="auduc cecile 89 quai charles de gaulle  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">AUDUC <span>Cecile</span></span>
+          <a class="psy-tel" href="tel:+33783932474">07 83 93 24 74</a>
+        </div>
+        <p class="psy-addr">89 quai charles de Gaulle · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="autrand danielle 102 rue garibaldi  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">AUTRAND <span>Danielle</span></span>
+          <a class="psy-tel" href="tel:+33610789029">06 10 78 90 29</a>
+        </div>
+        <p class="psy-addr">102 rue Garibaldi · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="avanzo sylvie 18 rue crillon  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">AVANZO <span>Sylvie</span></span>
+          <a class="psy-tel" href="tel:+33677355341">06 77 35 53 41</a>
+        </div>
+        <p class="psy-addr">18 rue Crillon · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="baligand aurore 17 rue malesherbes  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">BALIGAND <span>Aurore</span></span>
+          <a class="psy-tel" href="tel:+33673468894">06 73 46 88 94</a>
+        </div>
+        <p class="psy-addr">17 rue Malesherbes · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="blucher alba 4 rue garibaldi  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">BLUCHER <span>Alba</span></span>
+          <a class="psy-tel" href="tel:+33472694338">04 72 69 43 38</a>
+        </div>
+        <p class="psy-addr">4 rue Garibaldi · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="bonnet julie 105 rue vendome  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">BONNET <span>Julie</span></span>
+          <a class="psy-tel" href="tel:+33619890203">06 19 89 02 03</a>
+        </div>
+        <p class="psy-addr">105 rue Vendôme · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="bouchard marie 24 rue commdt faurax  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">BOUCHARD <span>Marie</span></span>
+          <a class="psy-tel" href="tel:+33635274183">06 35 27 41 83</a>
+        </div>
+        <p class="psy-addr">24 rue Commdt Faurax · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="campos annie claude 6 rue du lieutenant-colonel prevost  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">CAMPOS <span>Annie Claude</span></span>
+          <a class="psy-tel" href="tel:+33478933275">04 78 93 32 75</a>
+        </div>
+        <p class="psy-addr">6 rue du Lieutenant-Colonel Prévost · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="causeret cecile 69 rue louis blanc  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">CAUSERET <span>Cecile</span></span>
+          <a class="psy-tel" href="tel:+33601790746">06 01 79 07 46</a>
+        </div>
+        <p class="psy-addr">69 rue Louis Blanc · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="chaboud guillaume 112 rue crequi  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">CHABOUD <span>Guillaume</span></span>
+          <a class="psy-tel" href="tel:+33616800183">06 16 80 01 83</a>
+        </div>
+        <p class="psy-addr">112 rue Créqui · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="chalvignac buston laura 24 rue commdt faurax  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">CHALVIGNAC BUSTON <span>Laura</span></span>
+          <a class="psy-tel" href="tel:+33695699244">06 95 69 92 44</a>
+        </div>
+        <p class="psy-addr">24 rue Commdt Faurax · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="charpentier anne 12 rue moliere  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">CHARPENTIER <span>Anne</span></span>
+          <a class="psy-tel" href="tel:+33649204744">06 49 20 47 44</a>
+        </div>
+        <p class="psy-addr">12 rue Molière · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="chemla toubiana maryline 27 rue fenelon  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">CHEMLA TOUBIANA <span>Maryline</span></span>
+          <a class="psy-tel" href="tel:+33603171386">06 03 17 13 86</a>
+        </div>
+        <p class="psy-addr">27 rue Fénelon · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="colussi claire 163 rue du guesclin  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">COLUSSI <span>Claire</span></span>
+          <a class="psy-tel" href="tel:+33673122237">06 73 12 22 37</a>
+        </div>
+        <p class="psy-addr">163 rue du Guesclin · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="cretin aurelie 185 rue cuvier  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">CRETIN <span>Aurelie</span></span>
+          <a class="psy-tel" href="tel:+33659962675">06 59 96 26 75</a>
+        </div>
+        <p class="psy-addr">185 rue Cuvier · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="d ambra melissa 76 rue garibaldi  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">D AMBRA <span>Melissa</span></span>
+          <a class="psy-tel" href="tel:+33631873350">06 31 87 33 50</a>
+        </div>
+        <p class="psy-addr">76 rue Garibaldi · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="de sousa eloise 113 rue cuvier  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">DE SOUSA <span>Eloise</span></span>
+          <a class="psy-tel" href="tel:+33762612130">07 62 61 21 30</a>
+        </div>
+        <p class="psy-addr">113 rue Cuvier · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="delpouve julie rdc 80 rue bellecombe  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">DELPOUVE <span>Julie</span></span>
+          <a class="psy-tel" href="tel:+33699540980">06 99 54 09 80</a>
+        </div>
+        <p class="psy-addr">RDC 80 rue Bellecombe · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="denisse celine 44 rue massena  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">DENISSE <span>Celine</span></span>
+          <a class="psy-tel" href="tel:+33607669944">06 07 66 99 44</a>
+        </div>
+        <p class="psy-addr">44 rue Masséna · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="djefaflia anais 105 rue du guesclin  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">DJEFAFLIA <span>Anais</span></span>
+          <a class="psy-tel" href="tel:+33629557424">06 29 55 74 24</a>
+        </div>
+        <p class="psy-addr">105 rue du Guesclin · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="dranguet elise 14 rue godefroy  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">DRANGUET <span>Elise</span></span>
+          <a class="psy-tel" href="tel:+33648979610">06 48 97 96 10</a>
+        </div>
+        <p class="psy-addr">14 rue Godefroy · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="driai abderrahmane 10 rue notre dame  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">DRIAI <span>Abdérrahmane</span></span>
+          <a class="psy-tel" href="tel:+33676879375">06 76 87 93 75</a>
+        </div>
+        <p class="psy-addr">10 rue Notre Dame · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="dumortier celine 12 rue vauban  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">DUMORTIER <span>Celine</span></span>
+          <a class="psy-tel" href="tel:+33677380025">06 77 38 00 25</a>
+        </div>
+        <p class="psy-addr">12 rue Vauban · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="dupant cora 8 rue germain  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">DUPANT <span>Cora</span></span>
+          <a class="psy-tel" href="tel:+33621245773">06 21 24 57 73</a>
+        </div>
+        <p class="psy-addr">8 rue Germain · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="eclyps  112 rue crequi  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">ECLYPS</span>
+          <a class="psy-tel" href="tel:+33478247305">04 78 24 73 05</a>
+        </div>
+        <p class="psy-addr">112 rue Créqui · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="flicka lilla 90 rue boileau  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">FLICKA <span>Lilla</span></span>
+          <a class="psy-tel" href="tel:+33645570742">06 45 57 07 42</a>
+        </div>
+        <p class="psy-addr">90 rue Boileau · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="garcia rivera isabel 48 boulevard belges  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">GARCIA RIVERA <span>Isabel</span></span>
+          <a class="psy-tel" href="tel:+33610817912">06 10 81 79 12</a>
+        </div>
+        <p class="psy-addr">48 boulevard Belges · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="gardin mathilde 17 rue malesherbes  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">GARDIN <span>Mathilde</span></span>
+          <a class="psy-tel" href="tel:+33661070219">06 61 07 02 19</a>
+        </div>
+        <p class="psy-addr">17 rue Malesherbes · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="gros mailys 53 rue tronchet  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">GROS <span>Mailys</span></span>
+          <a class="psy-tel" href="tel:+33767075874">07 67 07 58 74</a>
+        </div>
+        <p class="psy-addr">53 rue Tronchet · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="guignot marie 44 rue massena  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">GUIGNOT <span>Marie</span></span>
+          <a class="psy-tel" href="tel:+33648979265">06 48 97 92 65</a>
+        </div>
+        <p class="psy-addr">44 rue Masséna · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="guilbart josephine 131 rue boileau  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">GUILBART <span>Josephine</span></span>
+          <a class="psy-tel" href="tel:+33478659273">04 78 65 92 73</a>
+        </div>
+        <p class="psy-addr">131 rue Boileau · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="huet isabelle 24 rue vendome  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">HUET <span>Isabelle</span></span>
+          <a class="psy-tel" href="tel:+33684520437">06 84 52 04 37</a>
+        </div>
+        <p class="psy-addr">24 rue Vendôme · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="hugonnard elodie 24 rue boileau  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">HUGONNARD <span>Elodie</span></span>
+          <a class="psy-tel" href="tel:+33678822647">06 78 82 26 47</a>
+        </div>
+        <p class="psy-addr">24 rue Boileau · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="huguet manoukian jocelyne 16 rue cuvier  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">HUGUET MANOUKIAN <span>Jocelyne</span></span>
+          <a class="psy-tel" href="tel:+33472741125">04 72 74 11 25</a>
+        </div>
+        <p class="psy-addr">16 rue Cuvier · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="imhoff elsa 2 place jules ferry  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">IMHOFF <span>Elsa</span></span>
+          <a class="psy-tel" href="tel:+33783657829">07 83 65 78 29</a>
+        </div>
+        <p class="psy-addr">2 place Jules Ferry · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="jouvenceau nicolas 11 rue curie  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">JOUVENCEAU <span>Nicolas</span></span>
+          <a class="psy-tel" href="tel:+33674870951">06 74 87 09 51</a>
+        </div>
+        <p class="psy-addr">11 rue Curie · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="juillard claire 112 rue seze  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">JUILLARD <span>Claire</span></span>
+          <a class="psy-tel" href="tel:+33643205785">06 43 20 57 85</a>
+        </div>
+        <p class="psy-addr">112 rue Sèze · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="kao hui chan 11 rue curie  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">KAO <span>Hui Chan</span></span>
+          <a class="psy-tel" href="tel:+33682146627">06 82 14 66 27</a>
+        </div>
+        <p class="psy-addr">11 rue Curie · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="lamoine angelique 167 rue duguesclin  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">LAMOINE <span>Angelique</span></span>
+          <a class="psy-tel" href="tel:+33620589320">06 20 58 93 20</a>
+        </div>
+        <p class="psy-addr">167 rue Duguesclin · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="lasson marjolaine 15 avenue mar de saxe  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">LASSON <span>Marjolaine</span></span>
+          <a class="psy-tel" href="tel:+33609307535">06 09 30 75 35</a>
+        </div>
+        <p class="psy-addr">15 avenue Mar de Saxe · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="latkowski camille le pole 7 cours vitton  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">LATKOWSKI <span>Camille</span></span>
+          <a class="psy-tel" href="tel:+33686820069">06 86 82 00 69</a>
+        </div>
+        <p class="psy-addr">Le Pôle 7 cours Vitton · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="laurent barbara 17 rue malesherbes  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">LAURENT <span>Barbara</span></span>
+          <a class="psy-tel" href="tel:+33782041671">07 82 04 16 71</a>
+        </div>
+        <p class="psy-addr">17 rue Malesherbes · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="le blan olga 25 rue seze  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">LE BLAN <span>Olga</span></span>
+          <a class="psy-tel" href="tel:+33627560149">06 27 56 01 49</a>
+        </div>
+        <p class="psy-addr">25 rue Sèze · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="le dean morgane 24 rue waldeck rousseau  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">LE DEAN <span>Morgane</span></span>
+          <a class="psy-tel" href="tel:+33749508447">07 49 50 84 47</a>
+        </div>
+        <p class="psy-addr">24 rue Waldeck Rousseau · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="lereculeur jocelyne 38 rue waldeck rousseau  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">LERECULEUR <span>Jocelyne</span></span>
+          <a class="psy-tel" href="tel:+33688037104">06 88 03 71 04</a>
+        </div>
+        <p class="psy-addr">38 rue Waldeck Rousseau · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="longo lea 152 rue du guesclin  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">LONGO <span>Lea</span></span>
+          <a class="psy-tel" href="tel:+33619097777">06 19 09 77 77</a>
+        </div>
+        <p class="psy-addr">152 rue du Guesclin · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="martin ophelie 76 rue garibaldi  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">MARTIN <span>Ophelie</span></span>
+          <a class="psy-tel" href="tel:+33762058117">07 62 05 81 17</a>
+        </div>
+        <p class="psy-addr">76 rue Garibaldi · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="natan barthelemy 120 rue sully  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">NATAN <span>Barthelemy</span></span>
+          <a class="psy-tel" href="tel:+33614442420">06 14 44 24 20</a>
+        </div>
+        <p class="psy-addr">120 rue Sully · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="nid jean emile 58 cours vitton  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">NID <span>Jean Emile</span></span>
+          <a class="psy-tel" href="tel:+33478246582">04 78 24 65 82</a>
+        </div>
+        <p class="psy-addr">58 cours Vitton · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="padroni stephanie 30 bd brotteaux  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">PADRONI <span>Stephanie</span></span>
+          <a class="psy-tel" href="tel:+33783555068">07 83 55 50 68</a>
+        </div>
+        <p class="psy-addr">30 bd Brotteaux · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="parodi cecile 48 boulevard belges  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">PARODI <span>Cecile</span></span>
+          <a class="psy-tel" href="tel:+33613682984">06 13 68 29 84</a>
+        </div>
+        <p class="psy-addr">48 boulevard Belges · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="pawloff elsa 14 bis boulevard belges  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">PAWLOFF <span>Elsa</span></span>
+          <a class="psy-tel" href="tel:+33698212005">06 98 21 20 05</a>
+        </div>
+        <p class="psy-addr">14 Bis boulevard Belges · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="pic mireille 40 rue duquesne  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">PIC <span>Mireille</span></span>
+          <a class="psy-tel" href="tel:+33686675243">06 86 67 52 43</a>
+        </div>
+        <p class="psy-addr">40 rue Duquesne · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="pizzol magali 23 rue moliere  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">PIZZOL <span>Magali</span></span>
+          <a class="psy-tel" href="tel:+33686730279">06 86 73 02 79</a>
+        </div>
+        <p class="psy-addr">23 rue Molière · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="pommet sophie 40 rue duquesne  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">POMMET <span>Sophie</span></span>
+          <a class="psy-tel" href="tel:+33649194190">06 49 19 41 90</a>
+        </div>
+        <p class="psy-addr">40 rue Duquesne · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="pommier kevin 24 rue waldeck rousseau  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">POMMIER <span>Kevin</span></span>
+          <a class="psy-tel" href="tel:+33786332528">07 86 33 25 28</a>
+        </div>
+        <p class="psy-addr">24 rue Waldeck Rousseau · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="prasloix claire 58 rue lieut-col prevost  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">PRASLOIX <span>Claire</span></span>
+          <a class="psy-tel" href="tel:+33769959306">07 69 95 93 06</a>
+        </div>
+        <p class="psy-addr">58 rue Lieut-Col Prévost · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="rebstock lea 112 rue crequi  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">REBSTOCK <span>Lea</span></span>
+          <a class="psy-tel" href="tel:+33780998556">07 80 99 85 56</a>
+        </div>
+        <p class="psy-addr">112 rue Créqui · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="richard gaelle 14 bis boulevard belges  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">RICHARD <span>Gaelle</span></span>
+          <a class="psy-tel" href="tel:+33778988393">07 78 98 83 93</a>
+        </div>
+        <p class="psy-addr">14 Bis boulevard Belges · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="richard sophie 17 rue seze  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">RICHARD <span>Sophie</span></span>
+          <a class="psy-tel" href="tel:+33658388096">06 58 38 80 96</a>
+        </div>
+        <p class="psy-addr">17 rue Sèze · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="riffard marie odile 23 rue duquesne  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">RIFFARD <span>Marie Odile</span></span>
+          <a class="psy-tel" href="tel:+33752641087">07 52 64 10 87</a>
+        </div>
+        <p class="psy-addr">23 rue Duquesne · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="robin jean 105 rue crequi  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">ROBIN <span>Jean</span></span>
+          <a class="psy-tel" href="tel:+33478522750">04 78 52 27 50</a>
+        </div>
+        <p class="psy-addr">105 rue Créqui · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="roche pin ingrid 120 rue sully  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">ROCHE PIN <span>Ingrid</span></span>
+          <a class="psy-tel" href="tel:+33652017626">06 52 01 76 26</a>
+        </div>
+        <p class="psy-addr">120 rue Sully · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="rouviere anaelle 15 rue crillon  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">ROUVIERE <span>Anaelle</span></span>
+          <a class="psy-tel" href="tel:+33663993080">06 63 99 30 80</a>
+        </div>
+        <p class="psy-addr">15 rue Crillon · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="salotti julie 112 rue crequi  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">SALOTTI <span>Julie</span></span>
+          <a class="psy-tel" href="tel:+33744884556">07 44 88 45 56</a>
+        </div>
+        <p class="psy-addr">112 rue Créqui · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="sardella elena 50 rue montgolfier  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">SARDELLA <span>Elena</span></span>
+          <a class="psy-tel" href="tel:+33635463719">06 35 46 37 19</a>
+        </div>
+        <p class="psy-addr">50 rue Montgolfier · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="shahgaldian alina 120 rue sully  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">SHAHGALDIAN <span>Alina</span></span>
+          <a class="psy-tel" href="tel:+33670853798">06 70 85 37 98</a>
+        </div>
+        <p class="psy-addr">120 rue Sully · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="stoffel laura 24 rue waldeck rousseau  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">STOFFEL <span>Laura</span></span>
+          <a class="psy-tel" href="tel:+33771586600">07 71 58 66 00</a>
+        </div>
+        <p class="psy-addr">24 rue Waldeck Rousseau · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="surdon demongeot come 89 quai charles de gaulle  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">SURDON DEMONGEOT <span>Come</span></span>
+          <a class="psy-tel" href="tel:+33672067364">06 72 06 73 64</a>
+        </div>
+        <p class="psy-addr">89 quai Charles de Gaulle · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="sutre edwige 52 rue sully  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">SUTRE <span>Edwige</span></span>
+          <a class="psy-tel" href="tel:+33615621742">06 15 62 17 42</a>
+        </div>
+        <p class="psy-addr">52 rue Sully · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="tardella catherine 185 rue cuvier  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">TARDELLA <span>Catherine</span></span>
+          <a class="psy-tel" href="tel:+33767243772">07 67 24 37 72</a>
+        </div>
+        <p class="psy-addr">185 rue Cuvier · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="thelisson marion 6 rue massena  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">THELISSON <span>Marion</span></span>
+          <a class="psy-tel" href="tel:+33684921069">06 84 92 10 69</a>
+        </div>
+        <p class="psy-addr">6 rue Masséna · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="thibert anne sophie 171 rue cuvier  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">THIBERT <span>Anne Sophie</span></span>
+          <a class="psy-tel" href="tel:+33623275867">06 23 27 58 67</a>
+        </div>
+        <p class="psy-addr">171 rue Cuvier · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="tranchemer ophelie 12 rue vauban  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">TRANCHEMER <span>Ophelie</span></span>
+          <a class="psy-tel" href="tel:+33781080105">07 81 08 01 05</a>
+        </div>
+        <p class="psy-addr">12 rue Vauban · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="vergiat aurelie 102 rue garibaldi  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">VERGIAT <span>Aurélie</span></span>
+          <a class="psy-tel" href="tel:+33675995488">06 75 99 54 88</a>
+        </div>
+        <p class="psy-addr">102 rue Garibaldi · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="veron fougeyrollas annick 24 rue waldeck rousseau  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">VERON FOUGEYROLLAS <span>Annick</span></span>
+          <a class="psy-tel" href="tel:+33783911725">07 83 91 17 25</a>
+        </div>
+        <p class="psy-addr">24 rue Waldeck Rousseau · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="vialle marine 11 rue curie  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">VIALLE <span>Marine</span></span>
+          <a class="psy-tel" href="tel:+33668755774">06 68 75 57 74</a>
+        </div>
+        <p class="psy-addr">11 rue Curie · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="villeval philippe 8 cours vitton  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">VILLEVAL <span>Philippe</span></span>
+          <a class="psy-tel" href="tel:+33782809834">07 82 80 98 34</a>
+        </div>
+        <p class="psy-addr">8 cours Vitton · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="voge marie 68 rue boileau  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">VOGE <span>Marie</span></span>
+          <a class="psy-tel" href="tel:+33633422391">06 33 42 23 91</a>
+        </div>
+        <p class="psy-addr">68 rue Boileau · Lyon 6e</p>
+      </article>
+      <article class="psy-item" data-arr="6" data-search="zinck marie claire 71 rue ney  lyon 6e">
+        <div class="psy-head">
+          <span class="psy-name">ZINCK <span>Marie Claire</span></span>
+          <a class="psy-tel" href="tel:+33472749364">04 72 74 93 64</a>
+        </div>
+        <p class="psy-addr">71 rue Ney · Lyon 6e</p>
+      </article>
+      </div>
+    </div>
+
+            <div id="psy-empty" hidden>
+                <p style="margin: 0;">Aucun résultat pour cette recherche. Essayez avec un autre mot-clé, ou élargissez à «&nbsp;Tous&nbsp;» les arrondissements.</p>
+            </div>
+        </section>
+
+        <!-- PSYCHIATRES -->
+        <section id="psychiatres">
+            <span class="eyebrow">Consultations remboursées</span>
+            <h2>Des psychiatres à Lyon et dans ses environs</h2>
+            <p>Le psychiatre est un <strong>médecin spécialiste</strong>&nbsp;: ses consultations sont remboursées par l'Assurance Maladie. En <strong>secteur 1</strong>, le tarif est conventionné, sans dépassement d'honoraires&nbsp;; en <strong>secteur 2</strong>, des dépassements sont possibles (l'option OPTAM les limite).</p>
+            <p><strong>Bon à savoir&nbsp;:</strong> entre 16 et 25 ans, vous pouvez consulter directement un psychiatre sans passer par votre médecin traitant, tout en restant remboursé normalement.</p>
+            <div class="psy-list">
+      <article class="psy-item">
+        <div class="psy-head">
+          <span class="psy-name">Dr COUSSA <span>Gabriel</span></span>
+          <span class="chip chip-secteur">Secteur 2</span>
+          <a class="psy-tel" href="tel:+33472373448">04 72 37 34 48</a>
+        </div>
+        <p class="psy-addr">132 av. Franklin Roosevelt · Bron (69500)</p>
+      </article>
+      <article class="psy-item">
+        <div class="psy-head">
+          <span class="psy-name">Dr DESOMBRE <span>Hugues</span></span>
+          <span class="chip chip-secteur">Secteur 2</span>
+          <a class="psy-tel" href="tel:+33472129566">04 72 12 95 66</a>
+        </div>
+        <p class="psy-addr">HFME · 59 bd Pinel · Bron (69500)</p>
+        <p class="psy-tags">Pédopsychiatre (enfants et adolescents)</p>
+      </article>
+      <article class="psy-item">
+        <div class="psy-head">
+          <span class="psy-name">Dr ZUKERVAR <span>Laurent</span></span>
+          <span class="chip chip-secteur">Secteur 1</span>
+          <a class="psy-tel" href="tel:+33953704308">09 53 70 43 08</a>
+        </div>
+        <p class="psy-addr">Clinique Mon Repos · 11 ch. Vernique · Écully (69130)</p>
+      </article>
+      <article class="psy-item">
+        <div class="psy-head">
+          <span class="psy-name">Dr WEINER <span>Marc</span></span>
+          <span class="chip chip-secteur">Secteur 1 · OPTAM</span>
+          <a class="psy-tel" href="tel:+33478437123">04 78 43 71 23</a>
+        </div>
+        <p class="psy-addr">9 place de l&#x27;Europe · Lentilly (69210)</p>
+      </article>
+      <article class="psy-item">
+        <div class="psy-head">
+          <span class="psy-name">Dr GIBERT <span>Guylaine</span></span>
+          <span class="chip chip-secteur">Secteur 2</span>
+          <a class="psy-tel" href="tel:+33478448971">04 78 44 89 71</a>
+        </div>
+        <p class="psy-addr">31 rue Boiron · Mornant (69440)</p>
+      </article>
+      <article class="psy-item">
+        <div class="psy-head">
+          <span class="psy-name">Dr FRANCOZ <span>Michel</span></span>
+          <span class="chip chip-secteur">Secteur 1</span>
+          <a class="psy-tel" href="tel:+33478917640">04 78 91 76 40</a>
+        </div>
+        <p class="psy-addr">12 rue Victor Hugo · Neuville-sur-Saône (69250)</p>
+      </article>
+      <article class="psy-item">
+        <div class="psy-head">
+          <span class="psy-name">Dr AUCLAIR <span>Véronique</span></span>
+          <span class="chip chip-secteur">Secteur 2</span>
+          <a class="psy-tel" href="tel:+33763173567">07 63 17 35 67</a>
+        </div>
+        <p class="psy-addr">36 rue de la Sarra · Oullins (69600)</p>
+      </article>
+      <article class="psy-item">
+        <div class="psy-head">
+          <span class="psy-name">Dr TISSOT <span>Sonia</span></span>
+          <a class="psy-tel" href="tel:+33661337873">06 61 33 78 73</a>
+        </div>
+        <p class="psy-addr">6 rue de la Cascade · Saint-Genis-les-Ollières (69290)</p>
+      </article>
+      <article class="psy-item">
+        <div class="psy-head">
+          <span class="psy-name">Dr BERNIER <span>Pascale</span></span>
+          <span class="chip chip-secteur">Secteur 2</span>
+          <a class="psy-tel" href="tel:+33472740772">04 72 74 07 72</a>
+        </div>
+        <p class="psy-addr">49 av. de la République · Tassin-la-Demi-Lune (69160)</p>
+      </article>
+            </div>
+        </section>
+
+        <!-- AUTRES ANNUAIRES -->
+        <section>
+            <span class="eyebrow">Chercher en ligne</span>
+            <h2>Les annuaires utiles</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Mon soutien psy</h3>
+                    <p>L'annuaire officiel des psychologues partenaires de l'Assurance Maladie : séances remboursées, dans le cadre du dispositif.</p>
+                    <p style="margin: var(--s3) 0 0;"><a href="https://monsoutienpsy.ameli.fr/recherche-psychologue" target="_blank" rel="noopener">Consulter l'annuaire →</a></p>
+                </div>
+                <div class="feature-card">
+                    <h3>Annuaire santé Ameli</h3>
+                    <p>Pour trouver un psychiatre proche de chez vous, avec son secteur de convention (1 ou 2) et ses tarifs.</p>
+                    <p style="margin: var(--s3) 0 0;"><a href="https://annuairesante.ameli.fr/trouver-un-professionnel-de-sante/psychiatres" target="_blank" rel="noopener">Consulter l'annuaire →</a></p>
+                </div>
+                <div class="feature-card">
+                    <h3>Annuaire AFTCC</h3>
+                    <p>Les psychologues (non remboursés hors dispositif) et psychiatres formés aux thérapies comportementales et cognitives (TCC).</p>
+                    <p style="margin: var(--s3) 0 0;"><a href="https://www.aftcc.org/annuaire" target="_blank" rel="noopener">Consulter l'annuaire →</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BANDEAU CTA -->
+        <section class="cta-band">
+            <div>
+                <h2>Une question, besoin d'être orienté·e&nbsp;?</h2>
+                <p>L'équipe du CEREMAIA peut vous aider à trouver le bon interlocuteur pour votre suivi psychologique.</p>
+            </div>
+            <a href="contacts.html" class="btn btn-primary">Nous contacter</a>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h4>CEREMAIA Lyon</h4>
+                <p>Centre de Référence des Maladies Auto-Inflammatoires et de l'Amylose inflammatoire. Filière FAI2R · Réseau ERN RITA.</p>
+            </div>
+            <div>
+                <h4>Naviguer</h4>
+                <ul>
+                    <li><a href="about.html">À propos</a></li>
+                    <li><a href="maladies.html">Les maladies</a></li>
+                    <li><a href="recherche.html">La Recherche</a></li>
+                    <li><a href="actualites.html">Actualités</a></li>
+                    <li><a href="ado-xpr.html">L'ado-XPR (Espace jeunes)</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul>
+                    <li>Hôpital de la Croix-Rousse, Lyon</li>
+                    <li>04 26 73 26 36</li>
+                    <li><a href="mailto:ceremaia.lyon@chu-lyon.fr">ceremaia.lyon@chu-lyon.fr</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="footer-urgence"><strong>En cas d'urgence, appelez le 15 (Samu) ou le 112.</strong> &nbsp;·&nbsp; © 2024 CEREMAIA. Tous droits réservés.</p>
+    </footer>
+
+    <script src="menu.js?v=2" defer></script>
+    <script>
+    /* Filtre de l'annuaire : recherche libre + arrondissement */
+    (function () {
+        function norm(s) {
+            return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        }
+        var input  = document.getElementById('psy-search');
+        var chips  = Array.prototype.slice.call(document.querySelectorAll('.chips-filter .chip'));
+        var items  = Array.prototype.slice.call(document.querySelectorAll('.psy-item[data-arr]'));
+        var groups = Array.prototype.slice.call(document.querySelectorAll('.psy-group'));
+        var count  = document.getElementById('psy-count');
+        var empty  = document.getElementById('psy-empty');
+        var arr = 'all';
+
+        function apply() {
+            var q = norm(input.value.trim());
+            var total = 0;
+            items.forEach(function (it) {
+                var ok = (arr === 'all' || it.getAttribute('data-arr') === arr) &&
+                         (!q || it.getAttribute('data-search').indexOf(q) !== -1);
+                it.hidden = !ok;
+                if (ok) total++;
+            });
+            groups.forEach(function (g) {
+                var vis = g.querySelectorAll('.psy-item:not([hidden])').length;
+                g.hidden = (vis === 0);
+                var c = g.querySelector('.group-count');
+                if (c) c.textContent = vis;
+            });
+            count.textContent = total + ' psychologue' + (total > 1 ? 's' : '') + ' affiché' + (total > 1 ? 's' : '');
+            empty.hidden = (total !== 0);
+        }
+
+        chips.forEach(function (ch) {
+            ch.addEventListener('click', function () {
+                chips.forEach(function (c) { c.setAttribute('aria-pressed', 'false'); });
+                ch.setAttribute('aria-pressed', 'true');
+                arr = ch.getAttribute('data-arr');
+                apply();
+            });
+        });
+        input.addEventListener('input', apply);
+        apply();
+    })();
+    </script>
+</body>
+</html>

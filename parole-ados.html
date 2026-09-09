@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La parole aux ados · CEREMAIA Lyon</title>
+    <link rel="stylesheet" href="styles.css?v=4">
+    <style>
+        /* ---------- Page La parole aux ados ---------- */
+
+        /* Citation mise en avant dans le hero */
+        .hero p.hero-quote {
+            font-family: var(--font-head);
+            font-weight: 600;
+            font-size: clamp(19px, 3vw, 24px);
+            color: var(--white);
+            margin: 0 0 var(--s4);
+        }
+        .hero-quote .mark { color: var(--turquoise); }
+
+        /* Cartes de citation */
+        .quote-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--s4);
+        }
+        .quote-card {
+            position: relative;
+            margin: 0;
+            background: var(--surface-2);
+            border: 1px solid rgba(180,156,255,.28);
+            border-radius: var(--r-media);
+            padding: var(--s5);
+            padding-top: 52px;
+            box-shadow: var(--shadow-1);
+            transition: transform .25s ease, border-color .25s ease;
+        }
+        .quote-card:hover { transform: translateY(-4px); border-color: var(--violet); }
+        .quote-card::before {
+            content: "«";
+            position: absolute;
+            top: 10px;
+            left: var(--s5);
+            font-family: var(--font-head);
+            font-size: 46px;
+            font-weight: 700;
+            line-height: 1;
+            color: var(--violet);
+        }
+        .quote-card blockquote { margin: 0; }
+        .quote-card blockquote p {
+            margin: 0;
+            color: var(--white);
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        .quote-card blockquote p + p { margin-top: var(--s3); }
+        .quote-ctx {
+            display: block;
+            margin-top: var(--s3);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--grey-text);
+        }
+        .quote-ctx.above { margin: 0 0 var(--s2); }
+
+        /* Carte plus large pour les longues citations */
+        .quote-card.is-wide { grid-column: 1 / -1; }
+
+        /* Renvoi « ce que ça a changé » */
+        .quote-note {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--s3);
+            background: rgba(69,227,198,.08);
+            border: 1px solid rgba(69,227,198,.30);
+            border-radius: var(--r-media);
+            padding: var(--s4) var(--s5);
+            margin-top: var(--s4);
+        }
+        .quote-note p { margin: 0; color: var(--grey-light); font-size: 15px; }
+        .quote-note .ic { color: var(--turquoise); flex: none; margin-top: 2px; }
+
+        /* Intro de section */
+        .theme-intro { max-width: 70ch; }
+
+        @media (max-width: 768px) {
+            .quote-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="page-v2">
+    <header>
+        <div class="logo-container">
+            <img src="images/banniere.png" alt="CEREMAIA Lyon" class="logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="about.html">À propos</a></li>
+                <li><a href="maladies.html">Les maladies</a></li>
+                <li><a href="recherche.html">La Recherche</a></li>
+                <li><a href="actualites.html">Actualités et événements</a></li>
+                <li><a href="ado-xpr.html" class="active">L'ado-XPR (Espace jeunes)</a></li>
+                <li><a href="contacts.html">Contacts et Consultations</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="xpr-nav" role="navigation" aria-label="Menu L'ado-XPR">
+            <a href="ado-xpr.html"><span class="xpr-brand" style="padding:0;">L'ado-XPR</span></a>
+            <a href="parole-ados.html" class="active">Récits</a>
+            <a href="repondre.html">Répondre</a>
+            <a href="comprendre.html">Comprendre</a>
+            <a href="soutien-psy.html">Besoin d'aide</a>
+        </div>
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-inner">
+                <span class="eyebrow">Expérience patient · Projet ado-XPR</span>
+                <h1>La parole aux ados</h1>
+                <p class="hero-quote"><span class="mark">«&nbsp;</span>On veut discuter et comprendre.<span class="mark">&nbsp;»</span></p>
+                <p>Grandir avec une maladie auto-inflammatoire, c'est une expérience que personne ne raconte mieux que les premiers concernés. Nous avons recueilli, lors d'entretiens, la parole d'adolescents et de jeunes adultes suivis au CEREMAIA. La voici, telle quelle : anonyme, et publiée avec leur accord. Certaines phrases bousculent, et c'est leur raison d'être&nbsp;: nous aider, soignants, familles et institutions, à mieux faire.</p>
+                <div class="hero-cta">
+                    <a href="#verbatims" class="btn btn-primary">Lire leurs mots</a>
+                    <a href="#temoigner" class="btn btn-secondary">Témoigner à votre tour</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- BADGES -->
+        <div class="trust-row">
+            <span class="badge">Verbatims d'entretiens</span>
+            <span class="badge">Ados &amp; jeunes adultes</span>
+            <span class="badge">Paroles anonymes</span>
+            <span class="badge">Publiées avec leur accord</span>
+            <span class="badge">Reproduites sans filtre</span>
+        </div>
+
+        <!-- RELATION AVEC LES MÉDECINS -->
+        <section id="verbatims">
+            <span class="eyebrow">Ce qu'ils nous disent</span>
+            <h2>Face aux médecins&nbsp;: écouter, expliquer, laisser de la place</h2>
+            <p class="theme-intro">Le message le plus fort de ces entretiens&nbsp;: les ados veulent être des interlocuteurs à part entière, pas seulement des patients qu'on examine ou des enfants dont on parle aux parents.</p>
+            <div class="quote-grid">
+                <figure class="quote-card">
+                    <blockquote><p>On ose pas dire non&nbsp;: on voit le médecin comme la personne supérieure, alors qu'on veut discuter et comprendre.</p></blockquote>
+                </figure>
+                <figure class="quote-card">
+                    <blockquote><p>Elle virait mes parents, je préfère choisir car c'est que mes parents qui parlent, mais moi ça me va parce que je parle pas beaucoup.</p></blockquote>
+                    <figcaption class="quote-ctx">Sur la consultation sans les parents : à décider avec l'ado, pas à sa place</figcaption>
+                </figure>
+                <figure class="quote-card">
+                    <blockquote><p>Arrêter tous les médocs sans explications, alors qu'on aurait voulu comprendre pourquoi une telle décision.</p></blockquote>
+                </figure>
+                <figure class="quote-card">
+                    <blockquote><p>Si ça ne se passe pas bien avec le médecin, faut pas hésiter à demander à changer.</p></blockquote>
+                    <figcaption class="quote-ctx">Conseil d'ado à ado</figcaption>
+                </figure>
+                <figure class="quote-card">
+                    <figcaption class="quote-ctx above">Des mots de soignants qui laissent des traces</figcaption>
+                    <blockquote>
+                        <p>«&nbsp;Je pense que t'es addict aux médocs&nbsp;», lui lance une médecin. Et l'ado de penser&nbsp;: «&nbsp;Dis-le si je suis tox.&nbsp;»</p>
+                        <p>À un autre, on répond «&nbsp;Tu confonds tes douleurs&nbsp;», entre douleurs rhumatologiques et courbatures.</p>
+                    </blockquote>
+                </figure>
+            </div>
+        </section>
+
+        <!-- TRANSITION -->
+        <section>
+            <span class="eyebrow">Ce qu'ils nous disent</span>
+            <h2>La transition pédiatrie&nbsp;→&nbsp;adulte</h2>
+            <p class="theme-intro">Passer du service enfants au service adultes, c'est changer de monde. Leur demande&nbsp;: préparer ce passage, en douceur et en vrai.</p>
+            <div class="quote-grid">
+                <figure class="quote-card is-wide">
+                    <blockquote><p>Faire des consultations de transition une fois en service adulte et une fois en service enfants, et pas toutes les consultations en service de pédiatrie, pour voir le service&nbsp;: car quand on arrive dans la salle d'attente pas colorée, entouré de vieux aigris de 80 ans, c'est pas fun.</p></blockquote>
+                </figure>
+                <figure class="quote-card">
+                    <blockquote><p>C'est le jour et la nuit&nbsp;: on est très protégés en pédiatrie et ensuite on gère tout au tout au lendemain.</p></blockquote>
+                </figure>
+                <figure class="quote-card">
+                    <blockquote><p>Ça serait trop bien d'avoir des services dans la vingtaine. C'est bizarre de réviser ses cours à côté de quelqu'un à la retraite.</p></blockquote>
+                </figure>
+            </div>
+        </section>
+
+        <!-- ÉTUDES ET VIE ADULTE -->
+        <section>
+            <span class="eyebrow">Ce qu'ils nous disent</span>
+            <h2>Études, autonomie et vie adulte</h2>
+            <p class="theme-intro">Diplômes, premier emploi, autonomie&nbsp;: la maladie ne met pas la vie entre parenthèses, et ils tiennent à ce que le soin s'organise autour de leurs projets, pas l'inverse.</p>
+            <div class="quote-grid">
+                <figure class="quote-card">
+                    <blockquote><p>Mes études sont sacrées et je veux mon diplôme, c'est parfois dur pour les médecins de la comprendre.</p></blockquote>
+                </figure>
+                <figure class="quote-card">
+                    <blockquote><p>On manque de données pour démarrer dans la vie adulte, dans le monde du travail.</p></blockquote>
+                </figure>
+            </div>
+        </section>
+
+        <!-- HANDICAP ET REGARD DES AUTRES -->
+        <section>
+            <span class="eyebrow">Ce qu'ils nous disent</span>
+            <h2>Handicap invisible et regard des autres</h2>
+            <p class="theme-intro">Jeune et malade, ça ne se voit pas toujours. Et le regard des autres pèse parfois plus lourd que la maladie.</p>
+            <div class="quote-grid">
+                <figure class="quote-card">
+                    <blockquote><p>Quand je ne suis pas en forme, je vais sur les places handicapées, mais quand ça va j'évite car j'ai peur de prendre une remarque.</p></blockquote>
+                </figure>
+                <figure class="quote-card">
+                    <blockquote><p>Les personnes ne comprennent pas&nbsp;: du moment qu'on est [en apparence] valide et garé sur une place handicapée…</p></blockquote>
+                </figure>
+                <figure class="quote-card">
+                    <blockquote><p>Il faudrait juste une petite fiche qu'on peut mettre sur le pare-brise&nbsp;: “je suis jeune mais j'ai une maladie”.</p></blockquote>
+                </figure>
+                <figure class="quote-card">
+                    <blockquote><p>On m'a déjà cassé la vitre pour voler la carte handicapé, on m'a crevé des pneus… Askip, les cartes handicapées, ça se vend cher sur le marché noir.</p></blockquote>
+                </figure>
+            </div>
+        </section>
+
+        <!-- SANTÉ PSYCHOLOGIQUE -->
+        <section>
+            <span class="eyebrow">Ce qu'ils nous disent</span>
+            <h2>Prendre soin de sa tête aussi</h2>
+            <p class="theme-intro">Aller voir un psy&nbsp;? Oui, mais pas n'importe comment&nbsp;: en confiance, en confidentialité, et avec de vraies explications.</p>
+            <div class="quote-grid">
+                <figure class="quote-card">
+                    <blockquote><p>On peut aller voir un psy même si on a pas de problème, parce qu'avoir une maladie, c'est anxiogène. Il faudrait distribuer des petits annuaires avec les psys dispo en ville.</p></blockquote>
+                </figure>
+                <figure class="quote-card">
+                    <blockquote><p>Je préfère voir un psy en libéral parce qu'on a peur que la psy du service en parle aux médecins et on n'a pas envie que tout soit mélangé.</p></blockquote>
+                </figure>
+                <figure class="quote-card is-wide">
+                    <blockquote><p>Ça sert à rien de nous conseiller d'aller voir un psy, faut prendre le temps de nous expliquer pourquoi, etc. Par exemple, toi t'avais pris vraiment le temps de me donner des exemples, tu m'avais parlé comme si on était potes et pas comme un médecin, et c'est grâce à toi que j'ai fini par y aller, alors qu'on m'en parlait depuis 5 ans.</p></blockquote>
+                    <figcaption class="quote-ctx">Confié à une soignante, lors d'un entretien</figcaption>
+                </figure>
+            </div>
+            <div class="quote-note">
+                <span class="ic" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 3 5 6.5 5 9 5 12 8 12 8s3-3 5.5-3C21 5 23.5 8.5 21.5 12.5 19 16.65 12 21 12 21z"/></svg>
+                </span>
+                <p><strong>Ces mots ont été entendus&nbsp;:</strong> notre page <a href="soutien-psy.html">Soutien psy</a> est née de ces échanges, avec l'annuaire des psychologues de Lyon qu'ils réclamaient, les numéros utiles et les séances remboursées.</p>
+            </div>
+        </section>
+
+        <!-- CORPS, TRAITEMENTS ET SANTÉ INTIME -->
+        <section>
+            <span class="eyebrow">Ce qu'ils nous disent</span>
+            <h2>Le corps, les traitements, l'intimité</h2>
+            <p class="theme-intro">Effets secondaires visibles, image de soi, santé intime&nbsp;: des sujets majeurs à leur âge, et trop souvent absents des consultations.</p>
+            <div class="quote-grid">
+                <figure class="quote-card">
+                    <blockquote><p>Avec les traitements, on voit notre corps changer, et on est beaucoup à le vivre.</p></blockquote>
+                </figure>
+                <figure class="quote-card">
+                    <figcaption class="quote-ctx above">À propos du méthotrexate</figcaption>
+                    <blockquote><p>Je perdais mes cheveux et la réponse reçue&nbsp;: «&nbsp;Ouais mais t'as plein de cheveux&nbsp;», alors que pour moi, ça me marquait de perdre mes cheveux dans la douche. Ça serait bien d'expliquer concrètement les effets indésirables, pareil pour les corticoïdes qui nous font gonfler.</p></blockquote>
+                </figure>
+                <figure class="quote-card">
+                    <blockquote><p>Tout ce qui est gynéco&nbsp;: les médecins, ils n'en parlent jamais. C'est comme si c'était tabou.</p></blockquote>
+                </figure>
+            </div>
+        </section>
+
+        <!-- À L'HÔPITAL -->
+        <section>
+            <span class="eyebrow">Ce qu'ils nous disent</span>
+            <h2>À l'hôpital&nbsp;: ni enfant, ni adulte</h2>
+            <p class="theme-intro">Entre les animations pensées pour les petits et les services pensés pour les grands, les ados cherchent une place à leur mesure.</p>
+            <div class="quote-grid">
+                <figure class="quote-card">
+                    <blockquote><p>Les jeux pédagogiques à l'hôpital, c'est gênant.</p></blockquote>
+                </figure>
+                <figure class="quote-card">
+                    <blockquote><p>Les trucs de groupe, personne ne veut être là.</p></blockquote>
+                </figure>
+                <figure class="quote-card">
+                    <blockquote><p>Les blouses roses, c'est l'angoisse, je suis contente de plus en avoir.</p></blockquote>
+                </figure>
+            </div>
+        </section>
+
+        <!-- AILLEURS SUR LE WEB -->
+        <section>
+            <span class="eyebrow">Ils racontent aussi</span>
+            <h2>D'autres témoignages à écouter et à lire</h2>
+            <p class="theme-intro">D'autres jeunes patients partagent leur expérience de la maladie, en vidéo, en podcast ou par écrit.</p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Témoignages vidéo · FAI2R</h3>
+                    <p>La filière des maladies auto-immunes et auto-inflammatoires rares donne la parole aux patients&nbsp;: Alix (arthrite juvénile idiopathique), Gaylord et Virginie (maladie de Still), Lorette, 19 ans (lupus)…</p>
+                    <p style="margin: var(--s3) 0 0;"><a href="https://www.fai2r.org/vie-quotidienne/temoignages-patients/" target="_blank" rel="noopener">Voir les témoignages →</a></p>
+                </div>
+                <div class="feature-card">
+                    <h3>AJIados · la parole des jeunes</h3>
+                    <p>Le site de l'association des jeunes atteints d'arthrite juvénile idiopathique publie des témoignages de jeunes et de parents, et chacun peut y déposer le sien.</p>
+                    <p style="margin: var(--s3) 0 0;"><a href="https://www.ajiados.org/temoignages/" target="_blank" rel="noopener">Lire les témoignages →</a></p>
+                </div>
+                <div class="feature-card">
+                    <h3>Podcast «&nbsp;RARE à l'écoute&nbsp;»</h3>
+                    <p>Des podcasts courts sur toutes les maladies rares, dont une saison consacrée aux CAPS avec un épisode «&nbsp;Vivre avec un CAPS&nbsp;».</p>
+                    <p style="margin: var(--s3) 0 0;"><a href="https://rarealecoute.com/podcast-category/saison-49/" target="_blank" rel="noopener">Écouter la saison CAPS →</a></p>
+                </div>
+                <div class="feature-card">
+                    <h3>Podcasts audio · FAI2R</h3>
+                    <p>Les podcasts de la filière FAI2R&nbsp;: maladies expliquées simplement, vie quotidienne, éducation thérapeutique…</p>
+                    <p style="margin: var(--s3) 0 0;"><a href="https://www.fai2r.org/podcasts-audio/" target="_blank" rel="noopener">Écouter les podcasts →</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA TÉMOIGNER -->
+        <section class="cta-band" id="temoigner">
+            <div>
+                <h2>Ta parole compte</h2>
+                <p>Tu es ado ou jeune adulte suivi·e pour une maladie auto-inflammatoire&nbsp;? Ton expérience peut faire évoluer nos pratiques : en entretien, de vive voix ou par écrit, anonymement si tu préfères.</p>
+            </div>
+            <a href="contacts.html" class="btn btn-primary">Nous contacter</a>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h4>CEREMAIA Lyon</h4>
+                <p>Centre de Référence des Maladies Auto-Inflammatoires et de l'Amylose inflammatoire. Filière FAI2R · Réseau ERN RITA.</p>
+            </div>
+            <div>
+                <h4>Naviguer</h4>
+                <ul>
+                    <li><a href="about.html">À propos</a></li>
+                    <li><a href="maladies.html">Les maladies</a></li>
+                    <li><a href="recherche.html">La Recherche</a></li>
+                    <li><a href="actualites.html">Actualités</a></li>
+                    <li><a href="ado-xpr.html">L'ado-XPR (Espace jeunes)</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul>
+                    <li>Hôpital de la Croix-Rousse, Lyon</li>
+                    <li>04 26 73 26 36</li>
+                    <li><a href="mailto:ceremaia.lyon@chu-lyon.fr">ceremaia.lyon@chu-lyon.fr</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="footer-urgence"><strong>En cas d'urgence, appelez le 15 (Samu) ou le 112.</strong> &nbsp;·&nbsp; © 2024 CEREMAIA. Tous droits réservés.</p>
+    </footer>
+
+    <script src="menu.js?v=2" defer></script>
+</body>
+</html>

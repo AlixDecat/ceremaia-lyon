@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'ado-XPR · Espace jeunes · CEREMAIA Lyon</title>
+    <link rel="stylesheet" href="styles.css?v=4">
+    <style>
+        .hero.xpr-hero { padding: clamp(24px, 4.5vw, 44px); }
+        .hero.xpr-hero p { margin-bottom: 0; }
+        .sos-line {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: var(--s3);
+            background: rgba(69,227,198,.08);
+            border: 1px solid rgba(69,227,198,.30);
+            border-radius: var(--r-media);
+            padding: var(--s3) var(--s5);
+            margin: var(--s4) 0 var(--s5);
+        }
+        .sos-line p { margin: 0; color: var(--white); font-weight: 600; }
+        .sos-line .num { font-family: var(--font-head); font-weight: 700; font-size: 22px; color: var(--turquoise); }
+    </style>
+</head>
+<body class="page-v2">
+    <header>
+        <div class="logo-container">
+            <img src="images/banniere.png" alt="CEREMAIA Lyon" class="logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="about.html">À propos</a></li>
+                <li><a href="maladies.html">Les maladies</a></li>
+                <li><a href="recherche.html">La Recherche</a></li>
+                <li><a href="actualites.html">Actualités et événements</a></li>
+                <li><a href="ado-xpr.html" class="active">L'ado-XPR (Espace jeunes)</a></li>
+                <li><a href="contacts.html">Contacts et Consultations</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Menu interne du mini-site -->
+        <div class="xpr-nav" role="navigation" aria-label="Menu L'ado-XPR">
+            <span class="xpr-brand">L'ado-XPR</span>
+            <a href="parole-ados.html">Récits</a>
+            <a href="repondre.html">Répondre</a>
+            <a href="comprendre.html">Comprendre</a>
+            <a href="soutien-psy.html">Besoin d'aide</a>
+        </div>
+
+        <!-- HERO compact -->
+        <section class="hero xpr-hero">
+            <div class="hero-inner">
+                <span class="eyebrow">Espace jeunes · fait de vos mots</span>
+                <h1>L'ado-XPR</h1>
+                <p>Vivre avec une maladie auto-inflammatoire quand on n'a pas encore 25 ans, personne ne le raconte mieux que toi. Ici&nbsp;: des récits sans filtre, des répliques pour le monde extérieur, des infos vérifiées, et de l'aide si ça ne va pas.</p>
+            </div>
+        </section>
+
+        <!-- LES 4 ENTRÉES -->
+        <div class="xpr-tiles">
+            <a class="xpr-tile t-violet" href="parole-ados.html">
+                <div class="ic" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <h3>Récits</h3>
+                <p>Ce que d'autres ados vivent avec leur maladie : leurs mots, sans filtre, recueillis en entretien.</p>
+                <span class="go">Lire leurs mots →</span>
+            </a>
+            <a class="xpr-tile t-warm" href="repondre.html">
+                <div class="ic" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg>
+                </div>
+                <h3>Répondre</h3>
+                <p>«&nbsp;T'as pas l'air malade&nbsp;»… Des répliques prêtes à l'emploi, et ta maladie expliquée en une page pour l'école ou le taf.</p>
+                <span class="go">Trouver les mots →</span>
+            </a>
+            <a class="xpr-tile t-indigo" href="comprendre.html">
+                <div class="ic" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+                </div>
+                <h3>Comprendre</h3>
+                <p>Ta maladie expliquée avec des sources fiables, et le mode d'emploi pour utiliser l'IA sans te faire avoir.</p>
+                <span class="go">Vérifier les infos →</span>
+            </a>
+            <a class="xpr-tile" href="soutien-psy.html">
+                <div class="ic" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 3 5 6.5 5 9 5 12 8 12 8s3-3 5.5-3C21 5 23.5 8.5 21.5 12.5 19 16.65 12 21 12 21z"/></svg>
+                </div>
+                <h3>Besoin d'aide</h3>
+                <p>Psys à Lyon, numéros qui répondent 24h/24, séances remboursées. Des ressources et des contacts, pas une consultation.</p>
+                <span class="go">Trouver du soutien →</span>
+            </a>
+        </div>
+
+        <!-- SOS -->
+        <div class="sos-line">
+            <span class="num"><a href="tel:3114">3114</a></span>
+            <p>Ça ne va pas, là, tout de suite&nbsp;? Appelle : c'est gratuit, 24h/24, et quelqu'un décroche vraiment. <a href="soutien-psy.html#aide-immediate">Toutes les aides immédiates →</a></p>
+        </div>
+
+        <!-- BIENTÔT -->
+        <section>
+            <span class="eyebrow">Explorer</span>
+            <h2>La suite arrive</h2>
+            <p>Cet espace est construit à partir de vos entretiens et de vos retours. Les prochains chantiers, dans l'ordre de ce que vous nous avez dit&nbsp;:</p>
+            <div class="chips-row" style="margin-bottom: 0;">
+                <span class="chip">Bientôt · Transition pédiatrie → adulte</span>
+                <span class="chip">Bientôt · Études, travail &amp; droits</span>
+                <span class="chip">Bientôt · Corps &amp; santé intime</span>
+            </div>
+        </section>
+
+        <!-- CTA PARTICIPER -->
+        <section class="cta-band">
+            <div>
+                <h2>Cet espace, c'est le tien</h2>
+                <p>Tes récits, tes répliques, tes idées&nbsp;: tout ce qui est ici vient d'ados comme toi. Ajoute ta pierre, anonymement si tu préfères.</p>
+            </div>
+            <a href="contacts.html" class="btn btn-primary">Participer</a>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h4>CEREMAIA Lyon</h4>
+                <p>Centre de Référence des Maladies Auto-Inflammatoires et de l'Amylose inflammatoire. Filière FAI2R · Réseau ERN RITA.</p>
+            </div>
+            <div>
+                <h4>Naviguer</h4>
+                <ul>
+                    <li><a href="about.html">À propos</a></li>
+                    <li><a href="maladies.html">Les maladies</a></li>
+                    <li><a href="recherche.html">La Recherche</a></li>
+                    <li><a href="actualites.html">Actualités</a></li>
+                    <li><a href="ado-xpr.html">L'ado-XPR (Espace jeunes)</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul>
+                    <li>Hôpital de la Croix-Rousse, Lyon</li>
+                    <li>04 26 73 26 36</li>
+                    <li><a href="mailto:ceremaia.lyon@chu-lyon.fr">ceremaia.lyon@chu-lyon.fr</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="footer-urgence"><strong>En cas d'urgence, appelez le 15 (Samu) ou le 112.</strong> &nbsp;·&nbsp; © 2024 CEREMAIA. Tous droits réservés.</p>
+    </footer>
+
+    <script src="menu.js?v=2" defer></script>
+</body>
+</html>
