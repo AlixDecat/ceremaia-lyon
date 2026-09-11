@@ -1,0 +1,163 @@
+{
+  "meta": {
+    "system": "ado-xpr-design-system",
+    "version": "1.0.0",
+    "notes": [
+      "Mobile-first, contraste AA minimum",
+      "Univers fun/immersif mais confiance visible: sources, relu, consentement",
+      "Source de vérité : styles.css (:root) reprend ces noms en variables CSS (--color-bg, --space-4, --radius-lg, ...)",
+      "Valeurs couleurs = palette Glow Stories nuit du site, vérifiée AA. Quand la valeur diffère du défaut proposé, 'comment' indique ce défaut et pourquoi il n'a pas été retenu."
+    ]
+  },
+  "color": {
+    "bg": { "value": "#0A0922", "comment": "défaut proposé #0B1220" },
+    "surface": { "value": "#14122E", "comment": "défaut proposé #111B2E" },
+    "surfaceAlt": { "value": "#1C1942", "comment": "défaut proposé #0F172A · utilisé pour les cartes posées sur surface" },
+    "surfaceHover": { "value": "#262151", "comment": "ajout : survol des tuiles" },
+    "text": {
+      "primary": { "value": "#F4F3FF" },
+      "secondary": { "value": "#B3AFD9", "comment": "8.8:1 sur surface" },
+      "muted": { "value": "#9793C2", "comment": "5.7:1 sur surfaceAlt" },
+      "inverse": { "value": "#0A0922" }
+    },
+    "border": {
+      "subtle": { "value": "rgba(180,156,255,0.14)" },
+      "default": { "value": "rgba(180,156,255,0.22)" }
+    },
+    "brand": {
+      "primary": { "value": "#7C83FF", "comment": "défaut proposé #4F46E5 : 2.97:1 sur le fond, sous le seuil AA (4.5:1) pour du texte ou des liens · #7C83FF = 6.0:1" },
+      "secondary": { "value": "#45E3C6", "comment": "défaut proposé #2DD4BF · 12:1 sur le fond" }
+    },
+    "accent": {
+      "coral": { "value": "#FB7185" },
+      "violetSoft": { "value": "#B49CFF", "comment": "défaut proposé #A78BFA" },
+      "mint": { "value": "#58E1A6", "comment": "défaut proposé #34D399" },
+      "sun": { "value": "#FFCE7A", "comment": "défaut proposé #FBBF24" }
+    },
+    "state": {
+      "success": { "value": "#58E1A6" },
+      "warning": { "value": "#FFCE7A" },
+      "error": { "value": "#FF9DB0" },
+      "info": { "value": "#7C83FF" }
+    },
+    "focus": { "value": "#22D3EE" },
+    "overlay": {
+      "scrim": { "value": "rgba(0,0,0,0.55)" }
+    },
+    "gradient": {
+      "brand": { "value": "linear-gradient(135deg, #7C83FF 0%, #B49CFF 100%)", "comment": "boutons primaires, soulignés de titres" },
+      "hero": { "value": "radial-gradient(680px 360px at 88% -20%, rgba(69,227,198,0.20), transparent 60%), radial-gradient(760px 460px at -5% -10%, rgba(124,131,255,0.34), transparent 58%), radial-gradient(520px 320px at 60% 130%, rgba(180,156,255,0.18), transparent 60%), linear-gradient(160deg, #1A1640 0%, #120F30 60%, #0A0922 100%)" },
+      "card": { "value": "linear-gradient(180deg, rgba(124,131,255,0.18) 0%, rgba(69,227,198,0.08) 100%)" }
+    }
+  },
+  "font": {
+    "family": {
+      "base": { "value": "'Hanken Grotesk', Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif", "comment": "Inter reste en repli" },
+      "display": { "value": "'Bricolage Grotesque', Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" }
+    },
+    "weight": {
+      "regular": { "value": 400 },
+      "medium": { "value": 500 },
+      "semibold": { "value": 600 },
+      "bold": { "value": 700 }
+    },
+    "size": {
+      "h1": { "value": "32px", "comment": "le h1 du hero monte jusqu'à 48px (clamp)" },
+      "h2": { "value": "24px" },
+      "h3": { "value": "18px" },
+      "body": { "value": "16px" },
+      "small": { "value": "14px" },
+      "meta": { "value": "12px" }
+    },
+    "lineHeight": {
+      "h1": { "value": 1.15 },
+      "h2": { "value": 1.2 },
+      "h3": { "value": 1.3 },
+      "body": { "value": 1.55 },
+      "small": { "value": 1.45 },
+      "meta": { "value": 1.35 }
+    },
+    "letterSpacing": {
+      "default": { "value": "0px" }
+    }
+  },
+  "space": {
+    "0": { "value": "0px" },
+    "1": { "value": "4px" },
+    "2": { "value": "8px" },
+    "3": { "value": "12px" },
+    "4": { "value": "16px" },
+    "5": { "value": "20px" },
+    "6": { "value": "24px" },
+    "8": { "value": "32px" },
+    "10": { "value": "40px" },
+    "12": { "value": "48px" },
+    "16": { "value": "64px" }
+  },
+  "radius": {
+    "sm": { "value": "8px" },
+    "md": { "value": "12px" },
+    "lg": { "value": "16px" },
+    "xl": { "value": "20px" },
+    "pill": { "value": "999px" }
+  },
+  "shadow": {
+    "sm": { "value": "0 1px 2px rgba(0,0,0,0.25)" },
+    "md": { "value": "0 8px 24px rgba(0,0,0,0.30)", "comment": "cartes : uniquement au survol ou au focus" }
+  },
+  "size": {
+    "tap": { "minHeight": { "value": "44px" }, "minWidth": { "value": "44px" } },
+    "container": {
+      "maxWidth": { "value": "1120px" },
+      "contentMax": { "value": "72ch" }
+    },
+    "header": { "height": { "value": "64px" }, "comment": "barre .xpr-nav collante de l'espace L'ado-XPR" }
+  },
+  "motion": {
+    "duration": {
+      "fast": { "value": "120ms" },
+      "base": { "value": "180ms" },
+      "slow": { "value": "240ms" }
+    },
+    "easing": {
+      "standard": { "value": "cubic-bezier(0.2, 0.0, 0.0, 1)" }
+    }
+  },
+  "component": {
+    "button": {
+      "height": { "value": "44px" },
+      "radius": { "value": "{radius.pill.value}" },
+      "paddingX": { "value": "{space.4.value}" }
+    },
+    "card": {
+      "radius": { "value": "{radius.lg.value}" },
+      "padding": { "value": "{space.5.value}" },
+      "border": { "value": "{color.border.subtle.value}" }
+    },
+    "chip": {
+      "height": { "value": "36px" },
+      "radius": { "value": "{radius.pill.value}" },
+      "paddingX": { "value": "{space.3.value}" }
+    },
+    "badge": {
+      "radius": { "value": "{radius.pill.value}" },
+      "paddingX": { "value": "{space.2.value}" },
+      "paddingY": { "value": "{space.1.value}" }
+    },
+    "input": {
+      "height": { "value": "44px" },
+      "radius": { "value": "{radius.md.value}" },
+      "paddingX": { "value": "{space.4.value}" }
+    }
+  },
+  "microcopy": {
+    "publieAvecAccord": { "value": "Publié avec accord" },
+    "consentement": { "value": "Consentement et droit à l'image" },
+    "retrait": { "value": "Demander le retrait" },
+    "sources": { "value": "Sources" },
+    "reluPar": { "value": "Relu par" },
+    "misAJourLe": { "value": "Mis à jour le" },
+    "copier": { "value": "Copier" },
+    "exporterPdf": { "value": "Exporter en PDF" }
+  }
+}

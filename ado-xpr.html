@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>L'ado-XPR · Espace jeunes · CEREMAIA Lyon</title>
-    <link rel="stylesheet" href="styles.css?v=4">
+    <link rel="stylesheet" href="styles.css?v=5">
     <style>
         .hero.xpr-hero { padding: clamp(24px, 4.5vw, 44px); }
         .hero.xpr-hero p { margin-bottom: 0; }
@@ -23,7 +23,7 @@
         .sos-line .num { font-family: var(--font-head); font-weight: 700; font-size: 22px; color: var(--turquoise); }
     </style>
 </head>
-<body class="page-v2">
+<body class="page-v2 page-xpr">
     <header>
         <div class="logo-container">
             <img src="images/banniere.png" alt="CEREMAIA Lyon" class="logo">
@@ -43,13 +43,13 @@
 
     <main>
         <!-- Menu interne du mini-site -->
-        <div class="xpr-nav" role="navigation" aria-label="Menu L'ado-XPR">
-            <span class="xpr-brand">L'ado-XPR</span>
+        <nav class="xpr-nav" aria-label="Menu L'ado-XPR">
+            <a class="xpr-brand" href="ado-xpr.html" aria-current="page" aria-label="L'ado-XPR, accueil de l'espace jeunes"><span class="full">L'ado-XPR</span><span class="short" aria-hidden="true">XPR</span></a>
             <a href="parole-ados.html">Récits</a>
             <a href="repondre.html">Répondre</a>
             <a href="comprendre.html">Comprendre</a>
-            <a href="soutien-psy.html">Besoin d'aide</a>
-        </div>
+            <a href="soutien-psy.html">Aide</a>
+        </nav>
 
         <!-- HERO compact -->
         <section class="hero xpr-hero">

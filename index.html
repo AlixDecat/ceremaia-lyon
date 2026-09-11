@@ -4,27 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil · CEREMAIA Lyon</title>
-    <link rel="stylesheet" href="styles.css?v=4">
+    <link rel="stylesheet" href="styles.css?v=5">
     <style>
-        /* Grille des fiches maladies : cartes homogènes */
+        /* Grille des fiches maladies : tuiles homogènes */
         .disease-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: var(--s4);
+            gap: var(--space-4);
         }
         .disease-grid a {
             display: block;
-            background: var(--surface-2);
-            border: 1px solid rgba(180,156,255,.28);
-            border-radius: var(--r-media);
-            padding: var(--s3);
+            background: var(--color-surface-alt);
+            border: 1px solid var(--color-border-default);
+            border-radius: var(--radius-lg);
+            padding: var(--space-3);
             text-align: center;
-            color: var(--white);
-            transition: transform .25s ease, box-shadow .25s ease;
+            color: var(--color-text-primary);
+            transition: transform var(--motion-duration-slow) var(--motion-easing-standard),
+                        box-shadow var(--motion-duration-slow) var(--motion-easing-standard);
         }
-        .disease-grid a:hover { transform: translateY(-6px); box-shadow: var(--glow); text-decoration: none; }
-        .disease-grid img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: var(--r-chip); margin-bottom: var(--s2); }
-        .disease-grid span { font-family: var(--font-head); font-weight: 600; font-size: 15px; }
+        .disease-grid a:hover, .disease-grid a:focus-visible { transform: translateY(-4px); box-shadow: var(--shadow-md); text-decoration: none; }
+        .disease-grid img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: var(--radius-md); margin-bottom: var(--space-2); }
+        .disease-grid span { font-family: var(--font-family-display); font-weight: var(--font-weight-semibold); font-size: var(--font-size-body); }
     </style>
 </head>
 <body class="page-v2">

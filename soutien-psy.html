@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soutien psychologique · CEREMAIA Lyon</title>
-    <link rel="stylesheet" href="styles.css?v=4">
+    <link rel="stylesheet" href="styles.css?v=5">
     <style>
         /* ---------- Page Soutien psy ---------- */
 
         /* Carte 3114 mise en avant */
         .urgence-num {
             display: inline-block;
-            font-family: var(--font-head);
+            font-family: var(--font-family-display);
             font-size: clamp(34px, 6vw, 44px);
-            font-weight: 700;
+            font-weight: var(--font-weight-bold);
             line-height: 1;
-            color: var(--turquoise);
-            margin-bottom: var(--s2);
+            color: var(--color-brand-secondary);
+            margin-bottom: var(--space-2);
         }
-        .urgence-num:hover { color: var(--turquoise); text-decoration: none; opacity: .85; }
+        .urgence-num:hover { color: var(--color-brand-secondary); text-decoration: none; opacity: .85; }
         .feature-card.is-urgence { border-color: rgba(69,227,198,.45); }
 
         /* Barre d'outils de l'annuaire */
@@ -26,76 +26,58 @@
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: var(--s3);
-            margin-bottom: var(--s3);
+            gap: var(--space-3);
+            margin-bottom: var(--space-3);
         }
         .psy-toolbar .searchbar { flex: 1 1 240px; }
-        .chips-filter { display: flex; flex-wrap: wrap; gap: var(--s2); }
-        button.chip {
-            cursor: pointer;
-            font-family: var(--font-body);
-            transition: background .2s ease, color .2s ease;
-        }
-        button.chip:hover { color: var(--white); border-color: var(--indigo); }
-        button.chip[aria-pressed="true"] {
-            color: #0A0922;
-            background: var(--turquoise);
-            border-color: transparent;
-        }
-        .count-line { margin: 0 0 var(--s4); }
+        .count-line { margin: 0 0 var(--space-4); }
 
-        /* Liste des professionnels */
-        .psy-group h3 { margin: var(--s5) 0 var(--s3); }
-        .psy-group h3 .small { font-weight: 500; }
+        /* Liste des professionnels : gabarit carte commun (styles.css) */
+        .psy-group h3 { margin: var(--space-6) 0 var(--space-3); }
+        .psy-group h3 .small { font-weight: var(--font-weight-medium); }
         .psy-list {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: var(--s3);
-        }
-        .psy-item {
-            background: var(--surface-2);
-            border: 1px solid var(--border-soft);
-            border-radius: var(--r-media);
-            padding: var(--s3) var(--s4);
+            gap: var(--space-3);
         }
         .psy-head {
             display: flex;
             flex-wrap: wrap;
             align-items: baseline;
             justify-content: space-between;
-            gap: var(--s1) var(--s3);
+            gap: var(--space-1) var(--space-3);
         }
         .psy-name {
-            font-family: var(--font-head);
-            font-weight: 600;
-            font-size: 15px;
-            color: var(--white);
+            font-family: var(--font-family-display);
+            font-weight: var(--font-weight-semibold);
+            font-size: var(--font-size-body);
+            color: var(--color-text-primary);
         }
-        .psy-name span { font-weight: 500; }
-        .psy-tel { white-space: nowrap; font-weight: 600; font-size: 14px; }
-        .psy-addr { margin: 2px 0 0; font-size: 14px; }
-        .psy-tags { margin: 6px 0 0; font-size: 13px; color: var(--grey-text); }
-        .chip-secteur { font-size: 11px; padding: 3px 10px; color: var(--violet); }
+        .psy-name span { font-weight: var(--font-weight-medium); }
+        .psy-tel { white-space: nowrap; font-weight: var(--font-weight-semibold); font-size: var(--font-size-small); }
+        .psy-addr { margin: 2px 0 0; font-size: var(--font-size-small); line-height: var(--line-height-small); }
+        .psy-tags { margin: 6px 0 0; font-size: var(--font-size-small); line-height: var(--line-height-small); color: var(--color-text-muted); }
+        .chip-secteur { min-height: 24px; font-size: var(--font-size-meta); padding: 0 10px; color: var(--color-accent-violet-soft); }
         [hidden] { display: none !important; }
 
         #psy-empty {
-            background: var(--surface-2);
-            border: 1px dashed var(--border);
-            border-radius: var(--r-media);
-            padding: var(--s5);
+            background: var(--color-surface-alt);
+            border: 1px dashed var(--color-border-default);
+            border-radius: var(--radius-lg);
+            padding: var(--space-6);
             text-align: center;
-            color: var(--grey-light);
-            margin-top: var(--s4);
+            color: var(--color-text-secondary);
+            margin-top: var(--space-4);
         }
 
         @media (max-width: 768px) {
             .psy-list { grid-template-columns: 1fr; }
         }
 
-        /* Impression : annuaire lisible sur papier */
+        /* Export PDF / impression : annuaire lisible sur papier */
         @media print {
             body { background: #fff; color: #000; }
-            header, .hero, footer, .psy-toolbar, .hero-cta { display: none !important; }
+            header, .xpr-nav, .hero, footer, .psy-toolbar, .hero-cta, .trust-block, .cta-band { display: none !important; }
             section { background: #fff; border: none; box-shadow: none; padding: 0; }
             .psy-item { border: 1px solid #bbb; break-inside: avoid; }
             .psy-name, .psy-addr, .psy-tags, p, h2, h3 { color: #000 !important; }
@@ -103,7 +85,7 @@
         }
     </style>
 </head>
-<body class="page-v2">
+<body class="page-v2 page-xpr">
     <header>
         <div class="logo-container">
             <img src="images/banniere.png" alt="CEREMAIA Lyon" class="logo">
@@ -122,13 +104,13 @@
     </header>
 
     <main>
-        <div class="xpr-nav" role="navigation" aria-label="Menu L'ado-XPR">
-            <a href="ado-xpr.html"><span class="xpr-brand" style="padding:0;">L'ado-XPR</span></a>
+        <nav class="xpr-nav" aria-label="Menu L'ado-XPR">
+            <a class="xpr-brand" href="ado-xpr.html" aria-label="L'ado-XPR, accueil de l'espace jeunes"><span class="full">L'ado-XPR</span><span class="short" aria-hidden="true">XPR</span></a>
             <a href="parole-ados.html">Récits</a>
             <a href="repondre.html">Répondre</a>
             <a href="comprendre.html">Comprendre</a>
-            <a href="soutien-psy.html" class="active">Besoin d'aide</a>
-        </div>
+            <a href="soutien-psy.html" class="active" aria-current="page">Aide</a>
+        </nav>
 
         <!-- HERO -->
         <section class="hero">
@@ -142,6 +124,12 @@
                 </div>
             </div>
         </section>
+
+            <dl class="trust-block">
+                <div><dt>Sources</dt><dd><a href="https://monsoutienpsy.ameli.fr/" target="_blank" rel="noopener">Assurance Maladie · Mon soutien psy</a> <span class="sep">·</span> <a href="https://3114.fr/" target="_blank" rel="noopener">3114.fr</a> <span class="sep">·</span> annuaire recensé par l'équipe (janvier 2024)</dd></div>
+                <div><dt>Relu par</dt><dd>Relecture par l'équipe du CEREMAIA Lyon en cours</dd></div>
+                <div><dt>Mis à jour le</dt><dd><time datetime="2026-09-11">11 septembre 2026</time></dd></div>
+            </dl>
 
         <!-- AIDE IMMÉDIATE -->
         <section id="aide-immediate">
@@ -206,7 +194,7 @@
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--grey-text); flex: none;"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
                     <input type="search" id="psy-search" placeholder="Rechercher un nom, une rue, une spécialité…" aria-label="Rechercher dans l'annuaire des psychologues">
                 </div>
-                <div class="chips-filter" role="group" aria-label="Filtrer par arrondissement">
+                <div class="chips-filter" role="group" aria-label="Filtrer par arrondissement (plusieurs choix possibles)">
                     <button type="button" class="chip" data-arr="all" aria-pressed="true">Tous</button>
                     <button type="button" class="chip" data-arr="1" aria-pressed="false">1ᵉʳ</button>
                     <button type="button" class="chip" data-arr="2" aria-pressed="false">2ᵉ</button>
@@ -214,7 +202,9 @@
                     <button type="button" class="chip" data-arr="4" aria-pressed="false">4ᵉ</button>
                     <button type="button" class="chip" data-arr="5" aria-pressed="false">5ᵉ</button>
                     <button type="button" class="chip" data-arr="6" aria-pressed="false">6ᵉ</button>
+                    <button type="button" class="btn btn-ghost" id="psy-reset" hidden>Réinitialiser</button>
                 </div>
+                <button type="button" class="btn btn-secondary" onclick="window.print()">Exporter en PDF</button>
             </div>
             <p class="small count-line" id="psy-count" aria-live="polite"></p>
 
@@ -3273,24 +3263,39 @@
 
     <script src="menu.js?v=2" defer></script>
     <script>
-    /* Filtre de l'annuaire : recherche libre + arrondissement */
+    /* Filtre de l'annuaire : recherche libre + arrondissements (multi-sélection).
+       Le bouton « Réinitialiser » apparaît dès que plus de 3 filtres sont actifs. */
     (function () {
         function norm(s) {
             return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
         }
         var input  = document.getElementById('psy-search');
+        var reset  = document.getElementById('psy-reset');
         var chips  = Array.prototype.slice.call(document.querySelectorAll('.chips-filter .chip'));
         var items  = Array.prototype.slice.call(document.querySelectorAll('.psy-item[data-arr]'));
         var groups = Array.prototype.slice.call(document.querySelectorAll('.psy-group'));
         var count  = document.getElementById('psy-count');
         var empty  = document.getElementById('psy-empty');
-        var arr = 'all';
+        var selected = {};   /* arrondissements cochés */
+
+        function nbSelected() { return Object.keys(selected).length; }
+        function activeFilters() { return nbSelected() + (input.value.trim() ? 1 : 0); }
+
+        function syncChips() {
+            var none = nbSelected() === 0;
+            chips.forEach(function (c) {
+                var a = c.getAttribute('data-arr');
+                c.setAttribute('aria-pressed', a === 'all' ? (none ? 'true' : 'false') : (selected[a] ? 'true' : 'false'));
+            });
+            reset.hidden = activeFilters() <= 3;
+        }
 
         function apply() {
             var q = norm(input.value.trim());
+            var none = nbSelected() === 0;
             var total = 0;
             items.forEach(function (it) {
-                var ok = (arr === 'all' || it.getAttribute('data-arr') === arr) &&
+                var ok = (none || selected[it.getAttribute('data-arr')]) &&
                          (!q || it.getAttribute('data-search').indexOf(q) !== -1);
                 it.hidden = !ok;
                 if (ok) total++;
@@ -3303,15 +3308,23 @@
             });
             count.textContent = total + ' psychologue' + (total > 1 ? 's' : '') + ' affiché' + (total > 1 ? 's' : '');
             empty.hidden = (total !== 0);
+            syncChips();
         }
 
         chips.forEach(function (ch) {
             ch.addEventListener('click', function () {
-                chips.forEach(function (c) { c.setAttribute('aria-pressed', 'false'); });
-                ch.setAttribute('aria-pressed', 'true');
-                arr = ch.getAttribute('data-arr');
+                var a = ch.getAttribute('data-arr');
+                if (a === 'all') { selected = {}; }
+                else if (selected[a]) { delete selected[a]; }
+                else { selected[a] = true; }
                 apply();
             });
+        });
+        reset.addEventListener('click', function () {
+            selected = {};
+            input.value = '';
+            apply();
+            input.focus();
         });
         input.addEventListener('input', apply);
         apply();

@@ -4,69 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ressources par maladie · CEREMAIA Lyon</title>
-    <link rel="stylesheet" href="styles.css?v=4">
+    <link rel="stylesheet" href="styles.css?v=5">
     <style>
         /* ---------- Page Ressources par maladie ---------- */
         .res-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: var(--s4);
+            gap: var(--space-4);
         }
-        .res-card {
-            background: var(--surface-2);
-            border: 1px solid var(--border-soft);
-            border-radius: var(--r-media);
-            padding: var(--s4) var(--s5);
-            transition: transform .25s ease, border-color .25s ease;
-        }
-        .res-card:hover { transform: translateY(-4px); border-color: var(--violet); }
         .res-card h3 {
-            margin: 0 0 var(--s3);
-            font-size: 16px;
-            color: var(--white);
+            margin: 0 0 var(--space-3);
+            font-size: var(--font-size-body);
+            color: var(--color-text-primary);
         }
-        .res-card h3 .small { font-weight: 500; }
-        .res-links { display: flex; flex-wrap: wrap; gap: var(--s2); }
+        .res-card h3 .small { font-weight: var(--font-weight-medium); }
+        .res-links { display: flex; flex-wrap: wrap; gap: var(--space-2); }
         .res-pill {
+            position: relative;
             display: inline-flex;
             align-items: center;
             gap: 5px;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--turquoise);
+            min-height: var(--component-chip-height);
+            font-size: var(--font-size-small);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-brand-secondary);
             background: rgba(69,227,198,.08);
             border: 1px solid rgba(69,227,198,.28);
-            border-radius: var(--r-pill);
-            padding: 5px 12px;
-            transition: background .2s ease, color .2s ease, border-color .2s ease;
+            border-radius: var(--component-chip-radius);
+            padding: 0 var(--component-chip-padding-x);
+            transition: background-color var(--motion-duration-base) var(--motion-easing-standard),
+                        color var(--motion-duration-base) var(--motion-easing-standard),
+                        border-color var(--motion-duration-base) var(--motion-easing-standard);
         }
+        .res-pill::before { content: ""; position: absolute; inset: -4px; border-radius: inherit; }
         .res-pill:hover {
-            color: #0A0922;
-            background: var(--turquoise);
+            color: var(--color-text-inverse);
+            background: var(--color-brand-secondary);
             border-color: transparent;
             text-decoration: none;
         }
         .res-pill.is-fiche {
-            color: #0A0922;
-            background: var(--grad-indigo-violet);
+            color: var(--color-text-inverse);
+            background: var(--gradient-brand);
             border-color: transparent;
         }
-        .res-pill.is-fiche:hover { filter: brightness(1.1); color: #0A0922; }
+        .res-pill.is-fiche:hover { filter: brightness(1.1); color: var(--color-text-inverse); }
 
         /* Légende des types de liens */
         .legende {
-            background: var(--surface-2);
-            border: 1px solid var(--border-soft);
-            border-radius: var(--r-media);
-            padding: var(--s4) var(--s5);
-            font-size: 14px;
-            color: var(--grey-light);
+            background: var(--color-surface-alt);
+            border: 1px solid var(--color-border-subtle);
+            border-radius: var(--radius-lg);
+            padding: var(--space-4) var(--space-5);
+            color: var(--color-text-secondary);
         }
-        .legende p { margin: 0 0 var(--s2); font-size: 14px; }
+        .legende p { margin: 0 0 var(--space-2); font-size: var(--font-size-small); line-height: var(--line-height-small); }
         .legende p:last-child { margin-bottom: 0; }
-        .legende strong { color: var(--turquoise); }
+        .legende strong { color: var(--color-brand-secondary); }
 
-        .note-adultes { margin-top: var(--s5); }
+        .note-adultes { margin-top: var(--space-6); }
     </style>
 </head>
 <body>

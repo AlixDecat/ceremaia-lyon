@@ -4,66 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La parole aux ados · CEREMAIA Lyon</title>
-    <link rel="stylesheet" href="styles.css?v=4">
+    <link rel="stylesheet" href="styles.css?v=5">
     <style>
         /* ---------- Page La parole aux ados ---------- */
 
         /* Citation mise en avant dans le hero */
         .hero p.hero-quote {
-            font-family: var(--font-head);
-            font-weight: 600;
+            font-family: var(--font-family-display);
+            font-weight: var(--font-weight-semibold);
             font-size: clamp(19px, 3vw, 24px);
-            color: var(--white);
-            margin: 0 0 var(--s4);
+            color: var(--color-text-primary);
+            margin: 0 0 var(--space-4);
         }
-        .hero-quote .mark { color: var(--turquoise); }
+        .hero-quote .mark { color: var(--color-brand-secondary); }
 
-        /* Cartes de citation */
+        /* Cartes de citation : gabarit carte commun (styles.css) + guillemet */
         .quote-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: var(--s4);
+            gap: var(--space-4);
         }
-        .quote-card {
-            position: relative;
-            margin: 0;
-            background: var(--surface-2);
-            border: 1px solid rgba(180,156,255,.28);
-            border-radius: var(--r-media);
-            padding: var(--s5);
-            padding-top: 52px;
-            box-shadow: var(--shadow-1);
-            transition: transform .25s ease, border-color .25s ease;
-        }
-        .quote-card:hover { transform: translateY(-4px); border-color: var(--violet); }
+        .quote-card { position: relative; margin: 0; padding-top: 52px; }
         .quote-card::before {
             content: "«";
             position: absolute;
             top: 10px;
-            left: var(--s5);
-            font-family: var(--font-head);
+            left: var(--component-card-padding);
+            font-family: var(--font-family-display);
             font-size: 46px;
-            font-weight: 700;
+            font-weight: var(--font-weight-bold);
             line-height: 1;
-            color: var(--violet);
+            color: var(--color-accent-violet-soft);
         }
         .quote-card blockquote { margin: 0; }
         .quote-card blockquote p {
             margin: 0;
-            color: var(--white);
-            font-size: 16px;
-            font-weight: 500;
+            color: var(--color-text-primary);
+            font-weight: var(--font-weight-medium);
             line-height: 1.6;
         }
-        .quote-card blockquote p + p { margin-top: var(--s3); }
+        .quote-card blockquote p + p { margin-top: var(--space-3); }
         .quote-ctx {
             display: block;
-            margin-top: var(--s3);
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--grey-text);
+            margin-top: var(--space-3);
+            font-size: var(--font-size-small);
+            line-height: var(--line-height-small);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text-muted);
         }
-        .quote-ctx.above { margin: 0 0 var(--s2); }
+        .quote-ctx.above { margin: 0 0 var(--space-2); }
 
         /* Carte plus large pour les longues citations */
         .quote-card.is-wide { grid-column: 1 / -1; }
@@ -72,25 +61,22 @@
         .quote-note {
             display: flex;
             align-items: flex-start;
-            gap: var(--s3);
+            gap: var(--space-3);
             background: rgba(69,227,198,.08);
             border: 1px solid rgba(69,227,198,.30);
-            border-radius: var(--r-media);
-            padding: var(--s4) var(--s5);
-            margin-top: var(--s4);
+            border-radius: var(--radius-lg);
+            padding: var(--space-4) var(--space-5);
+            margin-top: var(--space-4);
         }
-        .quote-note p { margin: 0; color: var(--grey-light); font-size: 15px; }
-        .quote-note .ic { color: var(--turquoise); flex: none; margin-top: 2px; }
-
-        /* Intro de section */
-        .theme-intro { max-width: 70ch; }
+        .quote-note p { margin: 0; color: var(--color-text-secondary); }
+        .quote-note .ic { color: var(--color-brand-secondary); flex: none; margin-top: 2px; }
 
         @media (max-width: 768px) {
             .quote-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
-<body class="page-v2">
+<body class="page-v2 page-xpr">
     <header>
         <div class="logo-container">
             <img src="images/banniere.png" alt="CEREMAIA Lyon" class="logo">
@@ -109,13 +95,13 @@
     </header>
 
     <main>
-        <div class="xpr-nav" role="navigation" aria-label="Menu L'ado-XPR">
-            <a href="ado-xpr.html"><span class="xpr-brand" style="padding:0;">L'ado-XPR</span></a>
-            <a href="parole-ados.html" class="active">Récits</a>
+        <nav class="xpr-nav" aria-label="Menu L'ado-XPR">
+            <a class="xpr-brand" href="ado-xpr.html" aria-label="L'ado-XPR, accueil de l'espace jeunes"><span class="full">L'ado-XPR</span><span class="short" aria-hidden="true">XPR</span></a>
+            <a href="parole-ados.html" class="active" aria-current="page">Récits</a>
             <a href="repondre.html">Répondre</a>
             <a href="comprendre.html">Comprendre</a>
-            <a href="soutien-psy.html">Besoin d'aide</a>
-        </div>
+            <a href="soutien-psy.html">Aide</a>
+        </nav>
 
         <!-- HERO -->
         <section class="hero">
@@ -133,10 +119,10 @@
 
         <!-- BADGES -->
         <div class="trust-row">
+            <span class="badge">Publié avec accord</span>
             <span class="badge">Verbatims d'entretiens</span>
             <span class="badge">Ados &amp; jeunes adultes</span>
             <span class="badge">Paroles anonymes</span>
-            <span class="badge">Publiées avec leur accord</span>
             <span class="badge">Reproduites sans filtre</span>
         </div>
 
@@ -315,6 +301,14 @@
             </div>
         </section>
 
+        <!-- CONSENTEMENT -->
+        <section id="consentement">
+            <span class="eyebrow">Confiance</span>
+            <h2>Consentement et droit à l'image</h2>
+            <p>Les paroles publiées sur cette page ont été recueillies lors d'entretiens menés par l'équipe du CEREMAIA Lyon. Elles sont reproduites anonymement, sans nom, sans âge précis ni détail qui permettrait de reconnaître quelqu'un, et publiées avec l'accord des personnes concernées. Aucune photo ni vidéo n'est diffusée.</p>
+            <p>Tu as témoigné et tu changes d'avis&nbsp;? C'est ton droit, à tout moment et sans justification&nbsp;: écris-nous et la citation sera retirée. <a href="mailto:ceremaia.lyon@chu-lyon.fr?subject=Demande%20de%20retrait%20d%27un%20t%C3%A9moignage">Demander le retrait</a></p>
+        </section>
+
         <!-- CTA TÉMOIGNER -->
         <section class="cta-band" id="temoigner">
             <div>
@@ -323,6 +317,12 @@
             </div>
             <a href="contacts.html" class="btn btn-primary">Nous contacter</a>
         </section>
+
+        <!-- Liens de confiance : toujours en bas de page -->
+        <nav class="page-legal" aria-label="Consentement et retrait">
+            <a href="#consentement">Consentement et droit à l'image</a>
+            <a href="mailto:ceremaia.lyon@chu-lyon.fr?subject=Demande%20de%20retrait%20d%27un%20t%C3%A9moignage">Demander le retrait</a>
+        </nav>
     </main>
 
     <!-- FOOTER -->

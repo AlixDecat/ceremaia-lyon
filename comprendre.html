@@ -4,54 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comprendre · L'ado-XPR · CEREMAIA Lyon</title>
-    <link rel="stylesheet" href="styles.css?v=4">
+    <link rel="stylesheet" href="styles.css?v=5">
     <style>
-        .fiche-pills { display: flex; flex-wrap: wrap; gap: var(--s2); }
+        /* Fiches : chips 36px (zone de clic 44px) */
+        .fiche-pills { display: flex; flex-wrap: wrap; gap: var(--space-2); }
         .fiche-pills a {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--white);
-            background: var(--surface-2);
-            border: 1px solid var(--border);
-            border-radius: var(--r-pill);
-            padding: 7px 14px;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            min-height: var(--component-chip-height);
+            font-size: var(--font-size-small);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text-primary);
+            background: var(--color-surface-alt);
+            border: 1px solid var(--color-border-default);
+            border-radius: var(--component-chip-radius);
+            padding: 0 var(--component-chip-padding-x);
         }
-        .fiche-pills a:hover { border-color: var(--turquoise); color: var(--turquoise); text-decoration: none; }
+        .fiche-pills a::before { content: ""; position: absolute; inset: -4px; border-radius: inherit; }
+        .fiche-pills a:hover { border-color: var(--color-brand-secondary); color: var(--color-brand-secondary); text-decoration: none; }
         .fiable-list { list-style: none; padding: 0; counter-reset: fiable; }
         .fiable-list li {
             counter-increment: fiable;
             display: flex;
-            gap: var(--s4);
+            gap: var(--space-4);
             align-items: baseline;
-            background: var(--surface-2);
-            border: 1px solid var(--border-soft);
-            border-radius: var(--r-media);
-            padding: var(--s3) var(--s4);
-            margin-bottom: var(--s3);
+            background: var(--color-surface-alt);
+            border: 1px solid var(--color-border-subtle);
+            border-radius: var(--radius-lg);
+            padding: var(--space-3) var(--space-4);
+            margin-bottom: var(--space-3);
         }
         .fiable-list li::before {
             content: counter(fiable);
             flex: none;
-            font-family: var(--font-head);
-            font-weight: 700;
-            font-size: 18px;
-            color: #0A0922;
-            background: var(--grad-indigo-violet);
+            font-family: var(--font-family-display);
+            font-weight: var(--font-weight-bold);
+            font-size: var(--font-size-h3);
+            color: var(--color-text-inverse);
+            background: var(--gradient-brand);
             width: 32px; height: 32px;
             display: grid; place-items: center;
-            border-radius: var(--r-pill);
+            border-radius: var(--radius-pill);
         }
-        .ia-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--s4); }
-        .ia-card { border-radius: var(--r-media); padding: var(--s4) var(--s5); border: 1px solid; }
+        .ia-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-4); }
         .ia-card.ok { background: rgba(88,225,166,.07); border-color: rgba(88,225,166,.30); }
         .ia-card.ko { background: rgba(255,157,176,.06); border-color: rgba(255,157,176,.30); }
         .ia-card h3 { margin-top: 0; }
-        .ia-card.ok h3 { color: var(--success); }
-        .ia-card.ko h3 { color: var(--error); }
-        .copy-row { display: flex; flex-wrap: wrap; gap: var(--s3); align-items: center; margin-top: var(--s3); }
+        .ia-card.ok h3 { color: var(--color-state-success); }
+        .ia-card.ko h3 { color: var(--color-state-error); }
+        .copy-row { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; margin-top: var(--space-3); }
     </style>
 </head>
-<body class="page-v2">
+<body class="page-v2 page-xpr">
     <header>
         <div class="logo-container">
             <img src="images/banniere.png" alt="CEREMAIA Lyon" class="logo">
@@ -70,13 +75,13 @@
     </header>
 
     <main>
-        <div class="xpr-nav" role="navigation" aria-label="Menu L'ado-XPR">
-            <a href="ado-xpr.html"><span class="xpr-brand" style="padding:0;">L'ado-XPR</span></a>
+        <nav class="xpr-nav" aria-label="Menu L'ado-XPR">
+            <a class="xpr-brand" href="ado-xpr.html" aria-label="L'ado-XPR, accueil de l'espace jeunes"><span class="full">L'ado-XPR</span><span class="short" aria-hidden="true">XPR</span></a>
             <a href="parole-ados.html">Récits</a>
             <a href="repondre.html">Répondre</a>
-            <a href="comprendre.html" class="active">Comprendre</a>
-            <a href="soutien-psy.html">Besoin d'aide</a>
-        </div>
+            <a href="comprendre.html" class="active" aria-current="page">Comprendre</a>
+            <a href="soutien-psy.html">Aide</a>
+        </nav>
 
         <!-- HERO -->
         <section class="hero">
@@ -90,6 +95,12 @@
                 </div>
             </div>
         </section>
+
+            <dl class="trust-block">
+                <div><dt>Sources</dt><dd><a href="https://www.has-sante.fr/" target="_blank" rel="noopener">PNDS (HAS)</a> <span class="sep">·</span> <a href="https://www.orpha.net/fr" target="_blank" rel="noopener">Orphanet</a> <span class="sep">·</span> <a href="https://www.fai2r.org/les-pathologies-rares/" target="_blank" rel="noopener">FAI2R</a></dd></div>
+                <div><dt>Relu par</dt><dd>Version 1, relecture par l'équipe du CEREMAIA Lyon en cours</dd></div>
+                <div><dt>Mis à jour le</dt><dd><time datetime="2026-09-11">11 septembre 2026</time></dd></div>
+            </dl>
 
         <!-- FICHES -->
         <section id="fiches">
@@ -161,7 +172,7 @@
             <h4>Un prompt qui marche, à copier-coller</h4>
             <div class="prompt-box" id="prompt-ia">Explique-moi simplement, comme à un lycéen, ce qu'est [ma maladie / ce terme]. Appuie-toi sur des sources officielles françaises (HAS, Orphanet, FAI2R) et cite-les. Ne me donne aucun conseil de traitement : pour ça, je vois mon médecin.</div>
             <div class="copy-row">
-                <button type="button" class="btn btn-secondary" id="copy-btn">Copier le prompt</button>
+                <button type="button" class="btn btn-secondary" id="copy-btn" aria-label="Copier le prompt">Copier</button>
                 <span class="small" id="copy-ok" hidden>Copié ✓</span>
             </div>
             <p style="margin-top: var(--s4);"><strong>La règle d'or&nbsp;:</strong> ce que dit une IA se vérifie toujours avec ton médecin. Toujours.</p>
