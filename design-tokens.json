@@ -156,7 +156,6 @@
     "retrait": { "value": "Demander le retrait" },
     "sources": { "value": "Sources" },
     "reluPar": { "value": "Relu par" },
-    "misAJourLe": { "value": "Mis à jour le" },
     "copier": { "value": "Copier" },
     "exporterPdf": { "value": "Exporter en PDF" }
   }
