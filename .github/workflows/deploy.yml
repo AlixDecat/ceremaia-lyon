@@ -1,0 +1,55 @@
+# ============================================================
+# Déploiement automatique du site sur l'hébergement mutualisé OVH
+#
+# Se déclenche à chaque mise à jour de la branche `main`
+# (ou manuellement depuis l'onglet Actions → "Run workflow").
+#
+# Prérequis : 3 secrets à créer dans le dépôt GitHub
+# (Settings → Secrets and variables → Actions) :
+#   - OVH_FTP_SERVER    ex. ftp.cluster0XX.hosting.ovh.net
+#   - OVH_FTP_USERNAME  identifiant FTP OVH
+#   - OVH_FTP_PASSWORD  mot de passe FTP OVH
+# Voir DEPLOIEMENT.md pour le pas-à-pas complet.
+# ============================================================
+name: Déploiement OVH
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Un seul déploiement à la fois : si deux commits arrivent coup
+# sur coup, le second attend la fin du premier.
+concurrency:
+  group: deploy-ovh
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Publier le site sur OVH
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Synchroniser les fichiers vers OVH (FTPS)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.OVH_FTP_SERVER }}
+          username: ${{ secrets.OVH_FTP_USERNAME }}
+          password: ${{ secrets.OVH_FTP_PASSWORD }}
+          protocol: ftps
+          # Racine web sur l'hébergement mutualisé OVH. Si votre
+          # utilisateur FTP arrive directement dans le dossier du
+          # site, remplacez par "./".
+          server-dir: www/
+          # Seuls les fichiers modifiés sont retransférés (un état
+          # de synchronisation est conservé sur le serveur).
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            .nojekyll
+            design-tokens.json
+            DEPLOIEMENT.md
+            README.md
