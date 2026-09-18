@@ -12,18 +12,18 @@
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: var(--s3);
+            gap: var(--space-3);
             background: rgba(69,227,198,.08);
             border: 1px solid rgba(69,227,198,.30);
-            border-radius: var(--r-media);
-            padding: var(--s3) var(--s5);
-            margin: var(--s4) 0 var(--s5);
+            border-radius: var(--radius-lg);
+            padding: var(--space-3) var(--space-6);
+            margin: var(--space-4) 0 var(--space-6);
         }
-        .sos-line p { margin: 0; color: var(--white); font-weight: 600; }
-        .sos-line .num { font-family: var(--font-head); font-weight: 700; font-size: 22px; color: var(--turquoise); }
+        .sos-line p { margin: 0; color: var(--color-text-primary); font-weight: 600; }
+        .sos-line .num { font-family: var(--font-family-display); font-weight: 700; font-size: var(--font-size-h2); color: var(--color-brand-secondary); }
     </style>
 </head>
-<body class="page-v2 page-xpr">
+<body>
     <header>
         <div class="logo-container">
             <img src="images/banniere.png" alt="CEREMAIA Lyon" class="logo">
@@ -61,40 +61,44 @@
         </section>
 
         <!-- LES 4 ENTRÉES -->
-        <div class="xpr-tiles">
-            <a class="xpr-tile t-violet" href="parole-ados.html">
-                <div class="ic" aria-hidden="true">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                </div>
-                <h3>Récits</h3>
-                <p>Ce que d'autres ados vivent avec leur maladie : leurs mots, sans filtre, recueillis en entretien.</p>
-                <span class="go">Lire leurs mots →</span>
-            </a>
-            <a class="xpr-tile t-warm" href="repondre.html">
-                <div class="ic" aria-hidden="true">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg>
-                </div>
-                <h3>Répondre</h3>
-                <p>«&nbsp;T'as pas l'air malade&nbsp;»… Des répliques prêtes à l'emploi, et ta maladie expliquée en une page pour l'école ou le taf.</p>
-                <span class="go">Trouver les mots →</span>
-            </a>
-            <a class="xpr-tile t-indigo" href="comprendre.html">
-                <div class="ic" aria-hidden="true">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-                </div>
-                <h3>Comprendre</h3>
-                <p>Ta maladie expliquée avec des sources fiables, et le mode d'emploi pour utiliser l'IA sans te faire avoir.</p>
-                <span class="go">Vérifier les infos →</span>
-            </a>
-            <a class="xpr-tile" href="soutien-psy.html">
-                <div class="ic" aria-hidden="true">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 3 5 6.5 5 9 5 12 8 12 8s3-3 5.5-3C21 5 23.5 8.5 21.5 12.5 19 16.65 12 21 12 21z"/></svg>
-                </div>
-                <h3>Besoin d'aide</h3>
-                <p>Psys à Lyon, numéros qui répondent 24h/24, séances remboursées. Des ressources et des contacts, pas une consultation.</p>
-                <span class="go">Trouver du soutien →</span>
-            </a>
-        </div>
+        <section>
+            <span class="eyebrow">Ton espace</span>
+            <h2>Quatre entrées</h2>
+            <div class="xpr-tiles">
+                <a class="xpr-tile t-violet" href="parole-ados.html">
+                    <div class="ic" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <h3>Récits</h3>
+                    <p>Ce que d'autres ados vivent avec leur maladie : leurs mots, sans filtre, recueillis en entretien.</p>
+                    <span class="go">Lire leurs mots →</span>
+                </a>
+                <a class="xpr-tile t-warm" href="repondre.html">
+                    <div class="ic" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg>
+                    </div>
+                    <h3>Répondre</h3>
+                    <p>«&nbsp;T'as pas l'air malade&nbsp;»… Des répliques prêtes à l'emploi, et ta maladie expliquée en une page pour l'école ou le taf.</p>
+                    <span class="go">Trouver les mots →</span>
+                </a>
+                <a class="xpr-tile t-indigo" href="comprendre.html">
+                    <div class="ic" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+                    </div>
+                    <h3>Comprendre</h3>
+                    <p>Ta maladie expliquée avec des sources fiables, et le mode d'emploi pour utiliser l'IA sans te faire avoir.</p>
+                    <span class="go">Vérifier les infos →</span>
+                </a>
+                <a class="xpr-tile" href="soutien-psy.html">
+                    <div class="ic" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 3 5 6.5 5 9 5 12 8 12 8s3-3 5.5-3C21 5 23.5 8.5 21.5 12.5 19 16.65 12 21 12 21z"/></svg>
+                    </div>
+                    <h3>Besoin d'aide</h3>
+                    <p>Psys à Lyon, numéros qui répondent 24h/24, séances remboursées. Des ressources et des contacts, pas une consultation.</p>
+                    <span class="go">Trouver du soutien →</span>
+                </a>
+            </div>
+        </section>
 
         <!-- SOS -->
         <div class="sos-line">
@@ -128,11 +132,11 @@
     <footer class="site-footer">
         <div class="footer-grid">
             <div class="footer-brand">
-                <h4>CEREMAIA Lyon</h4>
+                <h2>CEREMAIA Lyon</h2>
                 <p>Centre de Référence des Maladies Auto-Inflammatoires et de l'Amylose inflammatoire. Filière FAI2R · Réseau ERN RITA.</p>
             </div>
             <div>
-                <h4>Naviguer</h4>
+                <h2>Naviguer</h2>
                 <ul>
                     <li><a href="about.html">À propos</a></li>
                     <li><a href="maladies.html">Les maladies</a></li>
@@ -142,7 +146,7 @@
                 </ul>
             </div>
             <div>
-                <h4>Contact</h4>
+                <h2>Contact</h2>
                 <ul>
                     <li>Hôpital de la Croix-Rousse, Lyon</li>
                     <li>04 26 73 26 36</li>
@@ -150,7 +154,7 @@
                 </ul>
             </div>
         </div>
-        <p class="footer-urgence"><strong>En cas d'urgence, appelez le 15 (Samu) ou le 112.</strong> &nbsp;·&nbsp; © 2024 CEREMAIA. Tous droits réservés.</p>
+        <p class="footer-urgence"><strong>En cas d'urgence, appelez le 15 (Samu) ou le 112.</strong> &nbsp;·&nbsp; © 2024-2026 CEREMAIA. Tous droits réservés.</p>
     </footer>
 
     <script src="menu.js?v=2" defer></script>

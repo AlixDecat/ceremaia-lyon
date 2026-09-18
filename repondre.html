@@ -6,7 +6,7 @@
     <title>Répondre · L'ado-XPR · CEREMAIA Lyon</title>
     <link rel="stylesheet" href="styles.css?v=5">
 </head>
-<body class="page-v2 print-onepage page-xpr">
+<body class="print-onepage">
     <header>
         <div class="logo-container">
             <img src="images/banniere.png" alt="CEREMAIA Lyon" class="logo">
@@ -101,28 +101,28 @@
             <div class="onepage" id="fiche-onepage">
                 <h3>Ma maladie en une page</h3>
                 <div class="field">
-                    <span class="label">Ma maladie</span>
-                    <span contenteditable="true" data-placeholder="Ex. : fièvre méditerranéenne familiale (FMF)"></span>
+                    <span class="label" id="lbl-maladie">Ma maladie</span>
+                    <span contenteditable="true" role="textbox" aria-labelledby="lbl-maladie" data-placeholder="Ex. : fièvre méditerranéenne familiale (FMF)"></span>
                 </div>
                 <div class="field">
-                    <span class="label">C'est quoi, en deux phrases</span>
-                    <span contenteditable="true" data-placeholder="Ex. : une maladie inflammatoire chronique, qui évolue par crises. Elle n'est pas contagieuse."></span>
+                    <span class="label" id="lbl-description">C'est quoi, en deux phrases</span>
+                    <span contenteditable="true" role="textbox" aria-labelledby="lbl-description" data-placeholder="Ex. : une maladie inflammatoire chronique, qui évolue par crises. Elle n'est pas contagieuse."></span>
                 </div>
                 <div class="field">
-                    <span class="label">Au quotidien, ça peut donner</span>
-                    <span contenteditable="true" data-placeholder="Ex. : de la fatigue, des douleurs, des absences imprévues pendant les crises…"></span>
+                    <span class="label" id="lbl-quotidien">Au quotidien, ça peut donner</span>
+                    <span contenteditable="true" role="textbox" aria-labelledby="lbl-quotidien" data-placeholder="Ex. : de la fatigue, des douleurs, des absences imprévues pendant les crises…"></span>
                 </div>
                 <div class="field">
-                    <span class="label">Ce qui m'aide</span>
-                    <span contenteditable="true" data-placeholder="Ex. : pouvoir m'asseoir, sortir 5 minutes, rattraper les cours plus tard…"></span>
+                    <span class="label" id="lbl-aide">Ce qui m'aide</span>
+                    <span contenteditable="true" role="textbox" aria-labelledby="lbl-aide" data-placeholder="Ex. : pouvoir m'asseoir, sortir 5 minutes, rattraper les cours plus tard…"></span>
                 </div>
                 <div class="field">
-                    <span class="label">En cas de crise</span>
-                    <span contenteditable="true" data-placeholder="Ex. : me laisser au calme, prévenir mes parents, appeler le 15 si…"></span>
+                    <span class="label" id="lbl-crise">En cas de crise</span>
+                    <span contenteditable="true" role="textbox" aria-labelledby="lbl-crise" data-placeholder="Ex. : me laisser au calme, prévenir mes parents, appeler le 15 si…"></span>
                 </div>
                 <div class="field">
-                    <span class="label">Personne à prévenir</span>
-                    <span contenteditable="true" data-placeholder="Ex. : parent (06…) · service de suivi : CEREMAIA Lyon, 04 26 73 26 36"></span>
+                    <span class="label" id="lbl-personne">Personne à prévenir</span>
+                    <span contenteditable="true" role="textbox" aria-labelledby="lbl-personne" data-placeholder="Ex. : parent (06…) · service de suivi : CEREMAIA Lyon, 04 26 73 26 36"></span>
                 </div>
                 <p class="small" style="margin: 0;">Fiche préparée avec l'équipe du CEREMAIA Lyon · ceremaia.lyon@chu-lyon.fr</p>
             </div>
@@ -158,11 +158,11 @@
     <footer class="site-footer">
         <div class="footer-grid">
             <div class="footer-brand">
-                <h4>CEREMAIA Lyon</h4>
+                <h2>CEREMAIA Lyon</h2>
                 <p>Centre de Référence des Maladies Auto-Inflammatoires et de l'Amylose inflammatoire. Filière FAI2R · Réseau ERN RITA.</p>
             </div>
             <div>
-                <h4>Naviguer</h4>
+                <h2>Naviguer</h2>
                 <ul>
                     <li><a href="about.html">À propos</a></li>
                     <li><a href="maladies.html">Les maladies</a></li>
@@ -172,7 +172,7 @@
                 </ul>
             </div>
             <div>
-                <h4>Contact</h4>
+                <h2>Contact</h2>
                 <ul>
                     <li>Hôpital de la Croix-Rousse, Lyon</li>
                     <li>04 26 73 26 36</li>
@@ -180,7 +180,7 @@
                 </ul>
             </div>
         </div>
-        <p class="footer-urgence"><strong>En cas d'urgence, appelez le 15 (Samu) ou le 112.</strong> &nbsp;·&nbsp; © 2024 CEREMAIA. Tous droits réservés.</p>
+        <p class="footer-urgence"><strong>En cas d'urgence, appelez le 15 (Samu) ou le 112.</strong> &nbsp;·&nbsp; © 2024-2026 CEREMAIA. Tous droits réservés.</p>
     </footer>
 
     <script src="menu.js?v=2" defer></script>

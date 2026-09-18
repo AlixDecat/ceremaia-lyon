@@ -56,7 +56,7 @@
         .copy-row { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; margin-top: var(--space-3); }
     </style>
 </head>
-<body class="page-v2 page-xpr">
+<body>
     <header>
         <div class="logo-container">
             <img src="images/banniere.png" alt="CEREMAIA Lyon" class="logo">
@@ -120,7 +120,7 @@
                 <a href="pericardites.html">Péricardites</a>
                 <a href="autres.html">Autres maladies</a>
             </div>
-            <p style="margin: var(--s5) 0 0;">Pour aller plus loin, maladie par maladie (PNDS, associations, podcasts)&nbsp;: <a href="ressources.html"><strong>Ressources par maladie →</strong></a></p>
+            <p style="margin: var(--space-6) 0 0;">Pour aller plus loin, maladie par maladie (PNDS, associations, podcasts)&nbsp;: <a href="ressources.html"><strong>Ressources par maladie →</strong></a></p>
         </section>
 
         <!-- INFO FIABLE -->
@@ -172,9 +172,9 @@
             <div class="prompt-box" id="prompt-ia">Explique-moi simplement, comme à un lycéen, ce qu'est [ma maladie / ce terme]. Appuie-toi sur des sources officielles françaises (HAS, Orphanet, FAI2R) et cite-les. Ne me donne aucun conseil de traitement : pour ça, je vois mon médecin.</div>
             <div class="copy-row">
                 <button type="button" class="btn btn-secondary" id="copy-btn" aria-label="Copier le prompt">Copier</button>
-                <span class="small" id="copy-ok" hidden>Copié ✓</span>
+                <span class="small" id="copy-ok" role="status"></span>
             </div>
-            <p style="margin-top: var(--s4);"><strong>La règle d'or&nbsp;:</strong> ce que dit une IA se vérifie toujours avec ton médecin. Toujours.</p>
+            <p style="margin-top: var(--space-4);"><strong>La règle d'or&nbsp;:</strong> ce que dit une IA se vérifie toujours avec ton médecin. Toujours.</p>
         </section>
 
         <!-- CTA -->
@@ -191,11 +191,11 @@
     <footer class="site-footer">
         <div class="footer-grid">
             <div class="footer-brand">
-                <h4>CEREMAIA Lyon</h4>
+                <h2>CEREMAIA Lyon</h2>
                 <p>Centre de Référence des Maladies Auto-Inflammatoires et de l'Amylose inflammatoire. Filière FAI2R · Réseau ERN RITA.</p>
             </div>
             <div>
-                <h4>Naviguer</h4>
+                <h2>Naviguer</h2>
                 <ul>
                     <li><a href="about.html">À propos</a></li>
                     <li><a href="maladies.html">Les maladies</a></li>
@@ -205,7 +205,7 @@
                 </ul>
             </div>
             <div>
-                <h4>Contact</h4>
+                <h2>Contact</h2>
                 <ul>
                     <li>Hôpital de la Croix-Rousse, Lyon</li>
                     <li>04 26 73 26 36</li>
@@ -213,7 +213,7 @@
                 </ul>
             </div>
         </div>
-        <p class="footer-urgence"><strong>En cas d'urgence, appelez le 15 (Samu) ou le 112.</strong> &nbsp;·&nbsp; © 2024 CEREMAIA. Tous droits réservés.</p>
+        <p class="footer-urgence"><strong>En cas d'urgence, appelez le 15 (Samu) ou le 112.</strong> &nbsp;·&nbsp; © 2024-2026 CEREMAIA. Tous droits réservés.</p>
     </footer>
 
     <script src="menu.js?v=2" defer></script>
@@ -224,7 +224,7 @@
         if (!btn) return;
         btn.addEventListener('click', function () {
             var text = document.getElementById('prompt-ia').textContent;
-            function done() { ok.hidden = false; setTimeout(function () { ok.hidden = true; }, 2500); }
+            function done() { ok.textContent = 'Copié ✓'; setTimeout(function () { ok.textContent = ''; }, 2500); }
             function fallback() {
                 var r = document.createRange();
                 r.selectNodeContents(document.getElementById('prompt-ia'));

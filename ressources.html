@@ -9,7 +9,7 @@
         /* ---------- Page Ressources par maladie ---------- */
         .res-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
             gap: var(--space-4);
         }
         .res-card h3 {
@@ -23,7 +23,7 @@
             position: relative;
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
             min-height: var(--component-chip-height);
             font-size: var(--font-size-small);
             font-weight: var(--font-weight-semibold);
@@ -86,7 +86,7 @@
         <p class="breadcrumb"><a href="maladies.html">← Les maladies</a></p>
 
         <section>
-            <h2>Ressources par maladie</h2>
+            <h1>Ressources par maladie</h1>
             <div class="chips-row"><span class="chip">Documents officiels</span><span class="chip">Associations</span><span class="chip">Podcasts</span></div>
             <p>Pour chaque maladie suivie au CEREMAIA, voici les ressources fiables sélectionnées par notre équipe&nbsp;: protocoles nationaux, fiches d'information, associations de patients et podcasts. Tous les liens ont été vérifiés en septembre 2026.</p>
             <div class="legende">
@@ -122,7 +122,7 @@
                     <div class="res-links">
                         <a class="res-pill is-fiche" href="still.html">Notre fiche</a>
                         <a class="res-pill" href="https://www.has-sante.fr/upload/docs/application/pdf/2024-02/pnds_aji_decembre_2023_vf.pdf" target="_blank" rel="noopener">PNDS AJI (PDF)</a>
-                        <a class="res-pill" href="https://www.ajiados.org/informations/vie-quotidienne/sexualite/" target="_blank" rel="noopener">AJIados · vie quotidienne</a>
+                        <a class="res-pill" href="https://www.ajiados.org/informations/vie-quotidienne/" target="_blank" rel="noopener">AJIados · vie quotidienne</a>
                         <a class="res-pill" href="https://www.resrip.fr/les-maladies" target="_blank" rel="noopener">RESRIP</a>
                     </div>
                 </article>
@@ -185,7 +185,7 @@
                     <h3>Syndrome ROSAH</h3>
                     <div class="res-links">
                         <a class="res-pill is-fiche" href="rosah.html">Notre fiche</a>
-                        <a class="res-pill" href="https://www.orpha.net/en/disease/detail/313800" target="_blank" rel="noopener">Orphanet</a>
+                        <a class="res-pill" href="https://www.orpha.net/fr/disease/detail/313800" target="_blank" rel="noopener">Orphanet</a>
                         <a class="res-pill" href="https://www.sfo-online.fr/media/rosah-syndrome-uveite-ou-pseudo-uveite-evolution-de-langiographie-retinienne-au-cours-du" target="_blank" rel="noopener">SFO (ophtalmologie)</a>
                     </div>
                 </article>
@@ -229,7 +229,7 @@
                     <h3>Syndrome DIRA</h3>
                     <div class="res-links">
                         <a class="res-pill is-fiche" href="dira.html">Notre fiche</a>
-                        <a class="res-pill" href="https://www.fai2r.org/les-pathologies-rares/ditra/generalites/" target="_blank" rel="noopener">FAI2R</a>
+                        <a class="res-pill" href="https://www.orpha.net/fr/disease/detail/210115" target="_blank" rel="noopener">Fiche Orphanet — DIRA</a>
                     </div>
                 </article>
 
@@ -270,27 +270,27 @@
                 <div class="feature-card">
                     <h3>FAI2R · Les pathologies rares</h3>
                     <p>L'index de toutes les maladies de la filière, avec pour chacune généralités, prise en charge et actualités.</p>
-                    <p style="margin: var(--s3) 0 0;"><a href="https://www.fai2r.org/les-pathologies-rares/" target="_blank" rel="noopener">Consulter →</a></p>
+                    <p style="margin: var(--space-3) 0 0;"><a href="https://www.fai2r.org/les-pathologies-rares/" target="_blank" rel="noopener">Consulter FAI2R →</a></p>
                 </div>
                 <div class="feature-card">
                     <h3>FAI2R · Vie quotidienne</h3>
                     <p>Scolarité, travail, voyages, droits, vaccins… les conseils pratiques de la filière pour vivre avec sa maladie, et la rubrique «&nbsp;Ma maladie&nbsp;».</p>
-                    <p style="margin: var(--s3) 0 0;"><a href="https://www.fai2r.org/vie-quotidienne/" target="_blank" rel="noopener">Vie quotidienne →</a> &nbsp;·&nbsp; <a href="https://www.fai2r.org/vie-quotidienne/ma-maladie/" target="_blank" rel="noopener">Ma maladie →</a></p>
+                    <p style="margin: var(--space-3) 0 0;"><a href="https://www.fai2r.org/vie-quotidienne/" target="_blank" rel="noopener">Vie quotidienne →</a> &nbsp;·&nbsp; <a href="https://www.fai2r.org/vie-quotidienne/ma-maladie/" target="_blank" rel="noopener">Ma maladie →</a></p>
                 </div>
                 <div class="feature-card">
                     <h3>Mon ETP</h3>
                     <p>Trouver un programme d'éducation thérapeutique du patient (ETP) près de chez soi, pour mieux comprendre et gérer sa maladie.</p>
-                    <p style="margin: var(--s3) 0 0;"><a href="https://www.mon-etp.fr/" target="_blank" rel="noopener">Consulter →</a></p>
+                    <p style="margin: var(--space-3) 0 0;"><a href="https://www.mon-etp.fr/" target="_blank" rel="noopener">Trouver un programme ETP →</a></p>
                 </div>
                 <div class="feature-card">
                     <h3>Mapatho</h3>
                     <p>Annuaire collaboratif pour trouver des soignants connaissant sa pathologie, recommandés par d'autres patients.</p>
-                    <p style="margin: var(--s3) 0 0;"><a href="https://www.mapatho.com/" target="_blank" rel="noopener">Consulter →</a></p>
+                    <p style="margin: var(--space-3) 0 0;"><a href="https://www.mapatho.com/" target="_blank" rel="noopener">Ouvrir Mapatho →</a></p>
                 </div>
                 <div class="feature-card">
                     <h3>Documents patients du CEREMAIA</h3>
                     <p>Les documents d'information rédigés par le CEREMAIA pour la FMF, le DADA2, la maladie de Still, l'amylose, l'uvéite et les CAPS.</p>
-                    <p style="margin: var(--s3) 0 0;"><a href="https://ceremaia.fr/patients_informations.php" target="_blank" rel="noopener">Consulter →</a></p>
+                    <p style="margin: var(--space-3) 0 0;"><a href="https://ceremaia.fr/patients_informations.php" target="_blank" rel="noopener">Voir les documents patients →</a></p>
                 </div>
             </div>
         </section>
@@ -306,11 +306,11 @@
     <footer class="site-footer">
         <div class="footer-grid">
             <div class="footer-brand">
-                <h4>CEREMAIA Lyon</h4>
+                <h2>CEREMAIA Lyon</h2>
                 <p>Centre de Référence des Maladies Auto-Inflammatoires et de l'Amylose inflammatoire. Filière FAI2R · Réseau ERN RITA.</p>
             </div>
             <div>
-                <h4>Naviguer</h4>
+                <h2>Naviguer</h2>
                 <ul>
                     <li><a href="about.html">À propos</a></li>
                     <li><a href="maladies.html">Les maladies</a></li>
@@ -320,7 +320,7 @@
                 </ul>
             </div>
             <div>
-                <h4>Contact</h4>
+                <h2>Contact</h2>
                 <ul>
                     <li>Hôpital de la Croix-Rousse, Lyon</li>
                     <li>04 26 73 26 36</li>
@@ -328,7 +328,7 @@
                 </ul>
             </div>
         </div>
-        <p class="footer-urgence"><strong>En cas d'urgence, appelez le 15 (Samu) ou le 112.</strong> &nbsp;·&nbsp; © 2024 CEREMAIA. Tous droits réservés.</p>
+        <p class="footer-urgence"><strong>En cas d'urgence, appelez le 15 (Samu) ou le 112.</strong> &nbsp;·&nbsp; © 2024-2026 CEREMAIA. Tous droits réservés.</p>
     </footer>
     <script src="menu.js?v=2" defer></script>
 </body>

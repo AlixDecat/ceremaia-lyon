@@ -125,6 +125,7 @@
     --grad-indigo-violet: var(--gradient-brand);
     --grad-night-turq:    linear-gradient(135deg, #0A0922 0%, #45E3C6 140%);
     --s1: var(--space-1); --s2: var(--space-2); --s3: var(--space-3);
+    /* --s5/--s6 : décalage volontaire, ne suivent pas la numérotation --space-* (conservé pour les pages v1) */
     --s4: var(--space-4); --s5: var(--space-6); --s6: var(--space-8);
     --r-chip:  var(--radius-md);
     --r-media: var(--radius-lg);
@@ -241,9 +242,10 @@ header .logo {
 .logo-container {
     text-align: center;
     margin: 0 auto var(--space-3);
-    max-width: var(--size-container-max);
+    max-width: calc(var(--size-container-max) - 2 * var(--space-4));   /* = largeur des cartes de <main> */
 }
 .logo-container img {
+    display: block;
     width: 100%;
     border-radius: var(--radius-lg);
 }
@@ -330,12 +332,18 @@ section {
     border: 1px solid var(--color-border-subtle);
 }
 
+section > h1,
+.section-content h1,
+main > h1,
 section h2 {
     color: var(--color-text-primary);
     padding-bottom: var(--space-3);
     margin: 0 0 var(--space-6);
     position: relative;
 }
+section > h1::after,
+.section-content h1::after,
+main > h1::after,
 section h2::after {
     content: "";
     position: absolute;
@@ -373,7 +381,7 @@ section h2::after {
     border-color: var(--color-accent-violet-soft);
     transform: translateY(-4px);
 }
-.maladie h4 { margin-top: 0; }
+.maladie h3 { margin-top: 0; color: var(--color-brand-secondary); font-size: var(--font-size-body); }
 
 /* ---------- Grille de fiches (tuiles média) ---------- */
 .grid-container {
@@ -538,7 +546,6 @@ button.chip[aria-pressed="true"], a.chip[aria-current="true"] {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: var(--space-3) var(--space-6);
     margin: 0 0 var(--space-6);
-    padding: var(--space-4) var(--space-5);
 }
 .trust-block > div { margin: 0; }
 .trust-block dt {
@@ -658,12 +665,11 @@ footer p { margin: 0; color: var(--color-text-muted); }
 
     /* Empile les blocs image + texte */
     .section-with-image { flex-direction: column !important; }
-    .section-content { margin-right: 0 !important; }
     .section-image { flex: 1 1 auto !important; text-align: center !important; margin-top: var(--space-4); }
     .section-image img { max-width: 320px; }
 
     /* Texte confortable, sans justification qui crée des trous sur petit écran */
-    .section-content { text-align: left !important; }
+    .section-content { margin-right: 0 !important; text-align: left !important; }
 }
 
 /* --- Petit téléphone (≤ 430px) --- */
@@ -733,10 +739,6 @@ footer p { margin: 0; color: var(--color-text-muted); }
     max-width: 60ch;
 }
 .hero-cta { display: flex; flex-wrap: wrap; gap: var(--space-3); }
-.hero .btn-primary { background: var(--gradient-brand); color: var(--color-text-inverse); }
-.hero .btn-primary:hover { filter: brightness(1.1); }
-.hero .btn-secondary { border-color: var(--color-brand-primary); color: var(--color-text-primary); }
-.hero .btn-secondary:hover { background: rgba(124,131,255,.16); color: var(--color-text-primary); }
 
 /* Bandeau de badges confiance */
 .trust-row {
@@ -770,7 +772,6 @@ footer p { margin: 0; color: var(--color-text-muted); }
     gap: var(--space-4);
 }
 .tm-card { text-align: center; }
-.tm-card:hover { border-color: var(--color-brand-primary); }
 .tm-card img {
     width: 96px; height: 96px;
     object-fit: cover;
@@ -813,7 +814,7 @@ footer p { margin: 0; color: var(--color-text-muted); }
     grid-template-columns: 1.4fr 1fr 1fr;
     gap: var(--space-6);
 }
-.site-footer h4 { color: var(--color-text-primary); margin: 0 0 var(--space-3); font-size: var(--font-size-small); letter-spacing: .04em; }
+.site-footer h2 { color: var(--color-text-primary); margin: 0 0 var(--space-3); font-size: var(--font-size-small); letter-spacing: .04em; }
 .site-footer ul { list-style: none; padding: 0; margin: 0; }
 .site-footer li { margin-bottom: var(--space-2); }
 .site-footer a { color: var(--color-text-secondary); }
@@ -1078,23 +1079,4 @@ a.xpr-tile:hover { text-decoration: none; }
     line-height: 1.6;
     color: var(--color-text-primary);
     white-space: pre-wrap;
-}
-
-/* ============================================================
-   BANNIÈRE D'EN-TÊTE · alignement unifié (correctif)
-   Bat les vieux overrides locaux des pages (spécificité) :
-   bannière centrée, bords alignés sur les cartes du contenu.
-   ============================================================ */
-header .logo-container {
-    max-width: calc(var(--size-container-max) - 2 * var(--space-4));   /* = largeur des cartes de <main> */
-    margin: 0 auto var(--space-3);
-    text-align: center;
-}
-header .logo-container img {
-    display: block;
-    width: 100%;
-    border-radius: var(--radius-lg);
-}
-@media (max-width: 768px) {
-    header .logo-container img { border-radius: var(--radius-md); }
 }
