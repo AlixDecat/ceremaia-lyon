@@ -1,0 +1,48 @@
+# ============================================================
+# Préproduction : publication du site sur GitHub Pages
+#
+# Lien de relecture en attendant / en parallèle de l'hébergement
+# OVH (déployé par deploy.yml). Se met à jour à chaque push sur
+# `main`, ou manuellement (Actions → Run workflow).
+# Aucun secret nécessaire.
+# ============================================================
+name: Préproduction GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Publier la préproduction
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Configurer GitHub Pages (activation automatique)
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Empaqueter le site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Déployer
+        id: deployment
+        uses: actions/deploy-pages@v4
