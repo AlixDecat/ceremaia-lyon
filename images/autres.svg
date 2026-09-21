@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img">
+<defs>
+  <linearGradient id="hexg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#7C83FF"/>
+    <stop offset="1" stop-color="#45E3C6"/>
+  </linearGradient>
+  <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+    <stop offset="0" stop-color="#7C83FF" stop-opacity="0.20"/>
+    <stop offset="1" stop-color="#7C83FF" stop-opacity="0"/>
+  </radialGradient>
+  <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur stdDeviation="2.6" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+<rect width="200" height="200" fill="#14122E"/>
+<circle cx="100" cy="100" r="86" fill="url(#halo)"/>
+<polygon points="100.0,34.0 42.8,67.0 42.8,133.0 100.0,166.0 157.2,133.0 157.2,67.0" fill="none" stroke="url(#hexg)" stroke-width="3" stroke-linejoin="round" filter="url(#glow)" opacity="0.95"/>
+<g filter="url(#glow)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<polygon points="100.0,89.0 90.5,94.5 90.5,105.5 100.0,111.0 109.5,105.5 109.5,94.5" fill="none" stroke="#FB7185" stroke-width="3.2"/>
+<polygon points="100.0,65.0 90.5,70.5 90.5,81.5 100.0,87.0 109.5,81.5 109.5,70.5" fill="none" stroke="#7C83FF" stroke-width="3.2"/>
+<polygon points="100.0,113.0 90.5,118.5 90.5,129.5 100.0,135.0 109.5,129.5 109.5,118.5" fill="none" stroke="#45E3C6" stroke-width="3.2"/>
+<polygon points="79.0,77.0 69.5,82.5 69.5,93.5 79.0,99.0 88.5,93.5 88.5,82.5" fill="none" stroke="#45E3C6" stroke-width="3.2"/>
+<polygon points="121.0,77.0 111.5,82.5 111.5,93.5 121.0,99.0 130.5,93.5 130.5,82.5" fill="none" stroke="#B49CFF" stroke-width="3.2"/>
+<polygon points="79.0,101.0 69.5,106.5 69.5,117.5 79.0,123.0 88.5,117.5 88.5,106.5" fill="none" stroke="#B49CFF" stroke-width="3.2"/>
+<polygon points="121.0,101.0 111.5,106.5 111.5,117.5 121.0,123.0 130.5,117.5 130.5,106.5" fill="none" stroke="#7C83FF" stroke-width="3.2"/>
+</g>
+</svg>

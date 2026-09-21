@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les autres ne comprennent pas, les pairs oui · Témoignage · CEREMAIA Lyon</title>
+    <link rel="stylesheet" href="styles.css?v=5">
+    <style>
+        /* ---------- Page témoignage (gabarit commun aux 3 volets) ---------- */
+
+        .hero p.hero-quote {
+            font-family: var(--font-family-display);
+            font-weight: var(--font-weight-semibold);
+            font-size: clamp(19px, 3vw, 24px);
+            color: var(--color-text-primary);
+            margin: 0 0 var(--space-4);
+        }
+        .hero-quote .mark { color: var(--color-brand-secondary); }
+
+        /* Entretien : question puis réponse en carte de citation */
+        .qa + .qa { margin-top: var(--space-6); }
+        .qa h3 {
+            font-family: var(--font-family-display);
+            margin: 0 0 var(--space-3);
+        }
+        .quote-card { position: relative; margin: 0; padding-top: 52px; }
+        .quote-card::before {
+            content: "«";
+            position: absolute;
+            top: 10px;
+            left: var(--component-card-padding);
+            font-family: var(--font-family-display);
+            font-size: 46px;
+            font-weight: var(--font-weight-bold);
+            line-height: 1;
+            color: var(--color-accent-violet-soft);
+        }
+        .quote-card blockquote { margin: 0; }
+        .quote-card blockquote p {
+            margin: 0;
+            color: var(--color-text-primary);
+            font-weight: var(--font-weight-medium);
+            line-height: 1.6;
+        }
+        .quote-card blockquote p + p { margin-top: var(--space-3); }
+        .quote-ctx {
+            display: block;
+            margin-top: var(--space-3);
+            font-size: var(--font-size-small);
+            line-height: var(--line-height-small);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text-muted);
+        }
+        .quote-ctx.above { margin: 0 0 var(--space-2); }
+        .quote-card.is-final {
+            border-color: rgba(69,227,198,.30);
+            background: rgba(69,227,198,.05);
+        }
+
+        /* Illustrations du récit */
+        .illus { margin: var(--space-6) 0 0; }
+        .illus.is-lead { margin: 0 0 var(--space-6); }
+        .illus + .qa { margin-top: var(--space-6); }
+        .illus img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-border-subtle);
+        }
+    </style>
+</head>
+<body class="page-v2 page-xpr">
+    <header>
+        <div class="logo-container">
+            <img src="images/banniere.png" alt="CEREMAIA Lyon" class="logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="about.html">À propos</a></li>
+                <li><a href="maladies.html">Les maladies</a></li>
+                <li><a href="recherche.html">La Recherche</a></li>
+                <li><a href="actualites.html">Actualités et événements</a></li>
+                <li><a href="ado-xpr.html" class="active">L'ado-XPR (Espace jeunes)</a></li>
+                <li><a href="contacts.html">Contacts et Consultations</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <nav class="xpr-nav" aria-label="Menu L'ado-XPR">
+            <a class="xpr-brand" href="ado-xpr.html" aria-label="L'ado-XPR, accueil de l'espace jeunes"><span class="full">L'ado-XPR</span><span class="short" aria-hidden="true">XPR</span></a>
+            <a href="parole-ados.html" class="active">Récits</a>
+            <a href="repondre.html">Répondre</a>
+            <a href="comprendre.html">Comprendre</a>
+            <a href="soutien-psy.html">Aide</a>
+        </nav>
+
+        <p class="breadcrumb"><a href="parole-ados.html">← La parole aux ados</a></p>
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-inner">
+                <span class="eyebrow">La parole aux ados · Témoignage 3 sur 3</span>
+                <h1>Les autres ne comprennent pas, les pairs oui</h1>
+                <p class="hero-quote"><span class="mark">«&nbsp;</span>Tant qu'on ne l'a pas vécu, on ne peut pas vraiment comprendre.<span class="mark">&nbsp;»</span></p>
+                <p>Troisième volet du récit d'une jeune adulte suivie au CEREMAIA&nbsp;: le regard de l'entourage, et ce que seuls ceux qui ont vécu un parcours de santé peuvent partager. Ses mots sont retranscrits tels quels, anonymement et avec son accord.</p>
+            </div>
+        </section>
+
+        <!-- BADGES -->
+        <div class="trust-row">
+            <span class="badge">Publié avec accord</span>
+            <span class="badge">Entretien retranscrit</span>
+            <span class="badge">Parole anonyme</span>
+        </div>
+
+        <!-- ENTRETIEN -->
+        <section class="interview">
+            <span class="eyebrow">L'entretien</span>
+            <h2>Le regard des autres, la force des pairs</h2>
+
+            <figure class="illus is-lead">
+                <img src="images/temoignage-couloir.jpg" alt="Illustration : une jeune femme de dos dans un couloir d'hôpital, une feuille à la main">
+            </figure>
+
+            <div class="qa">
+                <h3>Le regard des autres, c'était comment&nbsp;?</h3>
+                <figure class="quote-card">
+                    <blockquote><p>Apprendre à être malade, c'est aussi entrer dans un parcours où les autres ne comprennent pas forcément ce qu'on vit.</p></blockquote>
+                </figure>
+            </div>
+
+            <div class="qa">
+                <h3>Qu'est-ce qui te faisait le plus mal&nbsp;?</h3>
+                <figure class="quote-card">
+                    <blockquote><p>Moi, ça me faisait de la peine quand quelqu'un me disait&nbsp;: “En fait, je n'ai pas compris. Tu en es à quelle étape&nbsp;? Je n'ai pas compris ce que c'est.” Et je devais tout réexpliquer. Ça me faisait de la peine de me dire que la personne n'avait peut-être pas vraiment écouté lorsque je lui avais expliqué les choses.</p></blockquote>
+                </figure>
+            </div>
+
+            <div class="qa">
+                <h3>Tu as posé des limites&nbsp;?</h3>
+                <figure class="quote-card">
+                    <blockquote><p>J'ai donc assez rapidement posé des limites, et je pense que les gens les ont comprises. Soit tu suis mon parcours et tu fais l'effort de comprendre, et dans ce cas tu es évidemment en droit de me poser des questions. Soit tu sais que tu n'as pas fait cet effort, et alors tu peux simplement être là comme soutien émotionnel, mais ne viens pas essayer de faire comme si tu avais suivi quelque chose alors que ce n'est pas le cas.</p></blockquote>
+                </figure>
+            </div>
+
+            <div class="qa">
+                <h3>Pourquoi les pairs, ça change tout&nbsp;?</h3>
+                <figure class="quote-card">
+                    <blockquote><p>Mais il y a vraiment quelque chose qui relève du parcours de santé, particulièrement à l'adolescence ou au début de l'âge adulte&nbsp;: tant qu'on ne l'a pas vécu, on ne peut pas vraiment comprendre. Au début, j'ai beaucoup pleuré à ce sujet, en me disant&nbsp;: “Vous êtes gentils, mais tant que vous n'avez pas vécu ça…”</p></blockquote>
+                </figure>
+            </div>
+
+            <div class="qa">
+                <h3>Tu as trouvé où des gens qui comprennent&nbsp;?</h3>
+                <figure class="quote-card">
+                    <blockquote><p>Donc, dès que je croisais des personnes qui étaient en chambre pour recevoir des traitements intraveineux, même si elles n'avaient pas mon âge ou même si elles n'avaient pas exactement la même maladie, j'allais discuter avec elles. C'étaient les seules personnes qui avaient un parcours suffisamment similaire au mien.</p></blockquote>
+                </figure>
+            </div>
+
+            <figure class="illus">
+                <img src="images/temoignage-pairs-couverture.jpg" alt="Illustration : deux jeunes marchent côte à côte, épaule contre épaule, sous une même couverture" loading="lazy">
+            </figure>
+
+            <div class="qa">
+                <h3>Tu imagines quoi comme solution&nbsp;?</h3>
+                <figure class="quote-card">
+                    <blockquote><p>Ça pourrait donc être intéressant d'avoir quelque chose qui ressemble à ce qui existe dans certains parcours d'addictologie&nbsp;: des tables rondes, des groupes de discussion, des moments permettant de rassembler des personnes qui vivent des parcours similaires, même si elles n'ont pas la même maladie. Je pense que cela pourrait vraiment faire du bien aux adolescents et aux jeunes adultes.</p></blockquote>
+                </figure>
+            </div>
+
+            <div class="qa">
+                <h3>Et toi, tu y irais&nbsp;?</h3>
+                <figure class="quote-card">
+                    <blockquote><p>Ah oui, moi j'adorerais&nbsp;! Oui, vraiment. Juste pour que tout le monde sache qu'on est dans la même situation, qu'on partage certaines choses et qu'on puisse rire ou pleurer ensemble autour de ce qu'on vit en commun. Moi, ça m'aiderait énormément.</p></blockquote>
+                </figure>
+            </div>
+
+            <figure class="illus">
+                <img src="images/temoignage-pairs-lanternes.jpg" alt="Illustration : un groupe de jeunes réunis sous des lanternes lumineuses dans la nuit" loading="lazy">
+            </figure>
+
+            <div class="qa">
+                <h3>Et le “pair-aidant”&nbsp;?</h3>
+                <figure class="quote-card is-final">
+                    <blockquote><p>Oui. Ça me fait un peu penser à ce qui existe en psychiatrie. Il y a des “aidants pairs”, enfin je ne sais plus exactement comment ça s'appelle&nbsp;: des personnes qui ont déjà vécu la maladie et qui accompagnent ensuite d'autres patients. Ça, ça pourrait vraiment être bien. Moi, par exemple, même si je ne suis pas complètement sortie de mon parcours, je pourrais imaginer faire ça bénévolement et aider des personnes plus jeunes. En psychiatrie, ils ont bien compris l'intérêt d'avoir des personnes qui ont elles-mêmes vécu les choses, parce que cela permet que l'accompagnement ait réellement l'effet recherché. Voilà.</p></blockquote>
+                </figure>
+            </div>
+
+            <figure class="illus">
+                <img src="images/temoignage-soutien-2.jpg" alt="Illustration : une personne passe le bras autour des épaules d'une autre" loading="lazy">
+            </figure>
+        </section>
+
+        <!-- SUITE DE LA SÉRIE -->
+        <section>
+            <span class="eyebrow">La suite du récit</span>
+            <h2>Lire les autres témoignages</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Témoignage 1 sur 3</h3>
+                    <p>«&nbsp;Devenir quelqu'un de malade&nbsp;». L'entrée dans le monde de la santé, du jour au lendemain, et la place à prendre dans les décisions.</p>
+                    <p style="margin: var(--s3) 0 0;"><a href="temoignage-devenir-malade.html">Lire le témoignage →</a></p>
+                </div>
+                <div class="feature-card">
+                    <h3>Témoignage 2 sur 3</h3>
+                    <p>MDPH, ALD&nbsp;: énergie perdue, réponses floues. Les démarches administratives vues depuis un parcours incertain.</p>
+                    <p style="margin: var(--s3) 0 0;"><a href="temoignage-mdph-ald.html">Lire le témoignage →</a></p>
+                </div>
+                <div class="feature-card">
+                    <h3>Tous les récits</h3>
+                    <p>Les verbatims des ados et jeunes adultes suivis au CEREMAIA, thème par thème, et d'autres témoignages à écouter ou à lire.</p>
+                    <p style="margin: var(--s3) 0 0;"><a href="parole-ados.html">Retour à La parole aux ados →</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Liens de confiance : toujours en bas de page -->
+        <nav class="page-legal" aria-label="Consentement et retrait">
+            <a href="parole-ados.html#consentement">Consentement et droit à l'image</a>
+            <a href="mailto:ceremaia.lyon@chu-lyon.fr?subject=Demande%20de%20retrait%20d%27un%20t%C3%A9moignage">Demander le retrait</a>
+        </nav>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h4>CEREMAIA Lyon</h4>
+                <p>Centre de Référence des Maladies Auto-Inflammatoires et de l'Amylose inflammatoire. Filière FAI2R · Réseau ERN RITA.</p>
+            </div>
+            <div>
+                <h4>Naviguer</h4>
+                <ul>
+                    <li><a href="about.html">À propos</a></li>
+                    <li><a href="maladies.html">Les maladies</a></li>
+                    <li><a href="recherche.html">La Recherche</a></li>
+                    <li><a href="actualites.html">Actualités</a></li>
+                    <li><a href="ado-xpr.html">L'ado-XPR (Espace jeunes)</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul>
+                    <li>Hôpital de la Croix-Rousse, Lyon</li>
+                    <li>04 26 73 26 36</li>
+                    <li><a href="mailto:ceremaia.lyon@chu-lyon.fr">ceremaia.lyon@chu-lyon.fr</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="footer-urgence"><strong>En cas d'urgence, appelez le 15 (Samu) ou le 112.</strong> &nbsp;·&nbsp; © 2024 CEREMAIA. Tous droits réservés.</p>
+    </footer>
+
+    <script src="menu.js?v=2" defer></script>
+</body>
+</html>
