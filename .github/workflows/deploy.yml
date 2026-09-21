@@ -1,8 +1,9 @@
 # ============================================================
-# Déploiement automatique du site sur l'hébergement mutualisé OVH
+# Déploiement du site sur l'hébergement mutualisé OVH
 #
-# Se déclenche à chaque mise à jour de la branche `main`
-# (ou manuellement depuis l'onglet Actions → "Run workflow").
+# Déclenchement MANUEL uniquement : onglet Actions → "Déploiement OVH"
+# → "Run workflow". Un push sur main ne touche pas la production,
+# il ne met à jour que la préproduction GitHub Pages (preprod-pages.yml).
 #
 # Prérequis : 3 secrets à créer dans le dépôt GitHub
 # (Settings → Secrets and variables → Actions) :
@@ -14,8 +15,6 @@
 name: Déploiement OVH
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 # Un seul déploiement à la fois : si deux commits arrivent coup
