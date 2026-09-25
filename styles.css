@@ -80,6 +80,7 @@
     /* Tailles */
     --size-tap-min:        44px;
     --size-container-max:  1120px;
+    --size-banner-max:     1360px;   /* bannière + menu de l'en-tête (plus large que le contenu) */
     --size-content-max:    72ch;
     --size-header-height:  64px;
 
@@ -213,7 +214,7 @@ header {
     background: linear-gradient(180deg, rgba(28,25,66,.92), rgba(10,9,34,.85));
     backdrop-filter: blur(10px);
     color: var(--color-text-primary);
-    padding: var(--space-6) var(--space-4);
+    padding: var(--space-4) var(--space-4) var(--space-3);
     text-align: center;
     border-bottom: 1px solid var(--color-border-default);
     position: sticky;
@@ -242,7 +243,7 @@ header .logo {
 .logo-container {
     text-align: center;
     margin: 0 auto var(--space-3);
-    max-width: calc(var(--size-container-max) - 2 * var(--space-4));   /* = largeur des cartes de <main> */
+    max-width: var(--size-banner-max);   /* bannière élargie : le menu tient à l'intérieur */
 }
 .logo-container img {
     display: block;
@@ -253,7 +254,9 @@ header .logo {
 nav ul {
     list-style: none;
     padding: 0;
-    margin: 0;
+    /* borné à la bannière (légèrement en retrait) : le menu ne peut plus la dépasser */
+    margin: 0 auto;
+    max-width: calc(var(--size-banner-max) - 2 * var(--space-4));
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -269,7 +272,7 @@ nav ul li a {
     font-family: var(--font-family-base);
     font-weight: var(--font-weight-semibold);
     font-size: var(--font-size-body);
-    padding: 0 var(--space-4);
+    padding: 0 var(--space-3);
     border-radius: var(--radius-pill);
     border: 1px solid transparent;
     transition: color var(--motion-duration-base) var(--motion-easing-standard),
@@ -281,6 +284,12 @@ nav ul li a:hover {
     background: rgba(124,131,255,.14);
     border-color: var(--color-border-default);
     text-decoration: none;
+}
+
+/* Écrans intermédiaires : pastilles resserrées pour garder le menu sur une ligne */
+@media (min-width: 769px) and (max-width: 1391px) {
+    nav ul { gap: var(--space-1); }
+    nav ul li a { padding: 0 var(--space-2); }
 }
 
 /* ---------- Bouton menu (hamburger) ---------- */

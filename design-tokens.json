@@ -111,6 +111,7 @@
       "maxWidth": { "value": "1120px" },
       "contentMax": { "value": "72ch" }
     },
+    "banner": { "maxWidth": { "value": "1360px" }, "comment": "bannière de l'en-tête ; le menu est borné à cette largeur moins 2 x space-4" },
     "header": { "height": { "value": "64px" }, "comment": "barre .xpr-nav collante de l'espace L'ado-XPR" }
   },
   "motion": {
