@@ -51,4 +51,5 @@ jobs:
             .nojekyll
             design-tokens.json
             DEPLOIEMENT.md
+            ANALYSE-EVOLUTION.md
             README.md
