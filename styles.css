@@ -995,6 +995,15 @@ nav ul li a.active:hover { color: var(--color-text-inverse); text-decoration: no
     .xpr-nav .xpr-brand .full { display: none; }
     .xpr-nav .xpr-brand .short { display: inline; }
 }
+/* Petits écrans : le menu L'ado-XPR défile horizontalement au lieu de se tasser
+   (menu.js y centre l'entrée de la page en cours). */
+@media (max-width: 480px) {
+    .xpr-nav { overflow-x: auto; scrollbar-width: none; }
+    .xpr-nav::-webkit-scrollbar { display: none; }
+    .xpr-nav .xpr-brand,
+    .xpr-nav a:not(.xpr-brand) { flex: 0 0 auto; }
+    .xpr-nav a:not(.xpr-brand) { padding: 0 var(--space-2); }
+}
 
 /* Tuiles d'entrée du hub */
 .xpr-tiles {

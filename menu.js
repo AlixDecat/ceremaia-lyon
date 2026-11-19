@@ -50,9 +50,22 @@
         });
     }
 
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-    } else {
+    // L'ado-XPR : sur petit écran le menu interne défile, on y centre l'entrée active
+    function centerXprNav() {
+        var xnav = document.querySelector('.xpr-nav');
+        var cur = xnav && xnav.querySelector('[aria-current="page"]');
+        if (!cur || xnav.scrollWidth <= xnav.clientWidth) return;
+        xnav.scrollLeft = cur.offsetLeft - (xnav.clientWidth - cur.offsetWidth) / 2;
+    }
+
+    function start() {
         init();
+        centerXprNav();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', start);
+    } else {
+        start();
     }
 })();

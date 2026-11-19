@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vie pratique · L'ado-XPR · CEREMAIA Lyon</title>
+    <link rel="stylesheet" href="styles.css?v=8">
+    <style>
+        /* ---------- Page Vie pratique ---------- */
+        .page-nav { margin: 0 0 var(--space-6); }
+        .page-nav a.chip { min-height: var(--size-tap-min); }
+
+        .feature-card .chip { margin: 0 0 var(--space-3); }
+        .feature-card ul { margin: var(--space-3) 0 0; padding-left: 1.1em; }
+        .feature-card li { margin: 0 0 var(--space-1); }
+        .feature-card .res-links { margin-top: var(--space-4); }
+
+        /* Ligne 3018, même gabarit que la ligne 3114 de l'accueil L'ado-XPR */
+        .sos-line {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: var(--space-3);
+            background: rgba(69,227,198,.08);
+            border: 1px solid rgba(69,227,198,.30);
+            border-radius: var(--radius-lg);
+            padding: var(--space-3) var(--space-6);
+            margin: 0;
+        }
+        .sos-line p { margin: 0; flex: 1 1 260px; color: var(--color-text-primary); font-weight: 600; }
+        .sos-line .num { font-family: var(--font-family-display); font-weight: 700; font-size: var(--font-size-h2); color: var(--color-brand-secondary); }
+        .sos-line .num a { color: inherit; }
+        .sos-line .num a:hover { text-decoration: none; opacity: .85; }
+    </style>
+</head>
+<body class="page-xpr">
+    <header>
+        <div class="logo-container">
+            <img src="images/banniere.png" alt="CEREMAIA Lyon" class="logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="about.html">À propos</a></li>
+                <li><a href="maladies.html">Les maladies</a></li>
+                <li><a href="recherche.html">La Recherche</a></li>
+                <li><a href="actualites.html">Actualités et événements</a></li>
+                <li><a href="ado-xpr.html" class="active">L'ado-XPR (Espace jeunes)</a></li>
+                <li><a href="contacts.html">Contacts et Consultations</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <nav class="xpr-nav" aria-label="Menu L'ado-XPR">
+            <a class="xpr-brand" href="ado-xpr.html" aria-label="L'ado-XPR, accueil de l'espace jeunes"><span class="full">L'ado-XPR</span><span class="short" aria-hidden="true">XPR</span></a>
+            <a href="parole-ados.html">Récits</a>
+            <a href="repondre.html">Répondre</a>
+            <a href="comprendre.html">Comprendre</a>
+            <a href="vie-pratique.html" class="active" aria-current="page">Pratique</a>
+            <a href="soutien-psy.html">Aide</a>
+        </nav>
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-inner">
+                <span class="eyebrow">Démarches, santé intime &amp; vie pro</span>
+                <h1>Vie pratique</h1>
+                <p>Ta carte Vitale, ton premier rendez-vous en solo, la question que tu n'oses poser à personne, ton premier stage… Les bons sites et les bons contacts, triés par l'équipe du CEREMAIA Lyon. Pas besoin de tout lire&nbsp;: va direct à ce qui te concerne.</p>
+            </div>
+        </section>
+
+            <dl class="trust-block">
+                <div><dt>Sources</dt><dd><a href="https://www.ameli.fr/" target="_blank" rel="noopener">Assurance Maladie</a> <span class="sep">·</span> <a href="https://www.monespacesante.fr/" target="_blank" rel="noopener">Mon espace santé</a> <span class="sep">·</span> <a href="https://www.filsantejeunes.com/" target="_blank" rel="noopener">Fil Santé Jeunes</a> <span class="sep">·</span> <a href="https://e-enfance.org/besoin-daide/" target="_blank" rel="noopener">e-Enfance (3018)</a> <span class="sep">·</span> <a href="https://www.monparcourshandicap.gouv.fr/" target="_blank" rel="noopener">Mon parcours handicap</a></dd></div>
+                <div><dt>Proposé par</dt><dd>L'équipe du CEREMAIA Lyon</dd></div>
+            </dl>
+
+        <nav class="chips-row page-nav" aria-label="Sur cette page">
+            <a class="chip" href="#comptes-sante">Comptes santé</a>
+            <a class="chip" href="#sante-sexuelle">Santé sexuelle</a>
+            <a class="chip" href="#consommations">Consos</a>
+            <a class="chip" href="#cyberharcelement">Cyberharcèlement</a>
+            <a class="chip" href="#orientation">Études et taf</a>
+        </nav>
+
+        <!-- COMPTES SANTÉ -->
+        <section id="comptes-sante">
+            <span class="eyebrow">Devenir autonome</span>
+            <h2>Tes comptes santé, à toi de jouer</h2>
+            <p>Avant 18 ans, ce sont souvent tes parents qui gèrent. Petit à petit, tu reprends la main. Voici à quel âge, et ce que chaque outil change pour toi.</p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Compte ameli</h3>
+                    <span class="chip">Dès 18 ans</span>
+                    <p>Ton compte à toi, que tu crées à ta majorité. Tu y retrouves&nbsp;:</p>
+                    <ul>
+                        <li>tes remboursements (consultations, médicaments, examens)&nbsp;;</li>
+                        <li>ton attestation de droits, à télécharger quand on te la demande&nbsp;;</li>
+                        <li>la commande ou le renouvellement de ta carte Vitale&nbsp;;</li>
+                        <li>les infos sur ton ALD&nbsp;;</li>
+                        <li>le suivi de tes arrêts de travail et de tes indemnités journalières&nbsp;;</li>
+                        <li>ta carte européenne d'assurance maladie, pour voyager en Europe&nbsp;;</li>
+                        <li>d'autres démarches administratives.</li>
+                    </ul>
+                    <div class="res-links">
+                        <a class="res-pill" href="https://www.ameli.fr/assure/remboursements/suivre-remboursements/se-connecter-compte-ameli" target="_blank" rel="noopener">Créer ton compte, mode d'emploi</a>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <h3>Mon espace santé</h3>
+                    <span class="chip">Géré par tes parents jusqu'à 18 ans</span>
+                    <p>Ton carnet de santé numérique. Il existe déjà pour toi, mais ce sont tes représentants légaux qui le gèrent jusqu'à tes 18 ans. Dedans&nbsp;:</p>
+                    <ul>
+                        <li>tes comptes rendus d'hospitalisation, tes résultats de labo et tes ordonnances&nbsp;;</li>
+                        <li>tes comptes rendus de consultation et d'imagerie&nbsp;;</li>
+                        <li>tes allergies et tes antécédents médicaux&nbsp;;</li>
+                        <li>ton protocole de soins ALD, quand il est disponible&nbsp;;</li>
+                        <li>une messagerie sécurisée pour échanger des documents avec tes soignants&nbsp;;</li>
+                        <li>ton agenda médical.</li>
+                    </ul>
+                    <div class="res-links">
+                        <a class="res-pill" href="https://www.monespacesante.fr/" target="_blank" rel="noopener">Découvrir Mon espace santé</a>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <h3>Doctolib</h3>
+                    <span class="chip">Dès 15 ans</span>
+                    <p>Pour prendre et gérer tes rendez-vous toi-même, en ville comme à l'hôpital, et retrouver tes ordonnances.</p>
+                    <div class="res-links">
+                        <a class="res-pill" href="https://doctolibpatient.zendesk.com/hc/fr/articles/360025470433-Cr%C3%A9er-mon-compte-Doctolib-et-compl%C3%A9ter-mon-profil" target="_blank" rel="noopener">Créer ton compte Doctolib</a>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <h3>Carte Vitale</h3>
+                    <span class="chip">Dès 16 ans</span>
+                    <ul>
+                        <li><strong>À 16 ans</strong>&nbsp;: tu peux avoir ta propre carte, en la demandant depuis le compte ameli de tes parents.</li>
+                        <li><strong>À 18 ans</strong>&nbsp;: tu la demandes toi-même. Active ton compte ameli, va dans «&nbsp;Mes démarches&nbsp;», puis «&nbsp;Commander une carte Vitale&nbsp;».</li>
+                    </ul>
+                    <div class="res-links">
+                        <a class="res-pill" href="https://www.ameli.fr/assure/remboursements/etre-bien-rembourse/carte-vitale/carte-vitale-application/demander-sa-carte-vitale-conditions-et-demarches" target="_blank" rel="noopener">Demander ta carte Vitale</a>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <h3>Passer chez les adultes avec un médecin traitant</h3>
+                    <p>Quand tu quittes la pédiatrie, vérifie que tu as bien un médecin traitant&nbsp;: quand tu changes d'équipe, c'est un repère important. Pas de médecin traitant&nbsp;? Les CPTS (communautés professionnelles territoriales de santé) aident à en trouver un. Leur site parle surtout aux soignants&nbsp;: le plus simple, c'est d'en parler à l'équipe qui te suit.</p>
+                    <div class="res-links">
+                        <a class="res-pill" href="https://www.ars.sante.fr/les-communautes-professionnelles-territoriales-de-sante" target="_blank" rel="noopener">Les CPTS</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SANTÉ SEXUELLE -->
+        <section id="sante-sexuelle">
+            <span class="eyebrow">Corps &amp; santé intime</span>
+            <h2>Ta santé sexuelle, sans tabou</h2>
+            <p>Des questions sur ton corps, tes relations ou la contraception&nbsp;? Ici, des infos fiables et des gens à qui en parler.</p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Onsexprime</h3>
+                    <p>Des infos fiables sur la sexualité des jeunes&nbsp;: le corps, les relations amoureuses, le plaisir, la contraception, les infections sexuellement transmissibles. Et de quoi trouver un centre de santé sexuelle près de chez toi.</p>
+                    <div class="res-links">
+                        <a class="res-pill" href="https://www.onsexprime.fr/" target="_blank" rel="noopener">onsexprime.fr</a>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <h3>Fil Santé Jeunes</h3>
+                    <p>Santé, sexualité, amour, mal-être… Tu peux appeler ou écrire&nbsp;: c'est anonyme et gratuit pour les 12-25 ans, tous les jours de 9&nbsp;h à 23&nbsp;h.</p>
+                    <div class="res-links">
+                        <a class="res-pill" href="tel:0800235236">0 800 235 236</a>
+                        <a class="res-pill" href="https://www.filsantejeunes.com/" target="_blank" rel="noopener">filsantejeunes.com</a>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <h3>Le Planning familial du Rhône</h3>
+                    <p>Les plannings familiaux du Rhône (69), pour trouver celui qui est près de chez toi.</p>
+                    <div class="res-links">
+                        <a class="res-pill" href="https://www.planning-familial.org/fr/le-planning-familial-du-rhone-69" target="_blank" rel="noopener">Planning familial du Rhône</a>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <h3>Les CeGIDD en Auvergne-Rhône-Alpes</h3>
+                    <p>Des centres gratuits pour t'informer, te faire dépister et diagnostiquer les infections sexuellement transmissibles, partout dans la région.</p>
+                    <div class="res-links">
+                        <a class="res-pill" href="https://www.auvergne-rhone-alpes.ars.sante.fr/sante-sexuelle-trouver-un-centre-gratuit-dinformation-de-depistage-et-de-diagnostic-cegidd-en" target="_blank" rel="noopener">Trouver un CeGIDD</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONSOMMATIONS -->
+        <section id="consommations">
+            <span class="eyebrow">Alcool, cannabis, écrans…</span>
+            <h2>Tes consos, on peut en parler</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Consultations jeunes consommateurs (CJC)</h3>
+                    <p>Les CJC t'écoutent, t'informent et t'accompagnent si tu te poses des questions sur ce que tu consommes ou sur une dépendance. C'est anonyme et gratuit.</p>
+                    <div class="res-links">
+                        <a class="res-pill" href="https://masante.universite-lyon.fr/annuaire-sante/consultations-jeunes-consommateurs-cjc--272826.kjsp" target="_blank" rel="noopener">Trouver une CJC</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CYBERHARCÈLEMENT -->
+        <section id="cyberharcelement">
+            <span class="eyebrow">Harcèlement en ligne</span>
+            <h2>Cyberharcèlement&nbsp;: tu n'as pas à gérer ça seul·e</h2>
+            <div class="sos-line">
+                <span class="num"><a href="tel:3018">3018</a></span>
+                <p>On t'insulte, on te menace ou on fait tourner des photos de toi&nbsp;? Appelle le 3018&nbsp;: c'est gratuit, anonyme et confidentiel. En cas de danger, appelle le 17. <a href="https://e-enfance.org/besoin-daide/" target="_blank" rel="noopener">En savoir plus →</a></p>
+            </div>
+        </section>
+
+        <!-- ORIENTATION -->
+        <section id="orientation">
+            <span class="eyebrow">Études, orientation &amp; vie pro</span>
+            <h2>Une question, un endroit où aller</h2>
+            <p>Ta santé peut demander quelques adaptations pour tes études ou ton taf. Trouve ta question, on te dit où aller.</p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Je ne sais pas quel métier ou quelle formation choisir</h3>
+                    <ul>
+                        <li><a href="https://www.monparcourshandicap.gouv.fr/principaux-interlocuteurs/missions-locales" target="_blank" rel="noopener">Te faire accompagner avant 26 ans&nbsp;: les missions locales</a></li>
+                        <li><a href="https://www.missions-locales.org/" target="_blank" rel="noopener">Les missions locales en Auvergne-Rhône-Alpes</a></li>
+                        <li><a href="https://www.monparcourshandicap.gouv.fr/" target="_blank" rel="noopener">Construire ton projet pro</a></li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3>Je cherche un stage, une alternance ou un emploi</h3>
+                    <ul>
+                        <li><a href="https://www.monparcourshandicap.gouv.fr/emploi/comment-preparer-votre-candidature" target="_blank" rel="noopener">Préparer ta candidature</a></li>
+                        <li><a href="https://www.1jeune1solution.gouv.fr/articles/les-structures-qui-accompagnent-les-jeunes-en-situation-de-handicap-vers-l-emploi" target="_blank" rel="noopener">Les structures qui accompagnent les jeunes en situation de handicap vers l'emploi</a></li>
+                        <li>Chercher un emploi&nbsp;: <a href="https://www.francetravail.fr/accueil/" target="_blank" rel="noopener">France Travail</a>, <a href="https://www.capemploi.info/les-services/" target="_blank" rel="noopener">Cap emploi</a></li>
+                        <li><a href="https://www.monparcourshandicap.gouv.fr/principaux-interlocuteurs/missions-locales" target="_blank" rel="noopener">Les missions locales</a></li>
+                        <li><a href="https://www.arpejeh.com/" target="_blank" rel="noopener">Arpejeh</a>&nbsp;: découvrir des métiers et trouver ta place, de 15 à 30 ans.</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3>J'ai besoin de faire reconnaître mon handicap (RQTH)</h3>
+                    <ul>
+                        <li><a href="https://www.monparcourshandicap.gouv.fr/aides/la-reconnaissance-de-la-qualite-de-travailleur-handicape-rqth" target="_blank" rel="noopener">Comprendre la RQTH</a></li>
+                        <li><a href="https://www.monparcourshandicap.gouv.fr/etudes-superieures/pourquoi-demander-la-rqth-modalites-et-avantages" target="_blank" rel="noopener">Pourquoi la demander</a></li>
+                        <li><a href="https://www.monparcourshandicap.gouv.fr/aides/formulaire-de-demande-la-mdph-cerfa-ndeg-1569201" target="_blank" rel="noopener">Faire ta demande à la MDPH</a></li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3>J'ai besoin d'une formation adaptée à ma santé</h3>
+                    <ul>
+                        <li><a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F221" target="_blank" rel="noopener">Les formations accessibles</a></li>
+                        <li><a href="https://www.monparcourshandicap.gouv.fr/aides/des-etablissements-et-services-medico-sociaux-pour-vous-aider-vous-orienter-vous-former-et" target="_blank" rel="noopener">Les établissements et services médico-sociaux pour t'orienter et te former</a></li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3>J'ai besoin d'aménagements dans mon travail</h3>
+                    <ul>
+                        <li><a href="https://www.monparcourshandicap.gouv.fr/etudes-superieures/comment-faire-prendre-en-compte-votre-handicap-au-travail" target="_blank" rel="noopener">Faire prendre en compte ton handicap au travail</a></li>
+                        <li><a href="https://www.agefiph.fr/" target="_blank" rel="noopener">Agefiph</a>&nbsp;: aides et accompagnement dans le privé</li>
+                        <li><a href="https://www.fiphfp.fr/" target="_blank" rel="noopener">FIPHFP</a>&nbsp;: aides et accompagnement dans la fonction publique</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="small" style="margin-top: var(--space-4);">Pour aller plus loin&nbsp;: <a href="https://www.enfant-different.org/adolescence/la-scolarite-et-la-formation-des-16-25-ans/" target="_blank" rel="noopener">la scolarité et la formation des 16-25 ans</a>, sur le site Enfant différent.</p>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-band">
+            <div>
+                <h2>Il manque un bon plan&nbsp;?</h2>
+                <p>Tu connais un site ou un contact qui t'a vraiment aidé·e&nbsp;? Dis-le-nous, on l'ajoute pour les autres.</p>
+            </div>
+            <a href="contacts.html" class="btn btn-primary">Nous écrire</a>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h2>CEREMAIA Lyon</h2>
+                <p>Centre de Référence des Maladies Auto-Inflammatoires et de l'Amylose inflammatoire. Filière FAI2R · Réseau ERN RITA.</p>
+            </div>
+            <div>
+                <h2>Naviguer</h2>
+                <ul>
+                    <li><a href="about.html">À propos</a></li>
+                    <li><a href="maladies.html">Les maladies</a></li>
+                    <li><a href="recherche.html">La Recherche</a></li>
+                    <li><a href="actualites.html">Actualités</a></li>
+                    <li><a href="ado-xpr.html">L'ado-XPR (Espace jeunes)</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2>Contact</h2>
+                <ul>
+                    <li>Hôpital de la Croix-Rousse, Lyon</li>
+                    <li>04 26 73 26 36</li>
+                    <li><a href="mailto:ceremaia.lyon@chu-lyon.fr">ceremaia.lyon@chu-lyon.fr</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="footer-urgence"><strong>En cas d'urgence, appelez le 15 (Samu) ou le 112.</strong> &nbsp;·&nbsp; © 2024-2026 CEREMAIA. Tous droits réservés.</p>
+    </footer>
+
+    <script src="menu.js?v=3" defer></script>
+</body>
+</html>
